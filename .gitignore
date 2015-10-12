@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Sources/VS14/Foundation.vs14/bin/Debug
+/Sources/VS14/Foundation.vs14/obj/Debug
+/Sources/VS14/VscPackage.vs14/bin/Debug
+/Sources/VS14/VscPackage.vs14/obj/Debug
+/Sources/VS14/VscPackage.vs14/VscPackage.vs14.csproj.user
