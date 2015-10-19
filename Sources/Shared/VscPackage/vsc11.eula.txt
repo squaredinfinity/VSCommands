@@ -1,0 +1,176 @@
+﻿VSCommands - End User License Agreement
+
+Version 1.2, May 2012
+(visit http://vscommands.squaredinfinity.com/eula for most recent version)
+
+ 
+THIS SQUARED INFINITY LTD. END-USER LICENSE AGREEMENT (“EULA”) IS A LEGAL AGREEMENT BETWEEN LICENSEE AND Squared Infinity JK LTD. WITH RESPECT TO THE TERMS AND CONDITIONS DESCRIBED HEREIN. 
+READ THIS AGREEMENT CAREFULLY BEFORE ACCEPTING IT. BY ACCEPTING THIS AGREEMENT YOU ACKNOWLEDGE THAT (1) YOU ARE AUTHORIZED TO ENTER THIS AGREEMENT FOR AND ON BEHALF OF LICENSEE, 
+AND ARE DOING SO, AND (2) YOU HAVE READ AND UNDERSTAND AND AGREE THAT YOU SHALL BE BOUND BY THESE TERMS AND CONDITIONS AND ALL MODIFICATIONS AND ADDITIONAS PROVIDED FOR. 
+IF THE LICENSEE DOES NOT AGREE WITH THE TERMS AND CONDITIONS, THE LICENSEE MUST NOT USE OR PERMIT THE USE OF THE PRODUCT.
+ 
+
+ 1. Definitions 
+
+ 
+ Squared Infinity  means Squared Infinity Limited (Company No. 07110272), 180 Bants Lane, Northampton, NN5 6AH, United Kingdom.
+ 
+ Authorized Machine  means a single installation of a copy of the Product on a single physical computer or virtual machine.
+ 
+ Authorized Location  means a geographical location of the office where the Product can be used by unlimited number of Authorized Users.
+ 
+ Authorized Use  means the defined number of copies or instances of the Product that may be used by Licensee, and where applicable, limited to the number of Authorized Machines or Authorized Location.
+ 
+ Authorized User  means a person or user account who is licensed to use the Product, regardless of whether that person is an employee or contractor of the Licensee.
+ 
+ Commencement Date  means the date that Squared Infinity processes payment of the License or Maintenance Fees from Licensee.
+ 
+ License  means the right to use the Product as defined by Authorized Use.
+ 
+ Licensee  means the individual or entity that has licensed the Product under the terms and conditions of this Agreement.
+ 
+ Product  means the VSCommands 10 extension for Visual Studio 2010 (including all official Service Packs) and VSCommands 11 extension for Visual Studio 11 (including all official Service Packs)
+ 
+ Product Version  is a specific version of the Product. 
+     
+    Available Product Versions are: 
+     
+         VSCommands 10 for Visual Studio 2010 
+         VSCommands 11 for Visual Studio 2012 
+    </ul>
+ 
+ Update  is an incremental improvement to a specific Product Version.
+ 
+ Upgrade  is a process of acquiring new Product Version (e.g. VSCommands 10 can be upgraded to VSCommands 11) 
+ 
+
+ 1. Grant of License 
+ 
+Subject to the terms of this Agreement, including limitations defined by the License, Squared Infinity hereby grants to Licensee, and Licensee accepts from Squared Infinity, a perpetual, irrevocable (except pursuant to Clause 12 below), fully-paid, worldwide, non-exclusive, non-transferable, non-sublicensable License to use the Product as defined by Authorized Use.
+You are granted either a Pro Personal License (pursuant to Section 1.2), Pro Site License (pursuant to Section 1.3), Pro Enterprise License (pursuant to Section 1.4), Lite License (pursuant to Section 1.5) or Pro Personal MVP License (pursuant to Section 1.6).
+Applicable License Type of software is determined at the time of the License purchase.
+ 
+
+ 1.1. Scope of Use 
+ 
+The Software is licensed, not sold, on a basis indicated by type of license purchased.
+ 
+
+ 1.2 VSCommands Pro Personal License 
+ 
+VSCommands Pro Personal License grants the Licensee, as an Authorized User, the right to install and use the Product on up to three (3) Authorized Machines as long as the Licensee is the only person using these copies.
+VSCommands Pro Personal License includes two (1) year of Subscription and Priority Support Package valid from the day of purchase.
+ 
+
+ 1.3. Pro Site License 
+ 
+VSCommands Pro Site license grants the right to install and use the Product as long as all Authorized Users work in the same Authorized Location as provided by Licensee during purchase.
+VSCommands Pro Site License includes two (1) year of Subscription and Priority Support Package valid from the day of purchase.
+ 
+
+ 1.4. Pro Enterprise License 
+ 
+VSCommands Pro Enterprise license grants the right to install and use unlimited copies of the Product to be used by all Authorized Users working for Licensee regardless of the physical location of the office.
+VSCommands Pro Site License includes two (1) year of Subscription and Priority Support Package valid from the day of purchase.
+ 
+
+ 1.5. VSCommands Lite License 
+ 
+VSCommands Lite license grants the right to install and use a limited version of the Product for unlimited period of time.
+ 
+
+ 1.6. Pro Personal MVP License 
+ 
+VSCommands Pro Personal MVP license grants the Licensee, as an Authorized User, the right to install and use the Product on up to five (3) Authorized Machines for a period of 12 months as long as the Licensee is the only person using these copies.
+MVP license can be renewed at sole and absolute discretion of Squared Infinity.
+ 
+
+ 1.7. Subscription and Priority Support Package 
+ 
+Subscription and Priority Support Package provides the Licensee with all major and minor Updates for the Software for a period of one (1) year from the date of purchase.
+ 
+Subscription and Priority Support Package provides the Licensee with 50% discount for product Upgrades to a new Product Version.
+ 
+
+ 2. License Fee 
+ 
+A one-time fee paid by Licensee to Squared Infinity Limited, as designated by Product, in consideration for the Authorized Use of the Product. License fee is non-refundable and payable upon acceptance of the terms and conditions set out herein.
+ 
+
+ 4. No warranty 
+ 
+Except as described in this Agreement the Product is provided on an “as is” and “as available” basis without warranty, express or implied, of any kind or nature, including, but not limited to, any warranties of performance or merchantability or fitness for a particular purpose, including without limitation that Squared Infinity does not warranty that the Product will be error-free, complete, or correct. Squared Infinity provides evaluation copies of the Product so that customers can assess the Product.
+ 
+
+ 5. Squared Infinity’s Obligations 
+ 
+Upon receipt of License Fee from Licensee, Squared Infinity will (a) supply the Licensee with the Product via electronic download; and (b) provide Subscription and Priority Support as defined in Section 1.7.
+ 
+
+ 7. Licensee Obligations 
+ 
+The Licensee must at all times: (a) ensure that only an Authorized User may use the Product and only for Authorized Use in accordance with the terms and conditions of this Agreement; (b) promptly advise Squared Infinity, including in writing, if the Licensee becomes aware of any unauthorized use or distribution of the Product by any person.
+ 
+
+ 8. Unauthorized Use or Distribution 
+ 
+Licensee may not, whether through deliberate or negligent act or act of omission, distribute or cause the distribution of the Product or License File to any third party other than an Authorized User.
+Unauthorised distribution of the License File will result in this License File being cancelled. New License File will be issued to the Licensee only at sole and absolute discretion of Squared Infinity.
+
+ 9. Investigation of Unauthorized Use or Distribution 
+ 
+If Squared Infinity reasonably suspects that the Product or License File has been distributed to or obtained by any person or party without Squared Infinity’s prior written consent, Squared Infinity has the right to reasonably request once per calendar year from the Licensee an unqualified certificate executed by the Licensee’s auditor at the Licensee’s cost for the purpose of verifying compliance with Authorized Use of Product.
+ 
+
+ 10. Licensee’s Restrictions 
+ 
+Licensee will not, without the prior written consent of Squared Infinity, which may be withheld in Squared Infinity’s sole discretion and which may include certain conditions:
+ 
+(a) Decompile, reverse engineer, disassemble, analyse, modify, adapt, convert, create derivative works from, or otherwise attempt to derive the Protected Code.
+ 
+(b) Sell, sublicense, redistribute, reproduce, transmit, circulate, disseminate, translate or reduce to or from any electronic medium or machine readable from the Product or any data/information provided to the Licensee through the Product to a person (except that nothing in Clause 10(b) is intended to prevent an Authorized Person undertaking Authorized Use);
+ 
+(c) Vary or amend the Authorized Use without Squared Infinity’s prior written approval;
+ 
+(d) Except as otherwise permitted in this EULA, publish, promote, broadcast, circulate or refer publicly to the Squared Infinity name, trade name, trademark, service mark or logo
+ 
+(e) Commit any act or omission the likely result of which is that Squared Infinity’s reputation will be brought into disrepute or which act or omission could reasonably be expected to have or does have a material and adverse effect on Squared Infinity’s interests.
+ 
+In addition, the Product includes license protection mechanisms that are designed to manage and protect the intellectual property rights of Squared Infinity. Licensee must not modify or alter those features to try to defeat the Product use rules that the license protection mechanism are designed to enforce.
+ 
+
+ 11. Term 
+ 
+The term of this Agreement begins on the Commencement Date and will continue in full force and effect unless terminated in accordance with Clause 12 below.
+ 
+
+ 12. Termination 
+ 
+Licensee may terminate this Agreement at any time by destroying all copies of the Product in its possession. Either party hereto may terminate this Agreement if the other party commits a material breach and such party does not cure such material breach within thirty (30) days of written notice of such breach. Licensee agrees upon termination of this License to destroy all copies of the Product in its possession. Clauses 1, 4, 8-10, 13-15 shall survive any termination of this Agreement.
+ 
+
+ 13. Ownership / Intellectual Property 
+ 
+This Agreement only confers the right to use the Product and does not convey any rights of ownership in or to the Product. The Licensee acknowledges that the Product and all intellectual property rights in relation to the Product are the property of Squared Infinity and Squared Infinity is entitled to take whatever action it may decide in order to protect its intellectual property rights to the Product.
+ 
+
+ 14. Open Source Code 
+ 
+With respect to open source software, Squared Infinity hereby represents and warrants:
+(a) That the Licensee’s use thereof does not create, or purport to create, obligations on the Licensee to grant licenses or usage rights to the general public to any source or object code, whether such code is embedded in the Product or any other software provided under this Agreement or used in conjunction therewith; (b) that in no event shall the Licensee be liable for any damages whatsoever, whether direct or indirect, and whether experienced by Squared Infinity or a third party, which are related to loss of Squared Infinity or any third party resulting from such use of Open Source Software hereunder; and (c) to, and hereby does, waive any claims it may have against the Licensee in relation to The Licensee’s use of such open source software.
+All open source software included in Squared Infinity Product is listed on Exhibit A attached to this Agreement.
+ 
+
+ 15. Publicity Rights 
+ 
+(a) The Licensee grants Squared Infinity the right to include the Licensee as a customer in Product promotional material.
+ 
+(b) Licensee can deny Squared Infinity this right by submitting a written request via email to support@vscommands.com, requesting to be excluded from Product promotional material. Squared Infinity will remove the Licensee’s name from promotional material within 30 days and make no further reference to the Licensee.
+ 
+
+ Exhibit A 
+ Stacky 
+ 
+	.Net client for StackApps API Created by Luke Foust (http://twitter.com/#!/lfoust) and available for download from http://stacky.codeplex.com
+ 
+</div>

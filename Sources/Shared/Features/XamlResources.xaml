@@ -1,0 +1,8 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SquaredInfinity.VSCommands.Features">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="{ResourceFromThisAssembly /SolutionBadges/SolutionBadgeView.xaml}" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

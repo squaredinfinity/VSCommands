@@ -3,15 +3,12 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>2901cef8-4f81-42b2-8c43-ec450401dc03</SharedGUID>
+    <SharedGUID>184b2831-08ca-492a-bd4f-db1ec42fc6be</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>SquaredInfinity.VSCommands.VscPackage</Import_RootNamespace>
+    <Import_RootNamespace>Internal</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Bootstrapper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)vsc11.eula.txt" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.shared.cs" />
   </ItemGroup>
 </Project>

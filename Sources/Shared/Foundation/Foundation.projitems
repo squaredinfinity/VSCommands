@@ -9,6 +9,14 @@
     <Import_RootNamespace>SquaredInfinity.VSCommands.Foundation</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)StaticSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DeploymentInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\IVscSettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\StaticSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\VscSettingScope.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Settings\VscSettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VersionInstallationInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\DocumentEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\IVisualStudioEventsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\VisualStudioEventsService.cs" />
   </ItemGroup>
 </Project>
