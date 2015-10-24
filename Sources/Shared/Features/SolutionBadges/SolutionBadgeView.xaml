@@ -11,7 +11,13 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type local:SolutionBadgeView}">
-                        <TextBlock Text="(. Y .)" />
+                        <Border BorderBrush="#999999"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                BorderThickness="1"
+                                Background="{TemplatedParentBinding ViewModel.AccentColor, Converter={StaticResource Converters.ColorToGradientBrush}}">
+                            <TextBlock Text="(. Y .)" />
+                        </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>

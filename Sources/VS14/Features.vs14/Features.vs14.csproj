@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B88C127B-2D17-4F73-99FB-C2B68CE7431D}</ProjectGuid>
+    <ProjectGuid>{C97E63F9-0E9E-4910-8C2F-F40389E0D96A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SquaredInfinity.VSCommands.VscPackage</RootNamespace>
-    <AssemblyName>SquaredInfinity.VSCommands.VscPackage.vs14</AssemblyName>
+    <RootNamespace>SquaredInfinity.VSCommands.Features</RootNamespace>
+    <AssemblyName>SquaredInfinity.VSCommands.Features.vs14</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte100, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte90, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte90a, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="SquaredInfinity.Foundation.Cache.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
@@ -67,6 +82,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,25 +95,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Features.vs14\Features.vs14.csproj">
-      <Project>{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}</Project>
-      <Name>Features.vs14</Name>
-    </ProjectReference>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Foundation.vs14\Foundation.vs14.csproj">
       <Project>{a2626117-c984-4eba-a6cc-b21b7dacac38}</Project>
       <Name>Foundation.vs14</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Presentation.vs14\Presentation.vs14.csproj">
-      <Project>{c386c186-7f2a-4c93-8019-42a79d5ba18f}</Project>
-      <Name>Presentation.vs14</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="..\..\Shared\Internal\Internal.projitems" Label="Shared" />
-  <Import Project="..\..\Shared\VscPackage\VscPackage.projitems" Label="Shared" />
+  <Import Project="..\..\Shared\Features\Features.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

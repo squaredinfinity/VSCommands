@@ -23,17 +23,24 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Features", "Sources\Shared\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Features.vs14", "Sources\VS14\Features.vs14\Features.vs14.csproj", "{C97E63F9-0E9E-4910-8C2F-F40389E0D96A}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Presentation", "Sources\Shared\Presentation\Presentation.shproj", "{58D50A09-0708-42E1-9140-22E2A395441B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.vs14", "Sources\VS14\Presentation.vs14\Presentation.vs14.csproj", "{C386C186-7F2A-4C93-8019-42A79D5BA18F}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Sources\Shared\VscPackage\VscPackage.projitems*{2901cef8-4f81-42b2-8c43-ec450401dc03}*SharedItemsImports = 13
 		Sources\Shared\Foundation\Foundation.projitems*{d1941403-007f-4f39-ad6b-5bb81d221164}*SharedItemsImports = 13
 		Sources\Shared\Internal\Internal.projitems*{184b2831-08ca-492a-bd4f-db1ec42fc6be}*SharedItemsImports = 13
-		Sources\Shared\Internal\Internal.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
 		Sources\Shared\Foundation\Foundation.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
+		Sources\Shared\Internal\Internal.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
+		Sources\Shared\Presentation\Presentation.projitems*{c386c186-7f2a-4c93-8019-42a79d5ba18f}*SharedItemsImports = 4
+		Sources\Shared\Internal\Internal.projitems*{c386c186-7f2a-4c93-8019-42a79d5ba18f}*SharedItemsImports = 4
 		Sources\Shared\Features\Features.projitems*{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}*SharedItemsImports = 4
 		Sources\Shared\Features\Features.projitems*{3af75030-d338-4882-afad-aeddd3727c2e}*SharedItemsImports = 13
-		Sources\Shared\Internal\Internal.projitems*{b88c127b-2d17-4f73-99fb-c2b68ce7431d}*SharedItemsImports = 4
 		Sources\Shared\VscPackage\VscPackage.projitems*{b88c127b-2d17-4f73-99fb-c2b68ce7431d}*SharedItemsImports = 4
+		Sources\Shared\Internal\Internal.projitems*{b88c127b-2d17-4f73-99fb-c2b68ce7431d}*SharedItemsImports = 4
+		Sources\Shared\Presentation\Presentation.projitems*{58d50a09-0708-42e1-9140-22e2a395441b}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +63,10 @@ Global
 		{C97E63F9-0E9E-4910-8C2F-F40389E0D96A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C97E63F9-0E9E-4910-8C2F-F40389E0D96A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C97E63F9-0E9E-4910-8C2F-F40389E0D96A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C386C186-7F2A-4C93-8019-42A79D5BA18F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C386C186-7F2A-4C93-8019-42A79D5BA18F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C386C186-7F2A-4C93-8019-42A79D5BA18F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C386C186-7F2A-4C93-8019-42A79D5BA18F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +80,7 @@ Global
 		{B88C127B-2D17-4F73-99FB-C2B68CE7431D} = {5BEC4AAB-6F83-4C33-902A-0C8FFC83AF21}
 		{3AF75030-D338-4882-AFAD-AEDDD3727C2E} = {54E5175C-CA0E-4C60-B71B-D0DE9674F87A}
 		{C97E63F9-0E9E-4910-8C2F-F40389E0D96A} = {5BEC4AAB-6F83-4C33-902A-0C8FFC83AF21}
+		{58D50A09-0708-42E1-9140-22E2A395441B} = {54E5175C-CA0E-4C60-B71B-D0DE9674F87A}
+		{C386C186-7F2A-4C93-8019-42A79D5BA18F} = {5BEC4AAB-6F83-4C33-902A-0C8FFC83AF21}
 	EndGlobalSection
 EndGlobal

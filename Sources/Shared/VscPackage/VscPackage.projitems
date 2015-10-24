@@ -10,8 +10,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Bootstrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)XamlResources.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)vsc11.eula.txt" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\solutionbadge-breakmode.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\solutionbadge-runmode.png" />
+    <None Include="$(MSBuildThisFileDirectory)Content\vsc11.eula.txt" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\logo.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\solutionbadge-bug.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\solutionbadge-feature.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\solutionbadge-solution.png" />
+    <None Include="$(MSBuildThisFileDirectory)Resources\solutionbadge-team.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Resources\!read.me" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)XamlResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

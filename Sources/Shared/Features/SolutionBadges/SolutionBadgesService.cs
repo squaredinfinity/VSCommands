@@ -10,6 +10,10 @@ using System.Windows;
 using SquaredInfinity.Foundation.Extensions;
 using System.Windows.Interop;
 using EnvDTE;
+using System.Drawing;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
+using System.IO;
 
 namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 {
@@ -21,6 +25,9 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
         readonly int MaxFailureCount = 13;
 
         readonly object Sync = new object();
+
+        Bitmap CurrentBadgeIconicBitmap;
+        Bitmap CurrentBadgeLivePreviewBitmap;
 
         IntPtr _mainWindowHandle = IntPtr.Zero;
         IntPtr MainWindowHandle
@@ -93,7 +100,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
             //if (Config.IsEnabled)
             //{
-            //    dwmapi.EnableCustomWindowPreview(MainWindowHandle);
+                dwmapi.EnableCustomWindowPreview(MainWindowHandle);
             //}
         }
 
@@ -134,48 +141,48 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
                 {
                     lock (Sync)
                     {
-                        //CreateBadgeForCurrentSolution();
+                        CreateBadgeForCurrentSolution();
 
-                        //if (CurrentBadgeIconicBitmap != null)
-                        //{
-                        //    var hBitmap = CurrentBadgeIconicBitmap.GetHbitmap();
+                        if (CurrentBadgeIconicBitmap != null)
+                        {
+                            var hBitmap = CurrentBadgeIconicBitmap.GetHbitmap();
 
-                        //    try
-                        //    {
-                        //        dwmapi.DwmSetIconicThumbnail(MainWindowHandle, hBitmap, 0);
-                        //    }
-                        //    finally
-                        //    {
-                        //        gdi32.DeleteObject(hBitmap);
-                        //    }
-                        //}
+                            try
+                            {
+                                dwmapi.DwmSetIconicThumbnail(MainWindowHandle, hBitmap, 0);
+                            }
+                            finally
+                            {
+                                gdi32.DeleteObject(hBitmap);
+                            }
+                        }
                     }
                 }
                 else if (msg == (int)dwmapi.WM_Messages.WM_DWMSENDICONICLIVEPREVIEWBITMAP)
                 {
                     lock (Sync)
                     {
-                        //RefreshLivePreviewBitmap();
+                        RefreshLivePreviewBitmap();
 
-                        //if (CurrentBadgeLivePreviewBitmap != null)
-                        //{
-                        //    var offset = new dwmapi.NativePoint(8, 8); // TODO: this may need to be 0,0 in VS 10 (because the window does not use metro style)
+                        if (CurrentBadgeLivePreviewBitmap != null)
+                        {
+                            var offset = new dwmapi.NativePoint(8, 8); // TODO: this may need to be 0,0 in VS 10 (because the window does not use metro style)
 
-                        //    var hBitmap = CurrentBadgeLivePreviewBitmap.GetHbitmap();
+                            var hBitmap = CurrentBadgeLivePreviewBitmap.GetHbitmap();
 
-                        //    try
-                        //    {
-                        //        dwmapi.DwmSetIconicLivePreviewBitmap(
-                        //            MainWindowHandle,
-                        //            hBitmap,
-                        //            ref offset,
-                        //            0); // todo: this may be needed (drawing frame) in VS 10
-                        //    }
-                        //    finally
-                        //    {
-                        //        gdi32.DeleteObject(hBitmap);
-                        //    }
-                        //}
+                            try
+                            {
+                                dwmapi.DwmSetIconicLivePreviewBitmap(
+                                    MainWindowHandle,
+                                    hBitmap,
+                                    ref offset,
+                                    0); // todo: this may be needed (drawing frame) in VS 10
+                            }
+                            finally
+                            {
+                                gdi32.DeleteObject(hBitmap);
+                            }
+                        }
                     }
                 }
             }
@@ -213,6 +220,26 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             return IntPtr.Zero;
         }
 
+        void CreateBadgeForCurrentSolution()
+        {
+            var view = GetSolutionBadgeView();
+            
+            RefreshIconicBitmap(view);
+        }
+
+        SolutionBadgeView GetSolutionBadgeView()
+        {
+            var view = new SolutionBadgeView();
+
+            // NOTE:    this will be used outside of application Visual Tree
+            //          must initialize manually
+            view.BeginInit();
+            view.EndInit();
+            view.ApplyTemplate();
+
+            return view;
+        }
+
         void CreateBadgeForCurrentSolution(
             string solutionPath,
             string solutionName,
@@ -222,12 +249,12 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
         {
             try
             {
-               // var view = Container.Resolve<ISolutionBadgeView>();
+                var view = GetSolutionBadgeView();
 
                 //CreateBadgeForSolution(solutionPath, solutionName, branchName, activeDocumentName, debugMode, view);
 
-                //RefreshIconicBitmap(view);
-                //RefreshStartPageBitmap(view);
+                RefreshIconicBitmap(view);
+               // RefreshStartPageBitmap(view);
             }
             catch (Exception ex)
             {
@@ -235,6 +262,85 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
                 ex.TryAddContextData("solution name", () => solutionName);
                 ex.TryAddContextData("debug mode", () => debugMode);
                 throw;
+            }
+        }
+    
+
+
+        void RefreshIconicBitmap(SolutionBadgeView view)
+        {
+            lock (Sync)
+            {
+                if (CurrentBadgeIconicBitmap != null)
+                {
+                    CurrentBadgeIconicBitmap.Dispose();
+                }
+
+                CurrentBadgeIconicBitmap = PrepareBadgeViewBitmap(view, new System.Windows.Size(196, 106));
+            }
+        }
+
+        Bitmap PrepareBadgeViewBitmap(SolutionBadgeView badgeView, System.Windows.Size size)
+        {
+            try
+            {
+                (badgeView).Measure(size);
+                (badgeView).Arrange(new System.Windows.Rect(size));
+                (badgeView).Refresh();
+
+                RenderTargetBitmap targetBitmap = new RenderTargetBitmap((int)size.Width, (int)size.Height, 96.0, 96.0, PixelFormats.Default);
+
+                targetBitmap.Render(badgeView);
+
+                BmpBitmapEncoder encoder = new BmpBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(targetBitmap));
+
+                MemoryStream ms = new MemoryStream();
+
+                encoder.Save(ms);
+
+                ms.Flush();
+
+                var badgeBitmap = System.Drawing.Image.FromStream(ms) as Bitmap;
+
+                return badgeBitmap;
+            }
+            catch (Exception ex)
+            {
+                ex.TryAddContextData("size", () => size);
+                throw;
+            }
+        }
+
+        void RefreshLivePreviewBitmap()
+        {
+            lock (Sync)
+            {
+                // release old resources if needed
+                if (CurrentBadgeLivePreviewBitmap != null)
+                {
+                    CurrentBadgeLivePreviewBitmap.Dispose();
+                    CurrentBadgeLivePreviewBitmap = null;
+                }
+
+                // create bitmap from main window to show in live preview
+                var mainWindow = Application.Current.MainWindow;
+
+                RenderTargetBitmap bitmap = new RenderTargetBitmap((int)mainWindow.ActualWidth, (int)mainWindow.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+
+                bitmap.Render(mainWindow);
+
+                BmpBitmapEncoder encoder = new BmpBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bitmap));
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    encoder.Save(ms);
+
+                    ms.Flush();
+
+                    CurrentBadgeLivePreviewBitmap = System.Drawing.Image.FromStream(ms) as Bitmap;
+                }
             }
         }
     }

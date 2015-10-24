@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DeploymentInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IVscUIService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\IVscSettingsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\StaticSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\VscSettingScope.cs" />
@@ -18,5 +19,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\DocumentEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\IVisualStudioEventsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\VisualStudioEventsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VscUIService.cs" />
   </ItemGroup>
 </Project>
