@@ -16,7 +16,92 @@
                                 VerticalAlignment="Stretch"
                                 BorderThickness="1"
                                 Background="{TemplatedParentBinding ViewModel.AccentColor, Converter={StaticResource Converters.ColorToGradientBrush}}">
-                            <TextBlock Text="(. Y .)" />
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <!-- Header -->
+                                    <RowDefinition Height="Auto" />
+                                    <!-- Additional Info -->
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0"
+                                      Margin="5,10,10,0">
+                                    <Grid.ColumnDefinitions>
+                                        <!-- Icon -->
+                                        <ColumnDefinition Width="Auto" />
+                                        <!-- Solution Name -->
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <!-- Icon and Title -->
+                                        <RowDefinition Height="Auto" />
+                                        <!-- Subtitle -->
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Image Grid.Column="0" 
+                                           Grid.Row="0"
+                                           Style="{DynamicResource VSC.Images.SolutionBadges.Solution}"
+                                           Width="32" Height="32"
+                                           Visibility="{TemplatedParentBinding ViewModel.IsDefaultBranch, Converter={StaticResource Converters.VisibleWhenTrue}}"/>
+
+                                    <Image Grid.Column="0" 
+                                           Grid.Row="0"
+                                           Width="32" Height="32"
+                                           Style="{DynamicResource VSC.Images.SolutionBadges.Feature}"
+                                           Visibility="{TemplatedParentBinding ViewModel.IsFeatureBranch, Converter={StaticResource Converters.VisibleWhenTrue}}"/>
+
+                                    <Image Grid.Column="0" 
+                                           Grid.Row="0"
+                                           Width="32" Height="32"
+                                           Style="{DynamicResource VSC.Images.SolutionBadges.Bug}"
+                                           Visibility="{TemplatedParentBinding ViewModel.IsBugBranch, Converter={StaticResource Converters.VisibleWhenTrue}}"/>
+
+                                    <Image Grid.Column="0" 
+                                           Grid.Row="0"
+                                           Width="32" Height="32"
+                                           Style="{DynamicResource VSC.Images.SolutionBadges.Team}"
+                                           Visibility="{TemplatedParentBinding ViewModel.IsTeamBranch, Converter={StaticResource Converters.VisibleWhenTrue}}"/>
+
+                                    <TextBlock Text="{TemplatedParentBinding ViewModel.Title}" 
+                                               TextAlignment="Center"
+                                               Grid.Column="1"
+                                               Grid.Row="0"
+                                               Margin="10,0,10,0"
+                                               TextWrapping="Wrap"
+                                               TextTrimming="CharacterEllipsis"
+                                               Foreground="{TemplatedParentBinding ViewModel.TextBrush}"
+                                               FontWeight="Bold"
+                                               FontSize="18"
+                                               LineHeight="19"
+                                               LineStackingStrategy="BlockLineHeight" />
+
+                                    <TextBlock Text="{TemplatedParentBinding ViewModel.Subtitle}" 
+                                               Margin="0,-5,0,0"
+                                               Foreground="{TemplatedParentBinding ViewModel.TextBrush}"
+                                               TextTrimming="CharacterEllipsis"
+                                               TextAlignment="Center"
+                                               FontSize="12"
+                                               Grid.Row="1"
+                                               Grid.Column="1"/>
+                                </Grid>
+
+                                <StackPanel Orientation="Horizontal" 
+                                            Grid.Row="1"
+                                            VerticalAlignment="Bottom" 
+                                            Margin="10,0,10,10">
+                                    <!--<Image Style="{DynamicResource VSC.Images.SolutionBadges.RunMode}"
+                                           Visibility="{TemplatedParentBinding ViewModel.IsRunMode, Converter={StaticResource Converters.VisibleWhenTrue}}"/>
+
+                                    <Image Style="{DynamicResource VSC.Images.SolutionBadges.BreakMode}"
+                                           Visibility="{TemplatedParentBinding ViewModel.IsBreakMode, Converter={StaticResource Converters.VisibleWhenTrue}}"/>-->
+                                    
+                                    <TextBlock Text="{TemplatedParentBinding ViewModel.ActiveDocumentName}" 
+                                               VerticalAlignment="Center"
+                                               Foreground="{TemplatedParentBinding ViewModel.TextBrush}"
+                                               TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                            </Grid>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>

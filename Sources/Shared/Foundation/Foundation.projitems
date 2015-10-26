@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DeploymentInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\EnvDTE\DTE2.extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\System\IServiceProvider.extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IVscUIService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\IVscSettingsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\StaticSettings.cs" />

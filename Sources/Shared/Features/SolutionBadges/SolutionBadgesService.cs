@@ -14,6 +14,9 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.IO;
+using System.Collections.Concurrent;
+using EnvDTE80;
+using SquaredInfinity.VSCommands.Foundation.Settings;
 
 namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 {
@@ -53,13 +56,18 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
         protected ISettingsService SettingsService { get; private set; }
         protected IVisualStudioEventsService VisualStudioEventsService { get; private set; }
+        protected IServiceProvider ServiceProvider { get; private set; }
 
         InvocationThrottle RefreshThrottle = new InvocationThrottle(min: TimeSpan.FromMilliseconds(250), max:TimeSpan.FromSeconds(1));
 
-        public SolutionBadgesService(ISettingsService settingsService, IVisualStudioEventsService visualStudioEventsService)
+        public SolutionBadgesService(
+            ISettingsService settingsService, 
+            IVisualStudioEventsService visualStudioEventsService,
+            IServiceProvider serviceProvider)
         {
             this.SettingsService = settingsService;
             this.VisualStudioEventsService = visualStudioEventsService;
+            this.ServiceProvider = serviceProvider;
 
             VisualStudioEventsService.AfterSolutionOpened += (s, e) => RequestRefresh();
             VisualStudioEventsService.AfterSolutionClosed += (s, e) => RequestRefresh();
@@ -220,13 +228,6 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             return IntPtr.Zero;
         }
 
-        void CreateBadgeForCurrentSolution()
-        {
-            var view = GetSolutionBadgeView();
-            
-            RefreshIconicBitmap(view);
-        }
-
         SolutionBadgeView GetSolutionBadgeView()
         {
             var view = new SolutionBadgeView();
@@ -238,6 +239,13 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             view.ApplyTemplate();
 
             return view;
+        }
+
+        void CreateBadgeForCurrentSolution()
+        {
+            var view = GetSolutionBadgeView();
+
+            RefreshIconicBitmap(view);
         }
 
         void CreateBadgeForCurrentSolution(
@@ -341,6 +349,183 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
                     CurrentBadgeLivePreviewBitmap = System.Drawing.Image.FromStream(ms) as Bitmap;
                 }
+            }
+        }
+        
+        void ClearPlaceholderMappings()
+        {
+            foreach (var key in PlaceholderMappings.Keys)
+                PlaceholderMappings[key] = "";
+        }
+
+        readonly Dictionary<string, string> PlaceholderMappings = new Dictionary<string, string>();
+
+
+        CurrentVSStateInfo GetCurrentVSState()
+        {
+            var result = new CurrentVSStateInfo();
+
+            Dictionary<string, object> properties = new Dictionary<string, object>();
+
+            ClearPlaceholderMappings();
+
+            var dte2 = ServiceProvider.GetDte2();
+
+            var solution = dte2.Solution;
+
+            if (solution != null)
+            {
+                var solutionBuild = solution.SolutionBuild;
+
+                if (solutionBuild != null)
+                {
+                    var activeConfig = solutionBuild.ActiveConfiguration as SolutionConfiguration2;
+
+                    if (activeConfig != null)
+                    {
+                        properties["sln:activeConfig"] = activeConfig.Name;
+                        properties["sln:activePlatform"] = activeConfig.PlatformName;
+                    }
+                }
+            }
+
+            var activeDocument = dte2.GetActiveDocument();
+
+            if (activeDocument == null
+                || activeDocument.FullName.IsNullOrEmpty())
+            {
+                properties["activeDocument:fileName"] = "";
+                properties["activeDocument:fullPath"] = "";
+
+                // todo: not supported at the moment, would need to get notifications when new tool window is open for it to work nice
+                // no document is open, try to get open window name (e.g. start page)
+                //try
+                //{
+                //    var activeWindow = dte2.ActiveWindow; // this may throw exception if there is no active window (?)
+
+                //    if (activeWindow != null
+                //        && !activeWindow.Linkable) // we don't want to process docked windows such as solution explorer
+                //    {
+                //        activeDocumentName = activeWindow.Caption;
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Logger.DiagnosticOnlyLogException(ex);
+                //}
+            }
+            else
+            {
+                var active_document_path = activeDocument.Name;
+
+                properties["activeDocument:fullPath"] = active_document_path;
+                properties["activeDocument:fileName"] = Path.GetFileName(activeDocument.Name);
+            }
+
+            var solution_full_path = solution.FullName;
+
+            if (solution_full_path == string.Empty)
+            {
+                properties["sln:isOpen"] = false;
+            }
+            else
+            {
+                properties["sln:isOpen"] = true;
+
+                // todo:    allow user to override solution name
+                //var custom_solution_name = SettingsService.GetSetting<string>("SolutionBadges.SolutionName", VscSettingScope.Solution, () => null);
+
+                properties["sln:fullPath"] = solution_full_path;
+                properties["sln:fileName"] = Path.GetFileNameWithoutExtension(solution_full_path);
+
+                // todo:    this could perhaps happen on a higher level,
+                //          where decision has to be made if to use this or custom name etc.
+                    //.Replace('.', ' ')
+                    //.Replace('-', ' ')
+                    //.Replace('_', ' ')
+                    //.SplitCamelCase();
+                    //.SplitCamelCase(splitNumbers: false);
+            }
+
+            var branch_name_regex = SettingsService.GetSetting<string>("SolutionBadges.BranchNameRegex", VscSettingScope.All, () => null);
+
+            // Set Branch Name (Subtitle of the badge)
+            if (!branch_name_regex.IsNullOrEmpty())
+            {
+                branchName = TryConstructFromPattern(Config.BranchNamePattern.CurrentValue, Config.BranchNameRegex.CurrentValue, sozlutionPath);
+
+                var solutionFileName = Path.GetFileNameWithoutExtension(solutionPath).ToLower();
+                var lowerCaseTrimmedBranchName = branchName.ToLower().Trim();
+
+                // do not use branch name if it is same as solution name
+                if (lowerCaseTrimmedBranchName != solutionFileName
+                    && !lowerCaseTrimmedBranchName.IsIn("src", "source", "sources", "src branch", "source branch", "sources branch")
+                    && lowerCaseTrimmedBranchName.Replace("branch", string.Empty).Trim() != solutionFileName)
+                {
+                }
+                else
+                {
+                    branchName = "";
+                }
+
+                PlaceholderMappings["vsc:branchName"] = branchName;
+            }
+
+            branchName = TrimSeparatorCharactes(branchName);
+
+            mainWindowTitle = "";
+
+            // set main window title
+            if (Config.ShouldChangeMainWindowTitle
+                && !Config.MainWindowTitlePattern.CurrentValue.IsNullOrEmpty())
+            {
+                mainWindowTitle = TryConstructFromPattern(Config.MainWindowTitlePattern, Config.BranchNameRegex.CurrentValue, solutionPath);
+                mainWindowTitle = ReplaceVariablePlaceholders(mainWindowTitle, branchName);
+                mainWindowTitle = TrimSeparatorCharactes(mainWindowTitle);
+            }
+
+            solutionExplorerWindowTitle = "";
+
+            // set solution explorer title
+            if (Config.ShouldChangeSolutionExplorerWindowTitle
+                && !Config.SolutionExplorerTitlePattern.CurrentValue.IsNullOrEmpty())
+            {
+                solutionExplorerWindowTitle = TryConstructFromPattern(Config.SolutionExplorerTitlePattern, Config.BranchNameRegex.CurrentValue, solutionPath);
+                solutionExplorerWindowTitle = ReplaceVariablePlaceholders(solutionExplorerWindowTitle, branchName);
+                solutionExplorerWindowTitle = TrimSeparatorCharactes(solutionExplorerWindowTitle, trimStart: false);
+            }
+
+            var debugger = dte2.Debugger;
+            debugMode = debugger.CurrentMode;
+
+            if (!SessionBadgeTitle.IsNullOrEmpty())
+            {
+                solutionName = SessionBadgeTitle;
+                branchName = SessionBadgeSubtitle;
+
+                mainWindowTitle = SessionBadgeTitle + " • " + SessionBadgeSubtitle;
+            }
+
+            try
+            {
+                var knownSolutionsCache = CacheService.GetOrCreate(KnownSolutionsCacheId, () => new ContainerCacheItem());
+
+                var cacheItem =
+                    knownSolutionsCache.GetOrCreate<Cache.SolutionDetailsCache>(
+                    solutionPath,
+                    () => new Cache.SolutionDetailsCache { SolutionFullPath = solutionPath });
+
+                if (!string.IsNullOrWhiteSpace(branchName) && (cacheItem.BranchName != branchName || cacheItem.SolutionName != solutionName))
+                {
+                    cacheItem.BranchName = branchName;
+                    cacheItem.SolutionName = solutionName;
+
+                    CacheService.AddOrUpdate(KnownSolutionsCacheId, knownSolutionsCache);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.DiagnosticOnlyLogException(ex);
             }
         }
     }

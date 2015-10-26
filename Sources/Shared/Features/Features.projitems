@@ -9,6 +9,7 @@
     <Import_RootNamespace>SquaredInfinity.VSCommands.Features</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\CurrentVSStateInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\ISolutionBadgesService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgesService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgeView.cs" />

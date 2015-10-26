@@ -7,8 +7,8 @@
     <ProjectGuid>{C386C186-7F2A-4C93-8019-42A79D5BA18F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Presentation.vs14</RootNamespace>
-    <AssemblyName>Presentation.vs14</AssemblyName>
+    <RootNamespace>SquaredInfinity.VSCommands.Presentation</RootNamespace>
+    <AssemblyName>SquaredInfinity.VSCommands.Presentation.vs14</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
