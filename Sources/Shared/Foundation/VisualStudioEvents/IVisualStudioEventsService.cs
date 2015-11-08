@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnvDTE;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,6 +17,12 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
         event EventHandler<EventArgs> AfterDebuggerEnterBreakMode;
 
         event EventHandler<EventArgs> AfterActiveSolutionConfigChanged;
+
+
+        event _dispBuildEvents_OnBuildBeginEventHandler OnBuildBegin;
+        event _dispBuildEvents_OnBuildDoneEventHandler OnBuildDone;
+        event _dispBuildEvents_OnBuildProjConfigBeginEventHandler OnBuildProjConfigBegin;
+        event _dispBuildEvents_OnBuildProjConfigDoneEventHandler OnBuildProjConfigDone;
 
         /// <summary>
         /// Register an action to be executed when VS UI is loaded (i.e. Main Window has been created)

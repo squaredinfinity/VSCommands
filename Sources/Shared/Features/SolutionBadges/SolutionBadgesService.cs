@@ -1,4 +1,5 @@
 ﻿using SquaredInfinity.Foundation;
+using SquaredInfinity.Foundation.Extensions;
 using SquaredInfinity.Foundation.Settings;
 using SquaredInfinity.Foundation.Win32Api;
 using SquaredInfinity.VSCommands.Foundation.VisualStudioEvents;
@@ -17,10 +18,12 @@ using System.IO;
 using System.Collections.Concurrent;
 using EnvDTE80;
 using SquaredInfinity.VSCommands.Foundation.Settings;
+using System.Text.RegularExpressions;
+using SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl;
 
 namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 {
-    public class SolutionBadgesService
+    public class SolutionBadgesService : ISolutionBadgesService
     {
         const string KnownSolutionsCacheId = @"SolutionBadges.KnownSolutionsCache";
 
@@ -54,20 +57,24 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             }
         }
 
-        protected ISettingsService SettingsService { get; private set; }
+        protected IVscSettingsService SettingsService { get; private set; }
         protected IVisualStudioEventsService VisualStudioEventsService { get; private set; }
         protected IServiceProvider ServiceProvider { get; private set; }
 
         InvocationThrottle RefreshThrottle = new InvocationThrottle(min: TimeSpan.FromMilliseconds(250), max:TimeSpan.FromSeconds(1));
 
+        List<ISourceControlInfoProvider> SourceControlInfoProviders = new List<ISourceControlInfoProvider>();
+
         public SolutionBadgesService(
-            ISettingsService settingsService, 
+            IVscSettingsService settingsService, 
             IVisualStudioEventsService visualStudioEventsService,
             IServiceProvider serviceProvider)
         {
             this.SettingsService = settingsService;
             this.VisualStudioEventsService = visualStudioEventsService;
             this.ServiceProvider = serviceProvider;
+
+            SourceControlInfoProviders.Add(new GitSourceControlInfoProvider(this));
 
             VisualStudioEventsService.AfterSolutionOpened += (s, e) => RequestRefresh();
             VisualStudioEventsService.AfterSolutionClosed += (s, e) => RequestRefresh();
@@ -80,7 +87,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             VisualStudioEventsService.RegisterVisualStudioUILoadedAction(() => InitializeWin32Hooks());
         }
 
-        void RequestRefresh()
+        public void RequestRefresh()
         {
             RefreshThrottle.Invoke(Refresh);
         }
@@ -174,7 +181,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
                         if (CurrentBadgeLivePreviewBitmap != null)
                         {
-                            var offset = new dwmapi.NativePoint(8, 8); // TODO: this may need to be 0,0 in VS 10 (because the window does not use metro style)
+                            var offset = new dwmapi.NativePoint(8, 8); // TODO: this may need to be 0,0 in VS 10 (because the window border size difference)
 
                             var hBitmap = CurrentBadgeLivePreviewBitmap.GetHbitmap();
 
@@ -237,6 +244,8 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             view.BeginInit();
             view.EndInit();
             view.ApplyTemplate();
+
+            view.ViewModel.RefreshFrom(GetCurrentBadgeInfo());
 
             return view;
         }
@@ -351,23 +360,12 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
                 }
             }
         }
-        
-        void ClearPlaceholderMappings()
-        {
-            foreach (var key in PlaceholderMappings.Keys)
-                PlaceholderMappings[key] = "";
-        }
-
-        readonly Dictionary<string, string> PlaceholderMappings = new Dictionary<string, string>();
-
-
-        CurrentVSStateInfo GetCurrentVSState()
+       
+        IDictionary<string, object> GetCurrentBadgeInfo()
         {
             var result = new CurrentVSStateInfo();
 
             Dictionary<string, object> properties = new Dictionary<string, object>();
-
-            ClearPlaceholderMappings();
 
             var dte2 = ServiceProvider.GetDte2();
 
@@ -396,23 +394,6 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             {
                 properties["activeDocument:fileName"] = "";
                 properties["activeDocument:fullPath"] = "";
-
-                // todo: not supported at the moment, would need to get notifications when new tool window is open for it to work nice
-                // no document is open, try to get open window name (e.g. start page)
-                //try
-                //{
-                //    var activeWindow = dte2.ActiveWindow; // this may throw exception if there is no active window (?)
-
-                //    if (activeWindow != null
-                //        && !activeWindow.Linkable) // we don't want to process docked windows such as solution explorer
-                //    {
-                //        activeDocumentName = activeWindow.Caption;
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    Logger.DiagnosticOnlyLogException(ex);
-                //}
             }
             else
             {
@@ -437,96 +418,19 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
                 properties["sln:fullPath"] = solution_full_path;
                 properties["sln:fileName"] = Path.GetFileNameWithoutExtension(solution_full_path);
-
-                // todo:    this could perhaps happen on a higher level,
-                //          where decision has to be made if to use this or custom name etc.
-                    //.Replace('.', ' ')
-                    //.Replace('-', ' ')
-                    //.Replace('_', ' ')
-                    //.SplitCamelCase();
-                    //.SplitCamelCase(splitNumbers: false);
             }
-
-            var branch_name_regex = SettingsService.GetSetting<string>("SolutionBadges.BranchNameRegex", VscSettingScope.All, () => null);
-
-            // Set Branch Name (Subtitle of the badge)
-            if (!branch_name_regex.IsNullOrEmpty())
+            
+            foreach(var scip in SourceControlInfoProviders)
             {
-                branchName = TryConstructFromPattern(Config.BranchNamePattern.CurrentValue, Config.BranchNameRegex.CurrentValue, sozlutionPath);
+                var sc_properties = (IDictionary<string, object>)null;
 
-                var solutionFileName = Path.GetFileNameWithoutExtension(solutionPath).ToLower();
-                var lowerCaseTrimmedBranchName = branchName.ToLower().Trim();
-
-                // do not use branch name if it is same as solution name
-                if (lowerCaseTrimmedBranchName != solutionFileName
-                    && !lowerCaseTrimmedBranchName.IsIn("src", "source", "sources", "src branch", "source branch", "sources branch")
-                    && lowerCaseTrimmedBranchName.Replace("branch", string.Empty).Trim() != solutionFileName)
+                if(scip.TryGetSourceControlInfo(solution, out sc_properties))
                 {
-                }
-                else
-                {
-                    branchName = "";
-                }
-
-                PlaceholderMappings["vsc:branchName"] = branchName;
-            }
-
-            branchName = TrimSeparatorCharactes(branchName);
-
-            mainWindowTitle = "";
-
-            // set main window title
-            if (Config.ShouldChangeMainWindowTitle
-                && !Config.MainWindowTitlePattern.CurrentValue.IsNullOrEmpty())
-            {
-                mainWindowTitle = TryConstructFromPattern(Config.MainWindowTitlePattern, Config.BranchNameRegex.CurrentValue, solutionPath);
-                mainWindowTitle = ReplaceVariablePlaceholders(mainWindowTitle, branchName);
-                mainWindowTitle = TrimSeparatorCharactes(mainWindowTitle);
-            }
-
-            solutionExplorerWindowTitle = "";
-
-            // set solution explorer title
-            if (Config.ShouldChangeSolutionExplorerWindowTitle
-                && !Config.SolutionExplorerTitlePattern.CurrentValue.IsNullOrEmpty())
-            {
-                solutionExplorerWindowTitle = TryConstructFromPattern(Config.SolutionExplorerTitlePattern, Config.BranchNameRegex.CurrentValue, solutionPath);
-                solutionExplorerWindowTitle = ReplaceVariablePlaceholders(solutionExplorerWindowTitle, branchName);
-                solutionExplorerWindowTitle = TrimSeparatorCharactes(solutionExplorerWindowTitle, trimStart: false);
-            }
-
-            var debugger = dte2.Debugger;
-            debugMode = debugger.CurrentMode;
-
-            if (!SessionBadgeTitle.IsNullOrEmpty())
-            {
-                solutionName = SessionBadgeTitle;
-                branchName = SessionBadgeSubtitle;
-
-                mainWindowTitle = SessionBadgeTitle + " • " + SessionBadgeSubtitle;
-            }
-
-            try
-            {
-                var knownSolutionsCache = CacheService.GetOrCreate(KnownSolutionsCacheId, () => new ContainerCacheItem());
-
-                var cacheItem =
-                    knownSolutionsCache.GetOrCreate<Cache.SolutionDetailsCache>(
-                    solutionPath,
-                    () => new Cache.SolutionDetailsCache { SolutionFullPath = solutionPath });
-
-                if (!string.IsNullOrWhiteSpace(branchName) && (cacheItem.BranchName != branchName || cacheItem.SolutionName != solutionName))
-                {
-                    cacheItem.BranchName = branchName;
-                    cacheItem.SolutionName = solutionName;
-
-                    CacheService.AddOrUpdate(KnownSolutionsCacheId, knownSolutionsCache);
+                    properties.AddOrUpdateFrom(sc_properties);
                 }
             }
-            catch (Exception ex)
-            {
-                Logger.DiagnosticOnlyLogException(ex);
-            }
+
+            return properties;
         }
     }
 }

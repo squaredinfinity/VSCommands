@@ -1,6 +1,7 @@
 ﻿using SquaredInfinity.Foundation.Presentation.ViewModels;
 using System;
 using System.Collections.Generic;
+using SquaredInfinity.Foundation.Extensions;
 using System.Text;
 using System.Windows.Media;
 
@@ -33,7 +34,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
         public string Subtitle
         {
             get { return _subtitle; }
-            set { _subtitle = value; }
+            set { TrySetThisPropertyValue(ref _subtitle, value); }
         }
 
         string _activeDocumentName;
@@ -83,6 +84,50 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
         {
             get { return _isTeamBranch; }
             set { TrySetThisPropertyValue(ref _isTeamBranch, value); }
+        }
+
+        public void RefreshFrom(IDictionary<string, object> properties)
+        {
+            var sln_is_open = (bool) properties.GetValueOrDefault("sln:isOpen", () => false);
+
+            if(sln_is_open)
+            {
+                Title = AsNiceString((string) properties.GetValueOrDefault("sln:fileName", () => ""));
+            }
+
+            var branch_name = AsNiceString((string)properties.GetValueOrDefault("vsc:branchName", () => ""));
+
+            Subtitle = branch_name;
+
+            ActiveDocumentName = (string)properties.GetValueOrDefault("activeDocument:fileName", () => "");
+        }
+
+        string AsNiceString(string str)
+        {
+            return 
+                str.Replace('.', ' ')
+                .Replace('-', ' ')
+                .Replace('_', ' ')
+                .SplitCamelCase();
+                //.SplitCamelCase(splitNumbers: false);
+        }
+    }
+
+    // TODO: move to foundation
+    public static class IDictionaryExtensions
+    {
+        public static void IfContainsKey<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, Action<TValue> action)
+        {
+            if (dict.ContainsKey(key))
+                action(dict[key]);
+        }
+
+        public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, Func<TValue> getDefaultValue)
+        {
+            if (dict.ContainsKey(key))
+                return dict[key];
+
+            return getDefaultValue();
         }
     }
 }

@@ -6,5 +6,6 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 {
     public interface ISolutionBadgesService
     {
+        void RequestRefresh();
     }
 }
