@@ -4,9 +4,8 @@ using System.IO;
 using System.Text;
 using SquaredInfinity.Foundation.Extensions;
 using System.Text.RegularExpressions;
-using EnvDTE;
 
-namespace SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl
+namespace SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl.Integration.Git
 {
     public class GitSourceControlInfoProvider : ISourceControlInfoProvider
     {
@@ -90,11 +89,11 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl
             Owner.RequestRefresh();
         }
 
-        public bool TryGetSourceControlInfo(Solution solution, out IDictionary<string, object> properties)
+        public bool TryGetSourceControlInfo(string solutionFullPath, out IDictionary<string, object> properties)
         {
             properties = new Dictionary<string, object>();
 
-            if (!EnsureInternalSetup(solution.FullName, ref properties))
+            if (!EnsureInternalSetup(solutionFullPath, ref properties))
                 return false;
 
             var head_path = (string)properties.GetValueOrDefault("git:headPath", () => "");

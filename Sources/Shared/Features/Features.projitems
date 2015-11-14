@@ -10,12 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\CurrentVSStateInfo.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\ISolutionBadgesService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgesService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgeView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgeViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SourceControl\GitSourceControlInfoProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SourceControl\ISourceControlInfoProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XamlResources.cs" />
   </ItemGroup>
   <ItemGroup>

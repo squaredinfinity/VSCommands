@@ -74,8 +74,6 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             this.VisualStudioEventsService = visualStudioEventsService;
             this.ServiceProvider = serviceProvider;
 
-            SourceControlInfoProviders.Add(new GitSourceControlInfoProvider(this));
-
             VisualStudioEventsService.AfterSolutionOpened += (s, e) => RequestRefresh();
             VisualStudioEventsService.AfterSolutionClosed += (s, e) => RequestRefresh();
             VisualStudioEventsService.AfterActiveDocumentChanged += (s, e) => RequestRefresh();
@@ -424,7 +422,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             {
                 var sc_properties = (IDictionary<string, object>)null;
 
-                if(scip.TryGetSourceControlInfo(solution, out sc_properties))
+                if(scip.TryGetSourceControlInfo(solution.FullName, out sc_properties))
                 {
                     properties.AddOrUpdateFrom(sc_properties);
                 }

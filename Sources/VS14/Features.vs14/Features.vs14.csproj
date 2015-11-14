@@ -115,6 +115,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Features.Infrastructure.vs14\Features.Infrastructure.vs14.csproj">
+      <Project>{43b7deff-cac6-4f26-92e0-5d3cad22aa20}</Project>
+      <Name>Features.Infrastructure.vs14</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Foundation.vs14\Foundation.vs14.csproj">
       <Project>{a2626117-c984-4eba-a6cc-b21b7dacac38}</Project>
       <Name>Foundation.vs14</Name>
