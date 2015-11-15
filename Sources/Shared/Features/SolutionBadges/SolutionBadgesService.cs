@@ -20,6 +20,7 @@ using SquaredInfinity.VSCommands.Foundation.Settings;
 using System.Text.RegularExpressions;
 using SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl;
 using System.ComponentModel.Composition;
+using SquaredInfinity.VSCommands.Foundation;
 
 namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 {
@@ -27,7 +28,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
     public class SolutionBadgesService : ISolutionBadgesService
     {
         [ImportMany(typeof(ISourceControlInfoProvider))]
-        IEnumerable<ExportFactory<ISourceControlInfoProvider>> SourceControlInfoProvidersFactories;
+        IEnumerable<ExportFactory<ISourceControlInfoProvider>> SourceControlInfoProvidersFactories = null;
 
         IEnumerable<ISourceControlInfoProvider> SourceControlInfoProviders { get; set; }
 
@@ -63,17 +64,22 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             }
         }
 
-        protected IVscSettingsService SettingsService { get; private set; }
-        protected IVisualStudioEventsService VisualStudioEventsService { get; private set; }
-        protected IServiceProvider ServiceProvider { get; private set; }
+        readonly IVscUIService UIService;
+        readonly IVscSettingsService SettingsService;
+        readonly IVisualStudioEventsService VisualStudioEventsService;
+        readonly IServiceProvider ServiceProvider;
 
         InvocationThrottle RefreshThrottle = new InvocationThrottle(min: TimeSpan.FromMilliseconds(250), max:TimeSpan.FromSeconds(1));
-        
+
+        readonly IDictionary<string, object> CurrentBadgeInfo = new Dictionary<string, object>();
+
         public SolutionBadgesService(
+            IVscUIService uiService,
             IVscSettingsService settingsService, 
             IVisualStudioEventsService visualStudioEventsService,
             IServiceProvider serviceProvider)
         {
+            this.UIService = uiService;
             this.SettingsService = settingsService;
             this.VisualStudioEventsService = visualStudioEventsService;
             this.ServiceProvider = serviceProvider;
@@ -116,6 +122,8 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
         void Refresh(CancellationToken ct)
         {
+            CurrentBadgeInfo.Clear();
+            CurrentBadgeInfo.AddOrUpdateFrom(GetCurrentBadgeInfo());
             InvalidateCurrentBadge();
         }
 
@@ -238,8 +246,6 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
                 if (FailureCount >= MaxFailureCount)
                 {
-                    //Logger.TraceWarning(() => "Solution Badge has failed {0} times and will be disabled.");
-
                     user32.ChangeWindowMessageFilter(
                         (int)dwmapi.WM_Messages.WM_DWMSENDICONICTHUMBNAIL,
                         user32.ChangeWindowMessageFilterFlags.MSGFLT_REMOVE);
@@ -267,7 +273,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             view.EndInit();
             view.ApplyTemplate();
 
-            view.ViewModel.RefreshFrom(GetCurrentBadgeInfo());
+            view.ViewModel.RefreshFrom(CurrentBadgeInfo);
 
             return view;
         }
@@ -289,11 +295,8 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             try
             {
                 var view = GetSolutionBadgeView();
-
-                //CreateBadgeForSolution(solutionPath, solutionName, branchName, activeDocumentName, debugMode, view);
-
+                
                 RefreshIconicBitmap(view);
-               // RefreshStartPageBitmap(view);
             }
             catch (Exception ex)
             {
@@ -385,6 +388,11 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
        
         IDictionary<string, object> GetCurrentBadgeInfo()
         {
+#if DEBUG
+            if (UIService.IsUIThread)
+                throw new InvalidOperationException("For performance reasons this method should never be called on UI thread.");
+#endif
+
             var result = new CurrentVSStateInfo();
 
             Dictionary<string, object> properties = new Dictionary<string, object>();

@@ -13,7 +13,4 @@
     <Compile Include="$(MSBuildThisFileDirectory)ITeamFoundationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TeamFoundationHelper.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Extensions\" />
-  </ItemGroup>
 </Project>

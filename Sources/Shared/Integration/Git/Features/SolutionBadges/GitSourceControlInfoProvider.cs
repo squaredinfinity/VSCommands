@@ -72,6 +72,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl.Integ
                 GitHeadWatcher = new FileSystemWatcher(git_directory, "HEAD");
                 GitHeadWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
                 GitHeadWatcher.Changed += GitHeadWatcher_Changed;
+                GitHeadWatcher.EnableRaisingEvents = true;
             }
 
 

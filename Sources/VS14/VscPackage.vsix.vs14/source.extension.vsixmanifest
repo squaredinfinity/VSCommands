@@ -19,5 +19,6 @@
     <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="Git.vs14" Path="|Git.vs14|" />
     <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="Features.vs14" Path="|Features.vs14|" />
     <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" Path="|TeamFoundation.vs14|" d:ProjectName="TeamFoundation.vs14" />
+    <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="Mercurial.vs14" Path="|Mercurial.vs14|" />
   </Assets>
 </PackageManifest>

@@ -389,6 +389,12 @@
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
+    <ProjectReference Include="..\Integration\Mercurial.vs14\Mercurial.vs14.csproj">
+      <Project>{affb7b1a-959a-4b43-a3d0-e29715a387c5}</Project>
+      <Name>Mercurial.vs14</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
+    </ProjectReference>
     <ProjectReference Include="..\Integration\TeamFoundationServer.vs14\TeamFoundation.vs14\TeamFoundation.vs14.csproj">
       <Project>{c49bded1-2b56-45cc-8699-2cff14b83929}</Project>
       <Name>TeamFoundation.vs14</Name>
