@@ -299,7 +299,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Threading, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.VisualStudio.Threading.14.0.50702\lib\net45\Microsoft.VisualStudio.Threading.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.VisualStudio.Threading.14.1.114\lib\net45\Microsoft.VisualStudio.Threading.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Utilities, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -307,7 +307,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Validation, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.VisualStudio.Validation.14.0.50702\lib\net45\Microsoft.VisualStudio.Validation.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.VisualStudio.Validation.14.1.111\lib\net45\Microsoft.VisualStudio.Validation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -318,36 +318,36 @@
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Cache.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Cache.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Cache.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Cache.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Cache.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Cache.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Diagnostics.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Diagnostics.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Diagnostics.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Diagnostics.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Diagnostics.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Diagnostics.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SquaredInfinity.Foundation.Diagnostics.Infrastructure.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Diagnostics.Infrastructure.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Diagnostics.Infrastructure.DotNet45.dll</HintPath>
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Diagnostics.Infrastructure.1.1.6-beta7\lib\net45\SquaredInfinity.Foundation.Diagnostics.Infrastructure.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.6.5, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.1.1.6-beta6\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Presentation.Xaml.DotNet45, Version=1.1.6.2, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Presentation.Xaml.1.1.6-beta3\lib\net45\SquaredInfinity.Foundation.Presentation.Xaml.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Presentation.Xaml.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Presentation.Xaml.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Presentation.Xaml.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Serialization.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Serialization.1.1.6-beta3\lib\net45\SquaredInfinity.Foundation.Serialization.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Serialization.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Serialization.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Serialization.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Unsafe.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Unsafe.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Unsafe.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Unsafe.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Unsafe.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Unsafe.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Win32Api.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Win32Api.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Win32Api.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Win32Api.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Win32Api.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Win32Api.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -376,6 +376,8 @@
     <ProjectReference Include="..\Features.vs14\Features.vs14.csproj">
       <Project>{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}</Project>
       <Name>Features.vs14</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
     <ProjectReference Include="..\Foundation.vs14\Foundation.vs14.csproj">
       <Project>{a2626117-c984-4eba-a6cc-b21b7dacac38}</Project>
@@ -384,10 +386,14 @@
     <ProjectReference Include="..\Integration\Git.vs14\Git.vs14.csproj">
       <Project>{dab3b211-fc1f-4fc7-8177-9b28ea3e9f65}</Project>
       <Name>Git.vs14</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
-    <ProjectReference Include="..\Integration\TeamFoundationServer.vs14\TeamFoundationServer.vs14.csproj">
-      <Project>{007f08fd-915c-4255-9881-e3f95deb1e42}</Project>
-      <Name>TeamFoundationServer.vs14</Name>
+    <ProjectReference Include="..\Integration\TeamFoundationServer.vs14\TeamFoundation.vs14\TeamFoundation.vs14.csproj">
+      <Project>{c49bded1-2b56-45cc-8699-2cff14b83929}</Project>
+      <Name>TeamFoundation.vs14</Name>
+      <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+      <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
     </ProjectReference>
     <ProjectReference Include="..\Presentation.vs14\Presentation.vs14.csproj">
       <Project>{c386c186-7f2a-4c93-8019-42a79d5ba18f}</Project>

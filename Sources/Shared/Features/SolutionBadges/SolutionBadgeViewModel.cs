@@ -95,7 +95,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
                 Title = AsNiceString((string) properties.GetValueOrDefault("sln:fileName", () => ""));
             }
 
-            var branch_name = AsNiceString((string)properties.GetValueOrDefault("vsc:branchName", () => ""));
+            var branch_name = AsNiceString((string)properties.GetValueOrDefault(KnownProperties.BranchName, () => ""));
 
             Subtitle = branch_name;
 
@@ -109,7 +109,6 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
                 .Replace('-', ' ')
                 .Replace('_', ' ')
                 .SplitCamelCase();
-                //.SplitCamelCase(splitNumbers: false);
         }
     }
 

@@ -4,20 +4,21 @@ using System.IO;
 using System.Text;
 using SquaredInfinity.Foundation.Extensions;
 using System.Text.RegularExpressions;
+using System.ComponentModel.Composition;
+using SquaredInfinity.Foundation.Composition;
 
 namespace SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl.Integration.Git
 {
-    public class GitSourceControlInfoProvider : ISourceControlInfoProvider
+    [Export(typeof(ISourceControlInfoProvider))]
+    public class GitSourceControlInfoProvider : SourceControlInfoProvider
     {
         FileSystemWatcher GitHeadWatcher { get; set; }
-        ISolutionBadgesService Owner { get; set; }
-
+        
         readonly Regex GitBranchRegex = new Regex("refs/heads/(?<branchName>.*)$", RegexOptions.IgnoreCase);
 
-        public GitSourceControlInfoProvider(ISolutionBadgesService owner)
-        {
-            this.Owner = owner;
-        }
+        [ImportingConstructor]
+        public GitSourceControlInfoProvider()
+        {}
 
         bool EnsureInternalSetup(string solutionPath, ref IDictionary<string, object> properties)
         {
@@ -86,10 +87,10 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl.Integ
 
         void GitHeadWatcher_Changed(object sender, FileSystemEventArgs e)
         {
-            Owner.RequestRefresh();
+            RequestCurrentBadgeRefresh();
         }
 
-        public bool TryGetSourceControlInfo(string solutionFullPath, out IDictionary<string, object> properties)
+        protected override bool DoTryGetSourceControlInfo(string solutionFullPath, out IDictionary<string, object> properties)
         {
             properties = new Dictionary<string, object>();
 
@@ -115,7 +116,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl.Integ
             var branch_name = branch_group.Value;
             properties.Add("git:head", branch_name);
 
-            properties.AddOrUpdate("vsc:branchName", branch_name);
+            properties.AddOrUpdate(KnownProperties.BranchName, branch_name);
 
             return true;
         }

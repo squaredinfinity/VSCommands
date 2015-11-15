@@ -46,6 +46,7 @@
       <HintPath>..\..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.Imaging, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.VisualStudio.Imaging.14.0.23205\lib\net45\Microsoft.VisualStudio.Imaging.dll</HintPath>
       <Private>True</Private>
@@ -95,7 +96,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Threading, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.VisualStudio.Threading.14.0.50702\lib\net45\Microsoft.VisualStudio.Threading.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.VisualStudio.Threading.14.1.114\lib\net45\Microsoft.VisualStudio.Threading.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Utilities, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -103,41 +104,41 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Validation, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.VisualStudio.Validation.14.0.50702\lib\net45\Microsoft.VisualStudio.Validation.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.VisualStudio.Validation.14.1.111\lib\net45\Microsoft.VisualStudio.Validation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="SquaredInfinity.Foundation.Cache.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Cache.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Cache.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Cache.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Cache.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Cache.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Diagnostics.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Diagnostics.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Diagnostics.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Diagnostics.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Diagnostics.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Diagnostics.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SquaredInfinity.Foundation.Diagnostics.Infrastructure.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Diagnostics.Infrastructure.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Diagnostics.Infrastructure.DotNet45.dll</HintPath>
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Diagnostics.Infrastructure.1.1.6-beta7\lib\net45\SquaredInfinity.Foundation.Diagnostics.Infrastructure.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.6.5, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.1.1.6-beta6\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Presentation.Xaml.DotNet45, Version=1.1.6.2, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Presentation.Xaml.1.1.6-beta3\lib\net45\SquaredInfinity.Foundation.Presentation.Xaml.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Presentation.Xaml.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Presentation.Xaml.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Presentation.Xaml.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Serialization.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Serialization.1.1.6-beta3\lib\net45\SquaredInfinity.Foundation.Serialization.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Serialization.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Serialization.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Serialization.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Unsafe.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Unsafe.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Unsafe.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Unsafe.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Unsafe.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Unsafe.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Win32Api.DotNet45, Version=1.1.6.1, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Win32Api.1.1.6-beta1\lib\net45\SquaredInfinity.Foundation.Win32Api.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Win32Api.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Win32Api.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.Win32Api.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -155,6 +156,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Features.Infrastructure.vs14\Features.Infrastructure.vs14.csproj">
+      <Project>{43b7deff-cac6-4f26-92e0-5d3cad22aa20}</Project>
+      <Name>Features.Infrastructure.vs14</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Features.vs14\Features.vs14.csproj">
       <Project>{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}</Project>
       <Name>Features.vs14</Name>

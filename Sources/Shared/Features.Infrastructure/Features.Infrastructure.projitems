@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\ISolutionBadgesService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\KnownProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SourceControl\ISourceControlInfoProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SourceControl\SourceControlInfoProvider.cs" />
   </ItemGroup>
 </Project>

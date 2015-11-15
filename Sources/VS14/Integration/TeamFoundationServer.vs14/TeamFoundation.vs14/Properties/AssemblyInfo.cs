@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TeamFoundationServer.vs14")]
+[assembly: AssemblyTitle("TeamFoundation.vs14")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TeamFoundationServer.vs14")]
+[assembly: AssemblyProduct("TeamFoundation.vs14")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("007f08fd-915c-4255-9881-e3f95deb1e42")]
+[assembly: Guid("c49bded1-2b56-45cc-8699-2cff14b83929")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -29,11 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.vs14", "Source
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{2D0351FA-AE97-49BD-A8FD-B4834AEB374E}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TeamFoundationServer", "Sources\Shared\Integration\TeamFoundationServer\TeamFoundationServer.shproj", "{2EC6D234-2128-418F-9D65-5A599735127C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{C2B50FED-8A11-45B2-A08D-8F6C95B20472}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamFoundationServer.vs14", "Sources\VS14\Integration\TeamFoundationServer.vs14\TeamFoundationServer.vs14.csproj", "{007F08FD-915C-4255-9881-E3F95DEB1E42}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Git", "Sources\Shared\Integration\Git\Git.shproj", "{9B9AF231-62FE-433E-86C0-91E159091D67}"
 EndProject
@@ -43,24 +39,29 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Features.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Features.Infrastructure.vs14", "Sources\VS14\Features.Infrastructure.vs14\Features.Infrastructure.vs14.csproj", "{43B7DEFF-CAC6-4F26-92E0-5D3CAD22AA20}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TeamFoundation", "Sources\Shared\Integration\TeamFoundation\TeamFoundation.shproj", "{F63B9F18-ECEC-4A58-ADBA-6851A12FA004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamFoundation.vs14", "Sources\VS14\Integration\TeamFoundationServer.vs14\TeamFoundation.vs14\TeamFoundation.vs14.csproj", "{C49BDED1-2B56-45CC-8699-2CFF14B83929}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Sources\Shared\VscPackage\VscPackage.projitems*{2901cef8-4f81-42b2-8c43-ec450401dc03}*SharedItemsImports = 13
 		Sources\Shared\Foundation\Foundation.projitems*{d1941403-007f-4f39-ad6b-5bb81d221164}*SharedItemsImports = 13
+		Sources\Shared\Integration\Git\Git.projitems*{dab3b211-fc1f-4fc7-8177-9b28ea3e9f65}*SharedItemsImports = 4
+		Sources\Shared\Integration\TeamFoundation\TeamFoundation.projitems*{c49bded1-2b56-45cc-8699-2cff14b83929}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{184b2831-08ca-492a-bd4f-db1ec42fc6be}*SharedItemsImports = 13
 		Sources\Shared\Features.Infrastructure\Features.Infrastructure.projitems*{43b7deff-cac6-4f26-92e0-5d3cad22aa20}*SharedItemsImports = 4
-		Sources\Shared\Internal\Internal.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
 		Sources\Shared\Foundation\Foundation.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
-		Sources\Shared\Internal\Internal.projitems*{c386c186-7f2a-4c93-8019-42a79d5ba18f}*SharedItemsImports = 4
+		Sources\Shared\Internal\Internal.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
 		Sources\Shared\Presentation\Presentation.projitems*{c386c186-7f2a-4c93-8019-42a79d5ba18f}*SharedItemsImports = 4
+		Sources\Shared\Internal\Internal.projitems*{c386c186-7f2a-4c93-8019-42a79d5ba18f}*SharedItemsImports = 4
 		Sources\Shared\Features\Features.projitems*{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}*SharedItemsImports = 4
 		Sources\Shared\Features.Infrastructure\Features.Infrastructure.projitems*{99808a53-a739-49c2-9218-7f85473bb426}*SharedItemsImports = 13
 		Sources\Shared\Features\Features.projitems*{3af75030-d338-4882-afad-aeddd3727c2e}*SharedItemsImports = 13
-		Sources\Shared\Integration\TeamFoundationServer\TeamFoundationServer.projitems*{2ec6d234-2128-418f-9d65-5a599735127c}*SharedItemsImports = 13
-		Sources\Shared\Internal\Internal.projitems*{b88c127b-2d17-4f73-99fb-c2b68ce7431d}*SharedItemsImports = 4
 		Sources\Shared\VscPackage\VscPackage.projitems*{b88c127b-2d17-4f73-99fb-c2b68ce7431d}*SharedItemsImports = 4
+		Sources\Shared\Internal\Internal.projitems*{b88c127b-2d17-4f73-99fb-c2b68ce7431d}*SharedItemsImports = 4
 		Sources\Shared\Integration\Git\Git.projitems*{9b9af231-62fe-433e-86c0-91e159091d67}*SharedItemsImports = 13
-		Sources\Shared\Integration\TeamFoundationServer\TeamFoundationServer.projitems*{007f08fd-915c-4255-9881-e3f95deb1e42}*SharedItemsImports = 4
+		Sources\Shared\Integration\TeamFoundation\TeamFoundation.projitems*{f63b9f18-ecec-4a58-adba-6851a12fa004}*SharedItemsImports = 13
 		Sources\Shared\Presentation\Presentation.projitems*{58d50a09-0708-42e1-9140-22e2a395441b}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,10 +89,6 @@ Global
 		{C386C186-7F2A-4C93-8019-42A79D5BA18F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C386C186-7F2A-4C93-8019-42A79D5BA18F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C386C186-7F2A-4C93-8019-42A79D5BA18F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{007F08FD-915C-4255-9881-E3F95DEB1E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{007F08FD-915C-4255-9881-E3F95DEB1E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{007F08FD-915C-4255-9881-E3F95DEB1E42}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{007F08FD-915C-4255-9881-E3F95DEB1E42}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DAB3B211-FC1F-4FC7-8177-9B28EA3E9F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DAB3B211-FC1F-4FC7-8177-9B28EA3E9F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAB3B211-FC1F-4FC7-8177-9B28EA3E9F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -100,6 +97,10 @@ Global
 		{43B7DEFF-CAC6-4F26-92E0-5D3CAD22AA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43B7DEFF-CAC6-4F26-92E0-5D3CAD22AA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43B7DEFF-CAC6-4F26-92E0-5D3CAD22AA20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C49BDED1-2B56-45CC-8699-2CFF14B83929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C49BDED1-2B56-45CC-8699-2CFF14B83929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C49BDED1-2B56-45CC-8699-2CFF14B83929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C49BDED1-2B56-45CC-8699-2CFF14B83929}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,12 +117,12 @@ Global
 		{58D50A09-0708-42E1-9140-22E2A395441B} = {54E5175C-CA0E-4C60-B71B-D0DE9674F87A}
 		{C386C186-7F2A-4C93-8019-42A79D5BA18F} = {5BEC4AAB-6F83-4C33-902A-0C8FFC83AF21}
 		{2D0351FA-AE97-49BD-A8FD-B4834AEB374E} = {54E5175C-CA0E-4C60-B71B-D0DE9674F87A}
-		{2EC6D234-2128-418F-9D65-5A599735127C} = {2D0351FA-AE97-49BD-A8FD-B4834AEB374E}
 		{C2B50FED-8A11-45B2-A08D-8F6C95B20472} = {5BEC4AAB-6F83-4C33-902A-0C8FFC83AF21}
-		{007F08FD-915C-4255-9881-E3F95DEB1E42} = {C2B50FED-8A11-45B2-A08D-8F6C95B20472}
 		{9B9AF231-62FE-433E-86C0-91E159091D67} = {2D0351FA-AE97-49BD-A8FD-B4834AEB374E}
 		{DAB3B211-FC1F-4FC7-8177-9B28EA3E9F65} = {C2B50FED-8A11-45B2-A08D-8F6C95B20472}
 		{99808A53-A739-49C2-9218-7F85473BB426} = {54E5175C-CA0E-4C60-B71B-D0DE9674F87A}
 		{43B7DEFF-CAC6-4F26-92E0-5D3CAD22AA20} = {5BEC4AAB-6F83-4C33-902A-0C8FFC83AF21}
+		{F63B9F18-ECEC-4A58-ADBA-6851A12FA004} = {2D0351FA-AE97-49BD-A8FD-B4834AEB374E}
+		{C49BDED1-2B56-45CC-8699-2CFF14B83929} = {C2B50FED-8A11-45B2-A08D-8F6C95B20472}
 	EndGlobalSection
 EndGlobal

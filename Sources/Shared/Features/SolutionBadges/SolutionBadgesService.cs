@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using SquaredInfinity.Foundation.Extensions;
 using System.Windows.Interop;
 using EnvDTE;
 using System.Drawing;
@@ -20,11 +19,18 @@ using EnvDTE80;
 using SquaredInfinity.VSCommands.Foundation.Settings;
 using System.Text.RegularExpressions;
 using SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl;
+using System.ComponentModel.Composition;
 
 namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 {
+    [Export(typeof(ISolutionBadgesService))]
     public class SolutionBadgesService : ISolutionBadgesService
     {
+        [ImportMany(typeof(ISourceControlInfoProvider))]
+        IEnumerable<ExportFactory<ISourceControlInfoProvider>> SourceControlInfoProvidersFactories;
+
+        IEnumerable<ISourceControlInfoProvider> SourceControlInfoProviders { get; set; }
+
         const string KnownSolutionsCacheId = @"SolutionBadges.KnownSolutionsCache";
 
         int FailureCount = 0;
@@ -62,9 +68,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
         protected IServiceProvider ServiceProvider { get; private set; }
 
         InvocationThrottle RefreshThrottle = new InvocationThrottle(min: TimeSpan.FromMilliseconds(250), max:TimeSpan.FromSeconds(1));
-
-        List<ISourceControlInfoProvider> SourceControlInfoProviders = new List<ISourceControlInfoProvider>();
-
+        
         public SolutionBadgesService(
             IVscSettingsService settingsService, 
             IVisualStudioEventsService visualStudioEventsService,
@@ -83,6 +87,26 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             VisualStudioEventsService.AfterDebuggerEnterBreakMode += (s, e) => RequestRefresh();
 
             VisualStudioEventsService.RegisterVisualStudioUILoadedAction(() => InitializeWin32Hooks());
+        }
+
+        public void Initialise()
+        {
+            var sourceControlInfoProviders = new List<ISourceControlInfoProvider>();
+
+            foreach(var factory in SourceControlInfoProvidersFactories)
+            {
+                var provider = factory.CreateExport().Value;
+                provider.CurrentBadgeRefreshRequested += Provider_CurrentBadgeRefreshRequested;
+
+                sourceControlInfoProviders.Add(provider);
+            }
+
+            this.SourceControlInfoProviders = sourceControlInfoProviders;
+        }
+
+        void Provider_CurrentBadgeRefreshRequested(object sender, EventArgs e)
+        {
+            RequestRefresh();
         }
 
         public void RequestRefresh()
