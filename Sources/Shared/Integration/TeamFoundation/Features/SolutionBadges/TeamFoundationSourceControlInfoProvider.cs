@@ -26,10 +26,15 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl.Integ
             if (!TeamFoundationHelper.IsConnected())
                 return false;
 
-            var branchName = TeamFoundationHelper.GetBranchNameForItem(solutionFullPath);
+            var workspace = (Workspace) null;
+            var branchObject = (BranchObject)null;
+
+            var branchName = TeamFoundationHelper.GetBranchNameForItem(solutionFullPath, out workspace, out branchObject);
 
             if (branchName.IsNullOrEmpty())
                 return false;
+            
+            properties.AddOrUpdate("tfs:workspace", workspace.Name);
 
             properties.AddOrUpdate(KnownProperties.BranchName, branchName);
 

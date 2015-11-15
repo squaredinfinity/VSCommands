@@ -21,6 +21,7 @@ using System.Text.RegularExpressions;
 using SquaredInfinity.VSCommands.Features.SolutionBadges.SourceControl;
 using System.ComponentModel.Composition;
 using SquaredInfinity.VSCommands.Foundation;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 {
@@ -47,6 +48,11 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
         {
             get
             {
+#if DEBUG
+                if (!UIService.IsUIThread)
+                    throw new InvalidOperationException("This property can only be accessed from UI thread.");
+#endif
+
                 if (_mainWindowHandle == IntPtr.Zero)
                 {
                     lock (Sync)
@@ -69,7 +75,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
         readonly IVisualStudioEventsService VisualStudioEventsService;
         readonly IServiceProvider ServiceProvider;
 
-        InvocationThrottle RefreshThrottle = new InvocationThrottle(min: TimeSpan.FromMilliseconds(250), max:TimeSpan.FromSeconds(1));
+        InvocationThrottle RefreshThrottle = new InvocationThrottle(min: TimeSpan.FromMilliseconds(500), max:TimeSpan.FromSeconds(2));
 
         readonly IDictionary<string, object> CurrentBadgeInfo = new Dictionary<string, object>();
 
@@ -129,6 +135,12 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
         void InvalidateCurrentBadge()
         {
+            if(!UIService.IsUIThread)
+            {
+                UIService.Run(InvalidateCurrentBadge);
+                return;
+            }
+
             if (MainWindowHandle == IntPtr.Zero)
                 return;
 
@@ -147,6 +159,8 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             //{
                 dwmapi.EnableCustomWindowPreview(MainWindowHandle);
             //}
+
+            RequestRefresh();
         }
 
         IntPtr HwndSourceHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -454,9 +468,16 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             {
                 var sc_properties = (IDictionary<string, object>)null;
 
-                if(scip.TryGetSourceControlInfo(solution.FullName, out sc_properties))
+                try
                 {
-                    properties.AddOrUpdateFrom(sc_properties);
+                    if (scip.TryGetSourceControlInfo(solution.FullName, out sc_properties))
+                    {
+                        properties.AddOrUpdateFrom(sc_properties);
+                    }
+                }
+                catch(Exception ex)
+                {
+                    // todo: log
                 }
             }
 

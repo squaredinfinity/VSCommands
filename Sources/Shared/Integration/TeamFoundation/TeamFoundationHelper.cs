@@ -89,18 +89,57 @@ namespace SquaredInfinity.VSCommands.Integration.TeamFoundation
 
         public string GetBranchNameForItem(string localFullPath)
         {
-            return GetBranchNameForItem(localFullPath, waitForConnection: true, timeout: TimeSpan.FromSeconds(5));
+            var workspace = (Workspace)null;
+            var branchObject = (BranchObject)null;
+
+            return GetBranchNameForItem(
+                localFullPath, 
+                waitForConnection: true, 
+                timeout: TimeSpan.FromSeconds(5),
+                workspace: out workspace,
+                branchObject: out branchObject);
         }
 
-        public string GetBranchNameForItem(string localFullPath, bool waitForConnection, TimeSpan timeout)
+        public string GetBranchNameForItem(string localFullPath, out Workspace workspace, out BranchObject branchObject)
+        {
+            workspace = null;
+            branchObject = null;
+
+            return GetBranchNameForItem(
+                localFullPath, 
+                waitForConnection: true, 
+                timeout: TimeSpan.FromSeconds(5),
+                workspace: out workspace,
+                branchObject: out branchObject);
+        }
+
+        public string GetBranchNameForItem(
+            string localFullPath, 
+            bool waitForConnection, 
+            TimeSpan timeout, 
+            out Workspace workspace, 
+            out BranchObject branchObject)
         {
             CancellationTokenSource cts = new CancellationTokenSource(timeout);
 
-            return GetBranchNameForItem(localFullPath, waitForConnection, cts.Token);
+            return GetBranchNameForItem(
+                localFullPath, 
+                waitForConnection, 
+                cts.Token,
+                out workspace,
+                out branchObject);
         }
 
-        public string GetBranchNameForItem(string localFullPath, bool waitForConnection, CancellationToken cancellationToken)
+        public string GetBranchNameForItem(
+            string localFullPath, 
+            bool waitForConnection, 
+            CancellationToken cancellationToken,
+            out Workspace workspace, 
+            out BranchObject branchObject)
         {
+            workspace = null;
+            branchObject = null;
+
             try
             {
                 if (localFullPath.IsNullOrEmpty())
@@ -124,7 +163,7 @@ namespace SquaredInfinity.VSCommands.Integration.TeamFoundation
                 if (cancellationToken.IsCancellationRequested)
                     return null;
 
-                Workspace workspace = vcs.TryGetWorkspace(localFullPath);
+                workspace = vcs.TryGetWorkspace(localFullPath);
                 if (workspace == null)
                     return null;
 
@@ -152,7 +191,7 @@ namespace SquaredInfinity.VSCommands.Integration.TeamFoundation
                 if (cancellationToken.IsCancellationRequested)
                     return null;
 
-                var branchObject =
+                branchObject =
                     (from bo in branchObjects
                      where serverItem.StartsWith(bo.Properties.RootItem.Item)
                      select bo).
