@@ -15,6 +15,11 @@ namespace SquaredInfinity.VSCommands.Foundation
             ThreadHelper.Generic.Invoke(action);
         }
 
+        public T Run<T>(Func<T> action)
+        {
+            return ThreadHelper.Generic.Invoke<T>(action);
+        }
+
         public override IHostAwareViewModel GetDefaultAlertViewModel(string alertMessage, string alertDialogTitle)
         {
             throw new NotImplementedException();

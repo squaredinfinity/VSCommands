@@ -77,6 +77,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
         InvocationThrottle RefreshThrottle = new InvocationThrottle(min: TimeSpan.FromMilliseconds(500), max:TimeSpan.FromSeconds(2));
 
+        readonly IDictionary<string, object> CurrentThemeInfo = new Dictionary<string, object>();
         readonly IDictionary<string, object> CurrentBadgeInfo = new Dictionary<string, object>();
 
         public SolutionBadgesService(
@@ -98,7 +99,28 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             VisualStudioEventsService.AfterDebuggerEnterDesignMode += (s, e) => RequestRefresh();
             VisualStudioEventsService.AfterDebuggerEnterBreakMode += (s, e) => RequestRefresh();
 
-            VisualStudioEventsService.RegisterVisualStudioUILoadedAction(() => InitializeWin32Hooks());
+            VisualStudioEventsService.RegisterVisualStudioUILoadedAction(InitializeWin32Hooks);
+            visualStudioEventsService.RegisterVisualStudioUILoadedAction(CollectThemeInfo);
+        }
+
+        void CollectThemeInfo()
+        {
+            var result = new Dictionary<string, object>();
+
+            System.Windows.Media.Color accentColor = Colors.White;
+
+            //if (Config.ShouldUseVisualStudioTheme)
+            {
+                var windowColorKey = Microsoft.VisualStudio.PlatformUI.EnvironmentColors.SystemWindowColorKey;
+                var windowColor = (System.Windows.Media.Color)Application.Current.MainWindow.FindResource(windowColorKey);
+
+                accentColor = windowColor;
+
+                result.AddOrUpdate(KnownProperties.AccentColor, accentColor);
+            }
+
+            CurrentThemeInfo.Clear();
+            CurrentThemeInfo.AddOrUpdateFrom((IDictionary<string,object>)result);
         }
 
         public void Initialise()
@@ -130,8 +152,33 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
         {
             CurrentBadgeInfo.Clear();
             CurrentBadgeInfo.AddOrUpdateFrom(GetCurrentBadgeInfo());
+
+            
+
             InvalidateCurrentBadge();
         }
+
+        //IDictionary<string, object> GetCurrentUIInfo()
+        //{
+        //    if (!UIService.IsUIThread)
+        //    {
+        //        return UIService.Run(GetCurrentUIInfo);
+        //    }
+
+        //    var result = new Dictionary<string, object>();
+
+        //    System.Windows.Media.Color accentColor = Colors.White;
+
+        //    //if (Config.ShouldUseVisualStudioTheme)
+        //    {
+        //        var windowColorKey = Microsoft.VisualStudio.PlatformUI.EnvironmentColors.SystemWindowColorKey;
+        //        var windowColor = (System.Windows.Media.Color)Application.Current.MainWindow.FindResource(windowColorKey);
+
+        //        accentColor = windowColor;
+        //    }
+
+        //    return result;
+        //}
 
         void InvalidateCurrentBadge()
         {
@@ -287,7 +334,12 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             view.EndInit();
             view.ApplyTemplate();
 
-            view.ViewModel.RefreshFrom(CurrentBadgeInfo);
+            var all_properties = new Dictionary<string, object>();
+
+            all_properties.AddOrUpdateFrom(CurrentBadgeInfo);
+            all_properties.AddOrUpdateFrom(CurrentThemeInfo);
+
+            view.ViewModel.RefreshFrom(all_properties);
 
             return view;
         }

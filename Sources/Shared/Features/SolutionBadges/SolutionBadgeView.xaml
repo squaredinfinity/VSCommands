@@ -70,7 +70,7 @@
                                                Margin="10,0,10,0"
                                                TextWrapping="Wrap"
                                                TextTrimming="CharacterEllipsis"
-                                               Foreground="{TemplatedParentBinding ViewModel.TextBrush}"
+                                               Foreground="{TemplatedParentBinding ViewModel.TextColor, Converter={StaticResource Converters.ColorToBrush}}"
                                                FontWeight="Bold"
                                                FontSize="18"
                                                LineHeight="19"
@@ -78,7 +78,7 @@
 
                                     <TextBlock Text="{TemplatedParentBinding ViewModel.Subtitle}" 
                                                Margin="0,-5,0,0"
-                                               Foreground="{TemplatedParentBinding ViewModel.TextBrush}"
+                                               Foreground="{TemplatedParentBinding ViewModel.TextColor, Converter={StaticResource Converters.ColorToBrush}}"
                                                TextTrimming="CharacterEllipsis"
                                                TextAlignment="Center"
                                                FontSize="12"
@@ -98,7 +98,7 @@
                                     
                                     <TextBlock Text="{TemplatedParentBinding ViewModel.ActiveDocumentName}" 
                                                VerticalAlignment="Center"
-                                               Foreground="{TemplatedParentBinding ViewModel.TextBrush}"
+                                               Foreground="{TemplatedParentBinding ViewModel.TextColor, Converter={StaticResource Converters.ColorToBrush}}"
                                                TextTrimming="CharacterEllipsis"/>
                                 </StackPanel>
                             </Grid>

@@ -8,5 +8,6 @@ namespace SquaredInfinity.VSCommands.Foundation
     public interface IVscUIService : IUIService
     {
         void Run(Action action);
+        T Run<T>(Func<T> action);
     }
 }

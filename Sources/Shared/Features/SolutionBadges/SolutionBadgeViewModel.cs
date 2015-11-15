@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using SquaredInfinity.Foundation.Extensions;
 using System.Text;
 using System.Windows.Media;
+using SquaredInfinity.Foundation.Media.ColorSpaces;
 
 namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 {
     public class SolutionBadgeViewModel : ViewModel
     {
-        Color _accentColor = Colors.WhiteSmoke;
-        public Color AccentColor
+        System.Windows.Media.Color _accentColor = Colors.WhiteSmoke;
+        public System.Windows.Media.Color AccentColor
         {
             get { return _accentColor; }
             set { TrySetThisPropertyValue(ref _accentColor, value); }
         }
 
-        Color _textColor;
-        public Color TextColor
+        System.Windows.Media.Color _textColor;
+        public System.Windows.Media.Color TextColor
         {
             get { return _textColor; }
             set { TrySetThisPropertyValue(ref _textColor, value); }
@@ -100,6 +101,23 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             Subtitle = branch_name;
 
             ActiveDocumentName = (string)properties.GetValueOrDefault("activeDocument:fileName", () => "");
+
+            AccentColor = (System.Windows.Media.Color)properties.GetValueOrDefault(KnownProperties.AccentColor, () => Colors.WhiteSmoke);
+            TextColor = GetTextColorFromAccent(AccentColor);
+        }
+
+        System.Windows.Media.Color GetTextColorFromAccent(System.Windows.Media.Color accent)
+        {
+            var scRgb = accent.ToScRGBColor();
+            var xyz = KnownColorSpaces.scRGB.ToXYZColor(scRgb);
+            var lab = (LabColor)KnownColorSpaces.Lab.FromXYZColor(xyz);
+
+            if (lab.L >= 95)
+                return System.Windows.Media.Color.FromRgb(42, 42, 42);
+            else if (lab.L >= 50)
+                return System.Windows.Media.Colors.Black;
+            else
+                return System.Windows.Media.Colors.White;
         }
 
         string AsNiceString(string str)
