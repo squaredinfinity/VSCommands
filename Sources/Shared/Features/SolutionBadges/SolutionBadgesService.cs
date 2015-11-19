@@ -100,7 +100,15 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
             VisualStudioEventsService.AfterDebuggerEnterBreakMode += (s, e) => RequestRefresh();
 
             VisualStudioEventsService.RegisterVisualStudioUILoadedAction(InitializeWin32Hooks);
-            visualStudioEventsService.RegisterVisualStudioUILoadedAction(CollectThemeInfo);
+            VisualStudioEventsService.RegisterVisualStudioUILoadedAction(CollectThemeInfo);
+
+            visualStudioEventsService.AfterVisualStudioThemeChanged += VisualStudioEventsService_AfterVisualStudioThemeChanged;
+        }
+
+        void VisualStudioEventsService_AfterVisualStudioThemeChanged(object sender, EventArgs e)
+        {
+            CollectThemeInfo();
+            InvalidateCurrentBadge();
         }
 
         void CollectThemeInfo()
@@ -111,10 +119,9 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 
             //if (Config.ShouldUseVisualStudioTheme)
             {
-                var windowColorKey = Microsoft.VisualStudio.PlatformUI.EnvironmentColors.SystemWindowColorKey;
-                var windowColor = (System.Windows.Media.Color)Application.Current.MainWindow.FindResource(windowColorKey);
+                var theme_color = ThemeInfo.GetThemeColor();
 
-                accentColor = windowColor;
+                accentColor = theme_color;
 
                 result.AddOrUpdate(KnownProperties.AccentColor, accentColor);
             }

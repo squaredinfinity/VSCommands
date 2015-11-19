@@ -1,8 +1,10 @@
 ﻿using EnvDTE;
 using EnvDTE80;
+using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
 using SquaredInfinity.Foundation;
 using SquaredInfinity.Foundation.Presentation;
+using SquaredInfinity.Foundation.Win32Api;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -15,6 +17,8 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
 {
     public partial class VisualStudioEventsService : IVisualStudioEventsService
     {
+        public event EventHandler<EventArgs> AfterVisualStudioThemeChanged;
+
         public event EventHandler<DocumentEventArgs> AfterActiveDocumentChanged;
         public event EventHandler<EventArgs> AfterSolutionClosed;
         public event EventHandler<EventArgs> AfterSolutionOpened;
@@ -48,6 +52,7 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
         public bool HasShutdownStarted { get; private set; }
 
         readonly VsShellPropertyEventsHandler VsShellPropertyEvents;
+        readonly BroadcastMessagesEventsHandler BroadsMessagesEvents;
 
         /// <summary>
         /// Actions to be executed when Visual Studio UI is loaded
@@ -61,6 +66,21 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
 
             VsShellPropertyEvents = new VsShellPropertyEventsHandler(serviceProvider);
             VsShellPropertyEvents.AfterShellPropertyChanged += VsShellPropertyEvents_AfterShellPropertyChanged;
+
+            BroadsMessagesEvents = new BroadcastMessagesEventsHandler(serviceProvider);
+            BroadsMessagesEvents.AfterMessageBroadcast += BroadsMessagesEvents_AfterMessageBroadcast;
+        }
+
+        void BroadsMessagesEvents_AfterMessageBroadcast(object sender, BroadcastMessagesEventsHandler.MessageBroadcastEventArgs e)
+        {
+            SafeExecute(() =>
+            {
+                if (e.Msg == WM.THEMECHANGED || e.Msg == WM.SYSCOLORCHANGE)
+                {
+                    if (AfterVisualStudioThemeChanged != null)
+                        AfterVisualStudioThemeChanged(this, EventArgs.Empty);
+                }
+            });
         }
 
         void VsShellPropertyEvents_AfterShellPropertyChanged(object sender, VsShellPropertyEventsHandler.ShellPropertyChangeEventArgs e)

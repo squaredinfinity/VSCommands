@@ -224,8 +224,8 @@
       <HintPath>..\..\..\..\..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.13, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta013\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.21, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta021\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -266,6 +266,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\..\..\..\Shared\Integration\TeamFoundation\TeamFoundation.projitems" Label="Shared" />

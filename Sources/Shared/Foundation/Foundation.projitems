@@ -17,10 +17,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Settings\StaticSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\VscSettingScope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\VscSettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VersionInstallationInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\BroadcastMessagesEventsHandler.MessageBroadcastEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\DocumentEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\IVisualStudioEventsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\VisualStudioEventsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\BroadcastMessagesEventsHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\VsShellPropertyEventsHandler.ShellPropertyChangeEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\VsShellPropertyEventsHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VscUIService.cs" />
