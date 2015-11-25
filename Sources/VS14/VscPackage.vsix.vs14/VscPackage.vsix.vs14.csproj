@@ -40,7 +40,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;VS14;SIGN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -421,6 +421,7 @@
   <ItemGroup>
     <Content Include="..\..\Shared\VscPackage\Content\vsc11.eula.txt">
       <Link>Content\vsc11.eula.txt</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Resource Include="..\..\Shared\VscPackage\Resources\logo.png">
       <Link>Resources\logo.png</Link>

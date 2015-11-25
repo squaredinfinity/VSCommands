@@ -25,7 +25,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;VS14;SIGN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -153,9 +153,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Features.Infrastructure.vs14\Features.Infrastructure.vs14.csproj">
       <Project>{43b7deff-cac6-4f26-92e0-5d3cad22aa20}</Project>
       <Name>Features.Infrastructure.vs14</Name>
@@ -176,6 +173,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="..\..\Shared\Internal\Internal.projitems" Label="Shared" />
   <Import Project="..\..\Shared\VscPackage\VscPackage.projitems" Label="Shared" />
