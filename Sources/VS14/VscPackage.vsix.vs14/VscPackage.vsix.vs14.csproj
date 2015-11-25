@@ -423,9 +423,11 @@
       <Link>Content\vsc11.eula.txt</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Resource Include="..\..\Shared\VscPackage\Resources\logo.png">
+    <Content Include="..\..\Shared\VscPackage\Resources\logo.png">
       <Link>Resources\logo.png</Link>
-    </Resource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Resource Include="..\..\Shared\VscPackage\Resources\solutionbadge-breakmode.png">
       <Link>Resources\solutionbadge-breakmode.png</Link>
     </Resource>

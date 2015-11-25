@@ -6,6 +6,8 @@
     <Description xml:space="preserve">VSCommands for Visual Studio 2015</Description>
     <MoreInfo>http://vscommands.squaredinfinity.com/blog</MoreInfo>
     <License>Content\vsc11.eula.txt</License>
+    <Icon>Resources\logo.png</Icon>
+    <PreviewImage>Resources\logo.png</PreviewImage>
     <Tags>vscommands</Tags>
   </Metadata>
   <Installation>
