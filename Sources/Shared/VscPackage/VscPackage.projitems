@@ -10,9 +10,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Bootstrapper.cs" />
+    <None Include="$(MSBuildThisFileDirectory)Content\!about_this_content.txt" />
     <Compile Include="$(MSBuildThisFileDirectory)XamlResources.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Content\themes.pkgdef" />
     <None Include="$(MSBuildThisFileDirectory)Resources\solutionbadge-breakmode.png" />
     <None Include="$(MSBuildThisFileDirectory)Resources\solutionbadge-runmode.png" />
     <None Include="$(MSBuildThisFileDirectory)Content\vsc11.eula.txt" />

@@ -419,9 +419,15 @@
     <Compile Include="Vsc14Package.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\Shared\VscPackage\Content\themes.pkgdef">
+      <Link>Content\themes.pkgdef</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\Shared\VscPackage\Content\vsc11.eula.txt">
       <Link>Content\vsc11.eula.txt</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\Shared\VscPackage\Resources\logo.png">
       <Link>Resources\logo.png</Link>

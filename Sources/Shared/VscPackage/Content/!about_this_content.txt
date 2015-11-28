@@ -1,0 +1,4 @@
+﻿build action of this content set to NONE
+each item added as a link to VscPackage.vsix.vsXX projects and build action there set to content + include in vsix
+
+Include in VSIX cannot be set from shared project (to my knowledge)
