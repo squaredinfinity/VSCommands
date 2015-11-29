@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="VSCommands.SquaredInfinity.76e46117-379b-49a0-89f7-bd8473d3e185" Version="14.4.0.0" Language="en-US" Publisher="Squared Infinity" />
+    <Identity Id="VSCommands.SquaredInfinity.76e46117-379b-49a0-89f7-bd8473d3e185" Version="14.4.0.2" Language="en-US" Publisher="Squared Infinity" />
     <DisplayName>VSCommands 14 for Visual Studio 2015</DisplayName>
     <Description xml:space="preserve">VSCommands for Visual Studio 2015</Description>
     <MoreInfo>http://vscommands.squaredinfinity.com/blog</MoreInfo>

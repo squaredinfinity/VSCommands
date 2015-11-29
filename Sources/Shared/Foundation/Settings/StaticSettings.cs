@@ -12,7 +12,7 @@ namespace SquaredInfinity.VSCommands.Foundation
         /// <summary>
         /// e.g. 0.0.1 (full number would be 11.0.0.1 for VS11 and 10.0.0.1 for VS10 etc.)
         /// </summary>
-        public static readonly string CommonCurrentReleaseNumber;
+        public const string CommonCurrentReleaseNumber = CurrentVersionStrings.CommonCurrentReleaseNumber;
 
         /// <summary>
         /// e.g. 11.1.0.0 for VSC11 or 10.1.0.0 for VSC10
@@ -130,7 +130,6 @@ namespace SquaredInfinity.VSCommands.Foundation
 #else
             throw new NotImplementedException();
 #endif
-            CommonCurrentReleaseNumber = "4.0.1";
             CurrentReleaseNumber = ShortVersionNumber + "." + CommonCurrentReleaseNumber;
             CurrentVersion = new Version(CurrentReleaseNumber);
 

@@ -6,9 +6,13 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © 2014")]
 [assembly: AssemblyProduct("VSCommands for Visual Studio")]
 
-[assembly: AssemblyVersion("14.0.0.1")]
-[assembly: AssemblyFileVersion("14.0.0.1")]
+[assembly: AssemblyVersion("14." + CurrentVersionStrings.CommonCurrentReleaseNumber)]
+[assembly: AssemblyFileVersion("14." + CurrentVersionStrings.CommonCurrentReleaseNumber)]
 
+static class CurrentVersionStrings
+{
+    public const string CommonCurrentReleaseNumber = "0.0.2";
+}
 
 #if SIGN
 #pragma warning disable 1699  // warning CS1699: Use command line option '/keyfile' or appropriate project settings instead of 'AssemblyKeyFile'
