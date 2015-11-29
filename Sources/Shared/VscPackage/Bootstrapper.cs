@@ -14,6 +14,10 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
 using System.Reflection;
 using System.Text;
+using Microsoft.VisualStudio.Text.Classification;
+using System.ComponentModel.Design;
+using SquaredInfinity.VSCommands.Foundation.FontsAndColors;
+using SquaredInfinity.VSCommands.Features.OutputWindowPane;
 
 namespace SquaredInfinity.VSCommands
 {
@@ -22,14 +26,20 @@ namespace SquaredInfinity.VSCommands
         public void InitializeServices(IVsPackage package)
         {
             // TODO:    eventually perhaps most of it could be done using MEF alone
-            //          but for know do what worked so far
+            //          but for know do what worked so far.
+            //          Need to find out how to register custom instance with VS MEF
 
             //# IoC
             var container = new UnityContainer();
             container.RegisterInstance<IUnityContainer>(container);
 
             //# Service Provider from package
-            container.RegisterInstance<IServiceProvider>((IServiceProvider) package);
+            var service_provider = (IServiceProvider)package;
+            container.RegisterInstance<IServiceProvider>(service_provider);
+
+            //# Service Container from package
+            var service_container = (IServiceContainer)package;
+            container.RegisterInstance<IServiceContainer>(service_container);
 
             // VS MEF
             var componentModel = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SComponentModel)) as IComponentModel2;
@@ -47,6 +57,11 @@ namespace SquaredInfinity.VSCommands
 
             container.RegisterInstance<IVscSettingsService>(settings_service);
 
+            var vscservices = new VscServices();
+            vscservices.Container = container;
+            componentModel.DefaultCompositionService.SatisfyImportsOnce(vscservices);
+            VscServices.Initialise(vscservices);
+
             //# UI Service
             var vscUIService = new VscUIService();
             container.RegisterInstance<IVscUIService>(vscUIService);
@@ -54,6 +69,38 @@ namespace SquaredInfinity.VSCommands
             //# Visual Studio Events Service
             var vs_events_service = container.Resolve<VisualStudioEventsService>();
             container.RegisterInstance<IVisualStudioEventsService>(vs_events_service);
+
+            //# Fonts And Color
+            var fonts_and_colors = container.Resolve<VSCFontAndColorDefaultsProvider>();
+
+#if DEBUG
+            //      fonts_and_colors.TryClearFontAndColorCache();
+#endif
+
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.OutputText, "Output Window Text");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.OutputInformation, "Output Window Information");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.OutputWarning, "Output Window Warning");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.OutputError, "Output Window Error");
+
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.BuildOutputBuildSummary, "");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.BuildOutputBuildSummarySuccess, "");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.BuildOutputBuildSummaryFailed, "");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.BuildOutputBuildSummaryTotal, "");
+
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.BuildOutputCodeContractsInformation, "");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.BuildOutputProjectBuildStart, "");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.BuildOutputProjectBuildSkipped, "");
+
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.TfsOutputError, "");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.TfsOutputWarning, "");
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.TfsOutputSuccess, "");
+
+            fonts_and_colors.RegisterCollorableItem(ClassificationNames.FindResultsOutputMatch, "Find Results Match", isBold: true);
+
+            fonts_and_colors.Initialise();
+
+            container.RegisterInstance<VSCFontAndColorDefaultsProvider>(fonts_and_colors);
+
 
             //# Initialize User Interface
             vs_events_service.RegisterVisualStudioUILoadedAction(InitializeUserInterface);
@@ -66,29 +113,35 @@ namespace SquaredInfinity.VSCommands
 
             //# Update Settings with local context info
             var deployment_info = (DeploymentInfo)null;
-            var update_deployment_info = false;
+            var has_just_been_upgraded = false;
 
             if(!settings_service.TryGetSetting<DeploymentInfo>("internal.deployment", VscSettingScope.User, out deployment_info))
             {
                 deployment_info = new DeploymentInfo();
                 deployment_info.InitialVersion = VersionInstallationInfo.GetCurrent();
-                update_deployment_info = true;
+                has_just_been_upgraded = true;
             }
 
             if (deployment_info.CurrentVersion == null)
             {
                 deployment_info.CurrentVersion = VersionInstallationInfo.GetCurrent();
-                update_deployment_info = true;
+                has_just_been_upgraded = true;
             }
             else if (deployment_info.CurrentVersion.Version != StaticSettings.CurrentVersion)
             { 
                 deployment_info.PreviousVersion = deployment_info.CurrentVersion;
                 deployment_info.CurrentVersion = VersionInstallationInfo.GetCurrent();
-                update_deployment_info = true;
+                has_just_been_upgraded = true;
             }
 
-            if (update_deployment_info)
+            if (has_just_been_upgraded)
+            {
                 settings_service.SetSetting("internal.deployment", VscSettingScope.User, deployment_info);
+
+                // clear fotn and color cache as new items may have been added.
+                // cache rebuilding can be an expensive operation
+                fonts_and_colors.TryClearFontAndColorCache();
+            }
         }
 
         void InitializeUserInterface()

@@ -7,6 +7,8 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
 {
     public interface IVisualStudioEventsService
     {
+        event EventHandler<EventArgs> AfterVSCommandsColorSettingsChanged;
+        event EventHandler<EventArgs> AfterTextColorSettingsChanged;
         event EventHandler<EventArgs> AfterVisualStudioThemeChanged;
 
         event EventHandler<EventArgs> AfterSolutionOpened;
@@ -32,5 +34,6 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
         /// </summary>
         /// <param name="action"></param>
         void RegisterVisualStudioUILoadedAction(Action action);
+        void RaiseAfterVSCommandsColorSettingsChanged();
     }
 }

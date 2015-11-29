@@ -2,6 +2,7 @@
 using EnvDTE80;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Text.Classification;
 using SquaredInfinity.Foundation;
 using SquaredInfinity.Foundation.Presentation;
 using SquaredInfinity.Foundation.Win32Api;
@@ -17,6 +18,20 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
 {
     public partial class VisualStudioEventsService : IVisualStudioEventsService
     {
+        public event EventHandler<EventArgs> AfterVSCommandsColorSettingsChanged;
+        public void RaiseAfterVSCommandsColorSettingsChanged()
+        {
+            if (AfterVSCommandsColorSettingsChanged != null)
+                AfterVSCommandsColorSettingsChanged(this, EventArgs.Empty);
+        }
+
+        public event EventHandler<EventArgs> AfterTextColorSettingsChanged;
+        void RaiseAfterTextColorSettingsChanged()
+        {
+            if (AfterTextColorSettingsChanged != null)
+                AfterTextColorSettingsChanged(this, EventArgs.Empty);
+        }
+
         public event EventHandler<EventArgs> AfterVisualStudioThemeChanged;
 
         public event EventHandler<DocumentEventArgs> AfterActiveDocumentChanged;
@@ -36,6 +51,9 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
 
         readonly IVscUIService UIService;
         readonly IServiceProvider ServiceProvider;
+        readonly IClassificationFormatMapService ClassificationFormatMapService;
+
+        readonly IClassificationFormatMap TextClassificationFormatMap;
 
         readonly object UILoadedSync = new object();
 
@@ -59,10 +77,17 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
         /// </summary>
         ConcurrentQueue<Action> UILoadedActions = new ConcurrentQueue<Action>();
         
-        public VisualStudioEventsService(IVscUIService uiService, IServiceProvider serviceProvider)
+        public VisualStudioEventsService(
+            IVscUIService uiService, 
+            IServiceProvider serviceProvider, 
+            IClassificationFormatMapService classificationFormatMapService)
         {
             this.UIService = uiService;
             this.ServiceProvider = serviceProvider;
+            this.ClassificationFormatMapService = classificationFormatMapService;
+
+            TextClassificationFormatMap = ClassificationFormatMapService.GetClassificationFormatMap("text");
+            TextClassificationFormatMap.ClassificationFormatMappingChanged += (s, e) => RaiseAfterTextColorSettingsChanged();
 
             VsShellPropertyEvents = new VsShellPropertyEventsHandler(serviceProvider);
             VsShellPropertyEvents.AfterShellPropertyChanged += VsShellPropertyEvents_AfterShellPropertyChanged;

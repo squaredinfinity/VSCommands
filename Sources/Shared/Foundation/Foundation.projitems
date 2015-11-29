@@ -10,13 +10,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DeploymentInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FontsAndColors\VSCFontAndColorDefaultsProvider.IVsFontAndColorDefaults.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FontsAndColors\VSCFontAndColorDefaultsProvider.IVsFontAndColorEvents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FontsAndColors\VSCFontAndColorDefaultsProvider.IVsFontAndColorDefaultsProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FontsAndColors\VSCFontAndColorDefaultsProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\EnvDTE\DTE2.extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\Microsoft.VisualStudio.Shell.Interop\ColorableItemInfo.extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\System\IServiceProvider.extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IVscUIService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\IVscSettingsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\StaticSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\VscSettingScope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\VscSettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\Classification\ClassificationMatchPattern.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\Classification\ClassificationTypeMatchPattern.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\Classification\VscClassifier.IClassifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\Classification\VscClassifier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VersionInstallationInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\BroadcastMessagesEventsHandler.MessageBroadcastEventArgs.cs" />
@@ -26,6 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\BroadcastMessagesEventsHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\VsShellPropertyEventsHandler.ShellPropertyChangeEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\VsShellPropertyEventsHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VscServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VscUIService.cs" />
   </ItemGroup>
 </Project>

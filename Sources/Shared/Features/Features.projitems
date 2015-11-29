@@ -9,10 +9,19 @@
     <Import_RootNamespace>SquaredInfinity.VSCommands.Features</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\ClassificationDefinitions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassfierProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassifier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\CurrentVSStateInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgesService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgeView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\ClassificationNames.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\Configuration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\OutputWindowPaneClassifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\Output\ClassificationDefinitions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\Output\OutputClassifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\Output\OutputClassifierProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XamlResources.cs" />
   </ItemGroup>
   <ItemGroup>
