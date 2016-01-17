@@ -1,0 +1,83 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ include file="../_Global.tt" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".xaml" #>
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:vsm="clr-namespace:System.Windows;assembly=PresentationFramework">
+    
+    <Style x:Key="Styles.ToggleButton" TargetType="ToggleButton">
+        <Setter Property="FocusVisualStyle"             Value="{StaticResource Styles.FocusVisual}" />
+        <Setter Property="Background"                   Value="<#=control_background#>"/>
+        <Setter Property="BorderBrush"                  Value="<#=control_border#>"/>
+        <Setter Property="BorderThickness"              Value="1"/>
+        <Setter Property="Foreground"                   Value="<#=control_text#>"/>
+        <Setter Property="HorizontalContentAlignment"   Value="Center"/>
+        <Setter Property="VerticalContentAlignment"     Value="Center"/>
+        <Setter Property="Padding"                      Value="15,3,15,3"/>
+        <Setter Property="Margin"                       Value="2,2,2,2" />
+        <Setter Property="UseLayoutRounding"            Value="True" />
+        <Setter Property="SnapsToDevicePixels"          Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        
+                        <Border x:Name="Background" 
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            
+                            <Grid Background="{TemplateBinding Background}"  
+                                  Margin="1">
+                                <Border Opacity="0"  
+                                        x:Name="BackgroundAnimation" 
+                                        Background="#FF448DCA" />
+                            </Grid>
+                        </Border>
+                        
+                        <ContentPresenter x:Name="contentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="<#=control_disabled_text#>"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="<#=control_hover_background#>" />
+                            <Setter Property="BorderBrush" Value="<#=control_hover_border#>"/>
+                            <Setter Property="Foreground" Value="<#=control_hover_text#>"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="<#=control_pressed_background#>" />
+                            <Setter Property="BorderBrush" Value="<#=control_pressed_border#>"/>
+                            <Setter Property="Foreground" Value="<#=control_pressed_text#>"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="<#=control_pressed_background#>" />
+                            <Setter Property="BorderBrush" Value="<#=control_pressed_border#>"/>
+                            <Setter Property="Foreground" Value="<#=control_pressed_text#>"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter Property="Background" Value="<#=control_pressed_background#>" />
+                            <Setter Property="BorderBrush" Value="<#=control_pressed_border#>"/>
+                            <Setter Property="Foreground" Value="<#=control_pressed_text#>"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>                
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

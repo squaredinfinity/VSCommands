@@ -18,6 +18,10 @@ using Microsoft.VisualStudio.Text.Classification;
 using System.ComponentModel.Design;
 using SquaredInfinity.VSCommands.Foundation.FontsAndColors;
 using SquaredInfinity.VSCommands.Features.OutputWindowPane;
+using SquaredInfinity.VSCommands.Presentation;
+using System.Windows;
+using Microsoft.VisualStudio.Shell;
+using SquaredInfinity.VSCommands.Features.AttachTo;
 
 namespace SquaredInfinity.VSCommands
 {
@@ -61,7 +65,7 @@ namespace SquaredInfinity.VSCommands
             vscservices.Container = container;
             componentModel.DefaultCompositionService.SatisfyImportsOnce(vscservices);
             VscServices.Initialise(vscservices);
-
+            
             //# UI Service
             var vscUIService = new VscUIService();
             container.RegisterInstance<IVscUIService>(vscUIService);
@@ -103,7 +107,7 @@ namespace SquaredInfinity.VSCommands
 
 
             //# Initialize User Interface
-            vs_events_service.RegisterVisualStudioUILoadedAction(InitializeUserInterface);
+            vs_events_service.RegisterVisualStudioUILoadedAction(() => InitializeUserInterface(container, vscUIService));
 
             //# Solution Badges Service
             var solution_badges_service = container.Resolve<SolutionBadgesService>();
@@ -144,7 +148,7 @@ namespace SquaredInfinity.VSCommands
             }
         }
 
-        void InitializeUserInterface()
+        void InitializeUserInterface(IUnityContainer container, IVscUIService uiService)
         {
             var resources = new SquaredInfinity.Foundation.Presentation.XamlResources();
             resources.LoadAndMergeResources();
@@ -157,6 +161,8 @@ namespace SquaredInfinity.VSCommands
 
             //# Import Xaml Resources
             ResourcesManager.ImportAndLoadAllResources(compositionContainer);
+
+            uiService.ShowDialog(new AttachToView());
         }
     }
 }

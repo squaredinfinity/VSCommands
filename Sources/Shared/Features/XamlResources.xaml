@@ -4,5 +4,6 @@
     xmlns:local="using:SquaredInfinity.VSCommands.Features">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="{ResourceFromThisAssembly /SolutionBadges/SolutionBadgeView.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /AttachTo/AttachToView.xaml}" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

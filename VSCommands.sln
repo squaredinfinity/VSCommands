@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{54E5175C-CA0E-4C60-B71B-D0DE9674F87A}"
 EndProject
@@ -47,30 +47,32 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Mercurial", "Sources\Shared
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercurial.vs14", "Sources\VS14\Integration\Mercurial.vs14\Mercurial.vs14.csproj", "{AFFB7B1A-959A-4B43-A3D0-E29715A387C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Xaml.Styles.Modern.vs14", "Sources\VS14\Presentation.Xaml.Styles.Modern.vs14\Presentation.Xaml.Styles.Modern.vs14.csproj", "{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Sources\Shared\VscPackage\VscPackage.projitems*{2901cef8-4f81-42b2-8c43-ec450401dc03}*SharedItemsImports = 13
 		Sources\Shared\Foundation\Foundation.projitems*{d1941403-007f-4f39-ad6b-5bb81d221164}*SharedItemsImports = 13
 		Sources\Shared\Integration\Mercurial\Mercurial.projitems*{26bc7338-53f3-4136-a981-c0f4b6d4d778}*SharedItemsImports = 13
-		Sources\Shared\Internal\Internal.projitems*{dab3b211-fc1f-4fc7-8177-9b28ea3e9f65}*SharedItemsImports = 4
 		Sources\Shared\Integration\Git\Git.projitems*{dab3b211-fc1f-4fc7-8177-9b28ea3e9f65}*SharedItemsImports = 4
+		Sources\Shared\Internal\Internal.projitems*{dab3b211-fc1f-4fc7-8177-9b28ea3e9f65}*SharedItemsImports = 4
 		Sources\Shared\Integration\TeamFoundation\TeamFoundation.projitems*{c49bded1-2b56-45cc-8699-2cff14b83929}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{c49bded1-2b56-45cc-8699-2cff14b83929}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{184b2831-08ca-492a-bd4f-db1ec42fc6be}*SharedItemsImports = 13
 		Sources\Shared\Features.Infrastructure\Features.Infrastructure.projitems*{43b7deff-cac6-4f26-92e0-5d3cad22aa20}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{43b7deff-cac6-4f26-92e0-5d3cad22aa20}*SharedItemsImports = 4
-		Sources\Shared\Integration\Mercurial\Mercurial.projitems*{affb7b1a-959a-4b43-a3d0-e29715a387c5}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{affb7b1a-959a-4b43-a3d0-e29715a387c5}*SharedItemsImports = 4
-		Sources\Shared\Internal\Internal.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
+		Sources\Shared\Integration\Mercurial\Mercurial.projitems*{affb7b1a-959a-4b43-a3d0-e29715a387c5}*SharedItemsImports = 4
 		Sources\Shared\Foundation\Foundation.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
+		Sources\Shared\Internal\Internal.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
 		Sources\Shared\Presentation\Presentation.projitems*{c386c186-7f2a-4c93-8019-42a79d5ba18f}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{c386c186-7f2a-4c93-8019-42a79d5ba18f}*SharedItemsImports = 4
 		Sources\Shared\Features\Features.projitems*{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}*SharedItemsImports = 4
 		Sources\Shared\Features.Infrastructure\Features.Infrastructure.projitems*{99808a53-a739-49c2-9218-7f85473bb426}*SharedItemsImports = 13
 		Sources\Shared\Features\Features.projitems*{3af75030-d338-4882-afad-aeddd3727c2e}*SharedItemsImports = 13
-		Sources\Shared\VscPackage\VscPackage.projitems*{b88c127b-2d17-4f73-99fb-c2b68ce7431d}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{b88c127b-2d17-4f73-99fb-c2b68ce7431d}*SharedItemsImports = 4
+		Sources\Shared\VscPackage\VscPackage.projitems*{b88c127b-2d17-4f73-99fb-c2b68ce7431d}*SharedItemsImports = 4
 		Sources\Shared\Integration\Git\Git.projitems*{9b9af231-62fe-433e-86c0-91e159091d67}*SharedItemsImports = 13
 		Sources\Shared\Integration\TeamFoundation\TeamFoundation.projitems*{f63b9f18-ecec-4a58-adba-6851a12fa004}*SharedItemsImports = 13
 		Sources\Shared\Presentation\Presentation.projitems*{58d50a09-0708-42e1-9140-22e2a395441b}*SharedItemsImports = 13
@@ -116,6 +118,10 @@ Global
 		{AFFB7B1A-959A-4B43-A3D0-E29715A387C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFFB7B1A-959A-4B43-A3D0-E29715A387C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFFB7B1A-959A-4B43-A3D0-E29715A387C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,5 +147,6 @@ Global
 		{C49BDED1-2B56-45CC-8699-2CFF14B83929} = {C2B50FED-8A11-45B2-A08D-8F6C95B20472}
 		{26BC7338-53F3-4136-A981-C0F4B6D4D778} = {2D0351FA-AE97-49BD-A8FD-B4834AEB374E}
 		{AFFB7B1A-959A-4B43-A3D0-E29715A387C5} = {C2B50FED-8A11-45B2-A08D-8F6C95B20472}
+		{1ABCA53B-4191-40D4-94CF-B8CA37EBB153} = {5BEC4AAB-6F83-4C33-902A-0C8FFC83AF21}
 	EndGlobalSection
 EndGlobal

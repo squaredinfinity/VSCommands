@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SquaredInfinity.VSCommands.Presentation.Xaml.Styles.Modern</RootNamespace>
+    <AssemblyName>SquaredInfinity.VSCommands.Presentation.Xaml.Styles.Modern.vs14</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.22, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta022\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SquaredInfinity.Foundation.Presentation.Xaml.DotNet45, Version=1.1.7.26, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Presentation.Xaml.1.1.7-beta026\lib\net45\SquaredInfinity.Foundation.Presentation.Xaml.DotNet45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DefaultXamlResources.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\DefaultDialogWindow.xaml.cs" />
+    <Compile Include="Windows\ModernWindow.cs" />
+    <Compile Include="_Global.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Global.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="All.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>All.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Brushes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Brushes.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\Button.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Button.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\CheckBox.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CheckBox.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\ComboBox.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ComboBox.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\Expander.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Expander.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\FocusVisual.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FocusVisual.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\GridViewColumnHeader.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GridViewColumnHeader.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\GridViewColumnHeaderGripper.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GridViewColumnHeaderGripper.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\GroupBox.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GroupBox.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\Hyperlink.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Hyperlink.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\Label.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Label.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\ListBox.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ListBox.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\ListView.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ListView.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\ListViewItem.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ListViewItem.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\Menu.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Menu.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\MenuItem.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MenuItem.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\RadioButton.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RadioButton.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\ScrollBar.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ScrollBar.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\TabControl.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TabControl.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\TextBlock.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TextBlock.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\TextBox.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TextBox.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\ToggleButton.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ToggleButton.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\ToolTip.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ToolTip.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\TreeView.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TreeView.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\TreeViewItem.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TreeViewItem.xaml</LastGenOutput>
+    </Content>
+    <Content Include="Styles\Window.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Window1.xaml</LastGenOutput>
+    </Content>
+    <Content Include="_Global.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>_Global.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="All.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>All.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Brushes.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Button.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CheckBox.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComboBox.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Expander.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\FocusVisual.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FocusVisual.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\GridViewColumnHeader.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridViewColumnHeader.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\GridViewColumnHeaderGripper.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridViewColumnHeaderGripper.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\GroupBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GroupBox.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Hyperlink.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hyperlink.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Label.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Label.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ListBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListBox.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListView.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ListViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ListViewItem.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\MenuItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuItem.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RadioButton.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScrollBar.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TabControl.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextBlock.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextBox.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ToggleButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToggleButton.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ToolTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToolTip.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TreeView.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\TreeViewItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TreeViewItem.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Window1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Window.tt</DependentUpon>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\DefaultDialogWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

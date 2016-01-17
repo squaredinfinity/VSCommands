@@ -1,0 +1,250 @@
+
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:behaviors="http://schemas.squaredinfinity.com/foundation/behaviors">
+    
+    <Style x:Key="Styles.ButtonBase"
+           TargetType="{x:Type ButtonBase}">
+        <Setter Property="FocusVisualStyle"             Value="{x:Null}"/>
+        <Setter Property="Background"                   Value="#FFFFFFFF"/>
+        <Setter Property="BorderBrush"                  Value="#CCCEDB"/>
+        <Setter Property="BorderThickness"              Value="1"/>
+        <Setter Property="Foreground"                   Value="#FF000000"/>
+        <Setter Property="HorizontalContentAlignment"   Value="Center"/>
+        <Setter Property="VerticalContentAlignment"     Value="Center"/>
+        <Setter Property="Padding"                      Value="15,3,15,3"/>
+        <Setter Property="Margin"                       Value="2,2,2,2" />
+        <Setter Property="UseLayoutRounding"            Value="True" />
+        <Setter Property="SnapsToDevicePixels"          Value="True" />
+        <Setter Property="FocusVisualStyle"             Value="{StaticResource Styles.FocusVisual}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="true">
+                        
+                        <ContentPresenter Name="ContentPresenter"
+                                          Margin="{TemplateBinding Padding}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#FFA1A1A1"/>
+                        </Trigger>
+                        
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFFDFDFD" />
+                            <Setter Property="BorderBrush" Value="#266Fa0"/>
+                            <Setter Property="Foreground" Value="#266Fa0"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#266Fa0" />
+                            <Setter Property="BorderBrush" Value="#266Fa0"/>
+                            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="Styles.Button"
+           BasedOn="{StaticResource Styles.ButtonBase}"
+           TargetType="{x:Type Button}"/>
+
+    <Style x:Key="Styles.Button.Stretch"
+           BasedOn="{StaticResource Styles.ButtonBase}"
+           TargetType="{x:Type Button}">
+        <Setter Property="HorizontalContentAlignment"   Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment"     Value="Stretch"/>
+    </Style>
+
+
+    <Style TargetType="{x:Type Button}"
+           x:Key="Styles.Button.Hyperlink">
+        <Setter Property="VerticalAlignment"    Value="Center" />
+        <Setter Property="Cursor"               Value="Hand" />
+        <Setter Property="Background"           Value="Transparent" />
+        <Setter Property="Foreground"           Value="#266Fa0"/>
+        <Setter Property="FocusVisualStyle"     Value="{StaticResource Styles.FocusVisual}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <TextBlock x:Name="ContentRoot"
+                               Text="{TemplateBinding Content}"
+							   TextDecorations="Underline"
+                               Foreground="{TemplateBinding Foreground}"
+                               Background="{TemplateBinding Background}">
+                    </TextBlock>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#FFA1A1A1"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#B00000"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Foreground" Value="#B00000"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}"
+           x:Key="Styles.Button.Symbol"
+           BasedOn="{StaticResource Styles.Button}">
+        <Setter Property="FontSize"     Value="10" />
+        <Setter Property="FontWeight"   Value="Bold"/>
+        <Setter Property="Margin"       Value="8,4,8,4" />
+        <Setter Property="Padding"      Value="8,4,8,4" />
+        <Setter Property="FontWeight"   Value="Bold" />
+    </Style>
+
+    <Style TargetType="{x:Type Button}"
+           x:Key="Styles.Button.Image"
+           BasedOn="{StaticResource Styles.Button}">
+        <Setter Property="HorizontalAlignment"  Value="Center" />
+        <Setter Property="VerticalAlignment"    Value="Center" />
+        <Setter Property="Margin"               Value="2" />
+        <Setter Property="Padding"              Value="2" />
+        <Setter Property="BorderThickness"      Value="1" />
+        <Setter Property="MinHeight"            Value="22" />
+        <Setter Property="MinWidth"             Value="22" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="true">
+
+                        <Image Source="{Binding Path=(behaviors:ButtonBehaviors.Image), RelativeSource={RelativeSource TemplatedParent}}"
+                               Height="{Binding Path=(behaviors:ButtonBehaviors.ImageHeight), RelativeSource={RelativeSource TemplatedParent}}"
+                               Width="{Binding Path=(behaviors:ButtonBehaviors.ImageWidth), RelativeSource={RelativeSource TemplatedParent}}"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#FFA1A1A1"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFFDFDFD" />
+                            <Setter Property="BorderBrush" Value="#266Fa0"/>
+                            <Setter Property="Foreground" Value="#266Fa0"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#266Fa0" />
+                            <Setter Property="BorderBrush" Value="#266Fa0"/>
+                            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- 
+            Styles.Button.ImageOnly
+                Button with image
+                All button features removed (border, mouse over highlight etc.)
+    
+    -->
+    <Style TargetType="{x:Type Button}"
+           x:Key="Styles.Button.ImageOnly"
+           BasedOn="{StaticResource Styles.Button}">
+        <Setter Property="HorizontalAlignment"  Value="Center" />
+        <Setter Property="VerticalAlignment"    Value="Center" />
+        <Setter Property="Margin"               Value="2" />
+        <Setter Property="Padding"              Value="2" />
+        <Setter Property="MinHeight"            Value="16" />
+        <Setter Property="MinWidth"             Value="16" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                        <Image Source="{Binding Path=(behaviors:ButtonBehaviors.Image), RelativeSource={RelativeSource TemplatedParent}}"
+                               Width="{TemplateBinding Width}"
+                               Height="{TemplateBinding Height}"
+                               Margin="{TemplateBinding Padding}"
+                               MinWidth="{TemplateBinding MinWidth}"
+                               MinHeight="{TemplateBinding MinHeight}"
+                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        </Image>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="Styles.Button.TextBoxAction.Clear"
+           TargetType="{x:Type ButtonBase}">
+        <Setter Property="FocusVisualStyle"             Value="{x:Null}"/>
+        <Setter Property="Background"                   Value="#FFFFFFFF"/>
+        <Setter Property="BorderBrush"                  Value="Transparent"/>
+        <Setter Property="BorderThickness"              Value="1,0,0,0"/>
+        <Setter Property="Foreground"                   Value="#266Fa0"/>
+        <Setter Property="HorizontalContentAlignment"   Value="Center"/>
+        <Setter Property="VerticalContentAlignment"     Value="Center"/>
+        <Setter Property="VerticalAlignment"            Value="Stretch" />
+        <Setter Property="HorizontalAlignment"          Value="Right" />
+        <Setter Property="Padding"                      Value="4,0,4,1"/>
+        <Setter Property="Margin"                       Value="-1, 1, 1, 1" />
+        <Setter Property="Content"                      Value="x" />
+        <Setter Property="FocusVisualStyle"             Value="{StaticResource Styles.FocusVisual}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Border Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="true">
+
+                        <ContentPresenter Name="ContentPresenter"
+                                          Margin="{TemplateBinding Padding}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="#FFA1A1A1"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFFDFDFD" />
+                            <Setter Property="BorderBrush" Value="#266Fa0"/>
+                            <Setter Property="Foreground" Value="#266Fa0"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#266Fa0" />
+                            <Setter Property="BorderBrush" Value="#266Fa0"/>
+                            <Setter Property="Foreground" Value="#FFFFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

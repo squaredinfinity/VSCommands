@@ -9,6 +9,8 @@
     <Import_RootNamespace>SquaredInfinity.VSCommands.Features</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AttachTo\AttachToView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AttachTo\AttachToViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\ClassificationDefinitions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassfierProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassifier.cs" />
@@ -25,6 +27,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)XamlResources.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)AttachTo\AttachToView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

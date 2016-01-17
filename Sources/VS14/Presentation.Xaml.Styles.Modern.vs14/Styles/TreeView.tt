@@ -1,0 +1,40 @@
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ include file="../_Global.tt" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".xaml" #>
+
+  <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:behaviors="http://schemas.squaredinfinity.com/foundation/behaviors">
+    
+    <Style x:Key="Styles.TreeView"
+           TargetType="{x:Type TreeView}">
+        <Setter Property="BorderThickness"                                          Value="0" />
+        <Setter Property="Background"                                               Value="Transparent" />
+        <Setter Property="behaviors:TreeView.PreventAutomaticHorizontalScrolling"   Value="True" />
+        <Setter Property="behaviors:TreeView.PreventAutomaticVerticalScrolling"     Value="True" />
+        <Setter Property="UseLayoutRounding"                                        Value="True" />
+    </Style>
+
+    <Style x:Key="Styles.TreeView.MultiSelection"
+           TargetType="{x:Type TreeView}">
+        <Setter Property="BorderThickness"                                          Value="0" />
+        <Setter Property="Background"                                               Value="Transparent" />
+        <Setter Property="behaviors:TreeView.AllowMultiSelection"                   Value="True" />
+        <Setter Property="behaviors:TreeView.PreventAutomaticHorizontalScrolling"   Value="True" />
+        <Setter Property="behaviors:TreeView.PreventAutomaticVerticalScrolling"     Value="True" />
+    </Style>
+
+    <Style x:Key="Styles.TreeView.Expanded"
+           TargetType="{x:Type TreeView}"
+           BasedOn="{StaticResource Styles.TreeView}">
+        <Setter Property="BorderThickness"      Value="0" />
+        <Setter Property="Background"           Value="Transparent" />
+        <Setter Property="ItemContainerStyle"   Value="{DynamicResource Styles.TreeViewItem.Expanded}" />
+    </Style>
+
+</ResourceDictionary>

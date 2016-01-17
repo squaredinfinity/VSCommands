@@ -1,0 +1,45 @@
+﻿
+             
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+
+        <SharedResourceDictionary DictionaryName="Foundation.Converters" />
+        <SharedResourceDictionary DictionaryName="Foundation.DataTemplateSelectors" />
+
+        <SharedResourceDictionary DictionaryName="Foundation.Brushes"
+                                  Source="{ResourceFromThisAssembly Brushes.xaml}"/>
+
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/Button.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/CheckBox.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/ComboBox.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/Expander.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/FocusVisual.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/GridViewColumnHeader.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/GridViewColumnHeaderGripper.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/GroupBox.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/Hyperlink.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/Label.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/ListBox.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/ListView.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/ListViewItem.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/RadioButton.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/ScrollBar.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/TabControl.xaml}" />
+        <!--<ResourceDictionary Source="{ResourceFromThisAssembly /Styles/TabularDataGridView.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/TabularDataGridView.CellValueTemplate.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/TabularDataGridView.CellTemplate.xaml}" />-->
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/TextBlock.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/TextBox.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/ToggleButton.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/TreeView.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/TreeViewItem.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/Window.xaml}" />
+
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/Menu.xaml}" />
+        <ResourceDictionary Source="{ResourceFromThisAssembly /Styles/MenuItem.xaml}" />
+        
+        <!--<ResourceDictionary Source="{ResourceFromThisAssembly /Styles/Ribbon.RibbonApplicationMenu.xaml}" />-->
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

@@ -1,0 +1,53 @@
+﻿<local:ModernWindow x:Class="SquaredInfinity.Foundation.Presentation.Xaml.Styles.Modern.Windows.DefaultDialogWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:local="clr-namespace:SquaredInfinity.Foundation.Presentation.Xaml.Styles.Modern.Windows"
+                      IsDialog="true"
+                      ShowInTaskbar="True"
+                      SizeToContent="WidthAndHeight"
+                      ResizeMode="CanResizeWithGrip"
+                      Style="{StaticResource Styles.ModernWindow}"
+                      WindowStartupLocation="CenterScreen"
+                      Background="{StaticResource Brushes.Control.Background}"
+                      Title="{Binding HostedViewModel.Title,  RelativeSource={RelativeSource Self}}"
+                      MinWidth="300"
+                      MinHeight="200"
+                      x:Name="root">
+    <Grid VerticalAlignment="Stretch"
+          HorizontalAlignment="Stretch"
+          Margin="25,0,25,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" AutomationProperties.Name="Content" />
+            <RowDefinition Height="5" AutomationProperties.Name="Spacing" />
+            <RowDefinition Height="Auto" AutomationProperties.Name="Controls" />
+        </Grid.RowDefinitions>
+
+        <ContentPresenter x:Name="PART_content_presenter"
+                          Grid.Row="0"
+                          Content="{Binding HostedView, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                          VerticalAlignment="Stretch"
+                          HorizontalAlignment="Stretch"/>
+
+        <Border Grid.Row="2">
+            <Grid HorizontalAlignment="Right">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" AutomationProperties.Name="OK" />
+                    <ColumnDefinition Width="Auto" AutomationProperties.Name="Cancel" />
+                </Grid.ColumnDefinitions>
+
+                <Button Content="OK"
+                        Grid.Column="0"
+                        Margin="2"
+                        IsDefault="True"
+                        Command="{CommandMethodBinding CompleteInteraction, Source=@root.HostedViewModel}" />
+
+                <Button Content="Cancel"
+                        Grid.Column="1"
+                        Margin="2"
+                        IsCancel="True"
+                        Command="{CommandMethodBinding CancelInteraction, Source=@root.HostedViewModel}"/>
+            </Grid>
+        </Border>
+    </Grid>
+</local:ModernWindow>

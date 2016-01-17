@@ -1,0 +1,190 @@
+<#@ import namespace="System.IO" #>
+<#
+
+	// # Fonts
+	var fontFamily = "Segoe UI";
+	var fontSize = 11;
+
+	var fontFamily_header = "Segoe UI";
+	var fontSize_header = 11;
+
+	var fontsize_columnheader = 11;
+
+	var fontFamily_fixed = "Consolas";
+	var fontSize_fixed = 13.333;
+
+	// # Brand Colors
+
+	// .. add custom colors and then override predefined colors below
+
+
+	// # Accent Colors
+	
+	var accent				= "#266Fa0";
+	var accent_subtle		= "#464F80";
+	var accent_verysubtle	= "#BDC3FB";
+
+	// # Base Colors
+
+	var white   = "#FFFFFFFF";
+	var red		= "#B00000";
+	var green	= "#006300";
+	var blue	= "#0000BE";
+	var pink	= "#CD006A";
+
+	var success = "#FF194D19";
+	var warning = "#FFFFAE00";
+	var error	= "#FFB00000";
+
+	var generate_colors_and_brushes_for_controls = true;
+
+	// # Control States
+
+	var hover = accent;
+	var pressed = accent_subtle;
+
+	// # Text
+
+	var text			= "#FF000000";
+	var text_subtle		= "#FF5C5C5C";
+	var text_verysubtle		= "#FF999999";
+
+	var text_emphasis	= accent;
+
+	var watermark = text_verysubtle;
+
+	var hyperlink_text			= accent;
+	var hyperlink_hover_text	= red;
+	var hyperlink_pressed_text	= red;
+
+	// # Base Control Colors
+
+	var control_background = white;
+	var control_border = "#CCCEDB";
+	var control_text = text;
+
+	var control_hover_background = "#FFFDFDFD";
+	var control_hover_border = accent;
+	var control_hover_text = accent;
+
+	var control_pressed_background = accent;
+	var control_pressed_border = accent;
+	var control_pressed_text = white;
+
+	var control_disabled_background = "#FFCCCCCC";
+	var control_disabled_border = white;
+	var control_disabled_text = "#FFA1A1A1";
+
+	var control_focused_background = control_background;
+	var control_focused_border = accent;
+	var control_focused_text = control_text;
+
+	//# Input Controls
+
+	var input_background = control_background;
+	var input_border = "#FFC0C0C0";
+	var input_text = "#FF333333";
+
+	var input_hover_background = control_background;
+	var input_hover_border = "#FF999999";
+	var input_hover_text = "#FF333333";
+
+	var input_disabled_background = control_background;
+	var input_disabled_border = control_disabled_border;
+	var input_disabled_text = "#FF919191";
+
+	// # List Controls
+
+	var listitem_background = control_background;
+	var listitem_border = "#FFBABABA";
+	var listitem_text = "#FF333333";
+
+	var listitem_selected_background = accent;
+	var listitem_selected_border = accent;
+	var listitem_selected_text = "#FFF6F6F6";
+
+	var listitem_selectedinactive_background = "#E2D1FF";
+	var listitem_selectedinactive_border = "#E2D1FF";
+	var listitem_selectedinactive_text = "#FF333333";
+
+	var listitem_hover_background = "#FFDDDDDD";
+	var listitem_hover_border = "#FFBABABA";
+	var listitem_hover_text = "#FF333333";
+
+	var listitem_disabled_background = "#FFBABABA";
+	var listitem_disabled_border = "#FFBABABA";
+	var listitem_disabled_text = "#717171";
+
+
+	var listitem_even_background = "#FFFFFF";
+	var listitem_odd_background = "#F4EDFF";
+
+	var columnheader_background = control_background;
+	var columnheader_border = control_text;
+	var columnheader_text = control_text;
+
+
+	// # Windows
+
+	var windowbutton_background = "Transparent";
+	var windowbutton_border = "DeepPink";
+	var windowbutton_text = "#FF000000";
+
+	var windowbutton_hover_background = accent;
+	var windowbutton_hover_border = "#FF000000";
+	var windowbutton_hover_text = "#FFFFFF";
+
+	var windowbutton_pressed_background = "#DD052C";
+	var windowbutton_pressed_border = "DeepPink";
+	var windowbutton_pressed_text = "#FFFFFF";
+
+	// # Scroll Bars
+
+	var scrollbar_background = "#FFE8E8EC";
+	var scrollbar_border = "#FFE8E8EC";
+	var scrollbar_thumb = "#FF949494";
+	var scrollbar_arrow = "#FF000000";
+	
+	var scrollbar_hover_thumb = hover;
+	var scrollbar_hover_arrow = hover;
+
+	var scrollbar_pressed_thumb = pressed;
+	var scrollbar_pressed_arrow = pressed;
+
+	var scrollbar_disabled_thumb = "#FFBABABA";
+	var scrollbar_disabled_arrow = "#FFBABABA";
+
+	// # Combo Box
+
+	var combobox_popup_background	= "#FFFFFFFF";
+	var combobox_popup_border		= "#FFBABABA";
+
+	var tabitem_selected_background = "#FFFFFF";
+	var tabitem_selected_border		= "#CCCEDB";
+	var tabitem_selected_text		= accent;
+
+	var tabitem_hover_background	= "Transparent";
+	var tabitem_hover_border		= "Transparent";
+	var tabitem_hover_text			= accent;
+
+
+	//# Grid Splitter
+
+	var gridsplitter_background = "#FFEAEAEA";
+	
+	//# Window
+	 
+	var window_background = "#FFFFFFFF";
+
+	//# Ribbon
+
+	var ribbon_background	= "#FFFFFFFF";
+	var ribbon_border		= "#FFBABABA";
+
+	//# Menu
+
+	var menu_background = "#FFFFFFFF";
+	var menu_foreground = "#FF000000";
+	var menu_border		= "#FFBABABA";
+
+#>

@@ -1,0 +1,255 @@
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" 
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+
+	<!-- # TEXT --> 
+
+    <FontFamily x:Key="FontFamily">Segoe UI</FontFamily>    
+    <sys:Double x:Key="FontSize">11</sys:Double>
+
+    <FontFamily x:Key="FontFamily.Header">Segoe UI</FontFamily>
+    <sys:Double x:Key="FontSize.Header">11</sys:Double>
+
+    <sys:Double x:Key="FontSize.List.ColumnHeader">11</sys:Double>
+    
+    <FontFamily x:Key="FontFamily.Fixed">Consolas</FontFamily>
+    <sys:Double x:Key="FontSize.Fixed">13.333</sys:Double>
+
+    <Color x:Key="Colors.Text">			#FF000000</Color>
+    <Color x:Key="Colors.Text.Subtle">	#FF5C5C5C</Color>
+    <Color x:Key="Colors.Text.Emphasis">#266Fa0</Color>
+    <SolidColorBrush x:Key="Brushes.Text"			Color="#FF000000"			po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Text.Subtle"	Color="#FF5C5C5C"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Text.Emphasis"	Color="#266Fa0"	po:Freeze="True" />
+
+	<!-- # BASE COLORS -->
+
+    <Color x:Key="Colors.Text.Red">		#B00000</Color>
+    <Color x:Key="Colors.Text.Green">	#006300</Color>
+    <Color x:Key="Colors.Text.Blue">	#0000BE</Color>
+    <Color x:Key="Colors.Text.Pink">	#CD006A</Color>
+
+    <SolidColorBrush x:Key="Brushes.Text.Red"	Color="#B00000"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Text.Green" Color="#006300"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Text.Blue"	Color="#0000BE"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Text.Pink"	Color="#CD006A"	po:Freeze="True" />
+
+	<!-- # ACCENT COLORS -->
+
+    <Color x:Key="Colors.Accent">			#266Fa0</Color>
+    <Color x:Key="Colors.Accent.Subtle">	#464F80</Color>
+    <Color x:Key="Colors.Accent.VerySubtle">#BDC3FB</Color>
+    <SolidColorBrush x:Key="Brushes.Accent"				Color="#266Fa0"				po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Accent.Subtle"		Color="#464F80"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Accent.VerySubtle"  Color="#BDC3FB"	po:Freeze="True" />
+
+    <Color x:Key="Colors.Success">	#FF194D19</Color>
+    <Color x:Key="Colors.Warning">	#FFFFAE00</Color>
+    <Color x:Key="Colors.Error">	#FFB00000</Color>
+   
+    <SolidColorBrush x:Key="Brushes.Success"     Color="#FF194D19"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Warning"     Color="#FFFFAE00"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Error"       Color="#FFB00000"		po:Freeze="True" />
+
+		<!-- # CONTROLS -->
+	
+	<!-- (control).(?state).(property|part) -->
+    <!-- accents applied on presses to backgrounds and borders -->
+
+    <Color x:Key="Colors.OverlayWindow.Background">#FFFFFF</Color>
+    <Color x:Key="Colors.OverlayWindow.Border">#FF9F9FA2</Color>
+    <SolidColorBrush x:Key="Brushes.OverlayWindow.Background"    Color="#FFFFFF" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.OverlayWindow.Border"        Color="#FF9F9FA2" po:Freeze="True" />
+
+    <Color x:Key="Colors.Hyperlink.Text">			#266Fa0</Color>
+    <Color x:Key="Colors.Hyperlink.Hover.Text">		#B00000</Color>
+    <Color x:Key="Colors.Hyperlink.Pressed.Text">	#B00000</Color>
+    <SolidColorBrush x:Key="Brushes.Hyperlink.Text"          Color="#266Fa0"			po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Hyperlink.Hover.Text"    Color="#B00000"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Hyperlink.Pressed.Text"  Color="#B00000"	po:Freeze="True" />
+
+    <Color x:Key="Colors.ColumnHeader.Background">	#FFFFFFFF</Color>
+    <Color x:Key="Colors.ColumnHeader.Border">		#FF000000</Color>
+    <Color x:Key="Colors.ColumnHeader.Text">		#FF000000</Color>
+    <SolidColorBrush x:Key="Brushes.ColumnHeader.Background"  Color="#FFFFFFFF"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ColumnHeader.Border"      Color="#FF000000"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ColumnHeader.Text"        Color="#FF000000"		po:Freeze="True" />
+
+    <Color x:Key="Colors.Control.Background">	#FFFFFFFF</Color>
+    <Color x:Key="Colors.Control.Border">		#CCCEDB</Color>
+    <Color x:Key="Colors.Control.Text">			#FF000000</Color>
+    <SolidColorBrush x:Key="Brushes.Control.Background"  Color="#FFFFFFFF"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Control.Border"      Color="#CCCEDB"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Control.Text"        Color="#FF000000"			po:Freeze="True" />
+
+    <Color x:Key="Colors.Control.Hover.Background">	#FFFDFDFD</Color>
+    <Color x:Key="Colors.Control.Hover.Border">		#266Fa0</Color>
+    <Color x:Key="Colors.Control.Hover.Text">		#266Fa0</Color>
+    <SolidColorBrush x:Key="Brushes.Control.Hover.Background"  Color="#FFFDFDFD"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Control.Hover.Border"      Color="#266Fa0"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Control.Hover.Text"        Color="#266Fa0"			po:Freeze="True" />
+
+    <Color x:Key="Colors.Control.Pressed.Background">	#266Fa0</Color>
+    <Color x:Key="Colors.Control.Pressed.Border">		#266Fa0</Color>
+    <Color x:Key="Colors.Control.Pressed.Text">			#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="Brushes.Control.Pressed.Background"  Color="#266Fa0"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Control.Pressed.Border"      Color="#266Fa0"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Control.Pressed.Text"        Color="#FFFFFFFF"			po:Freeze="True" />
+
+    <Color x:Key="Colors.Control.Disabled.Background">#FFCCCCCC</Color>
+    <Color x:Key="Colors.Control.Disabled.Border">#FFFFFFFF</Color>
+    <Color x:Key="Colors.Control.Disabled.Text">#FFA1A1A1</Color>
+    <SolidColorBrush x:Key="Brushes.Control.Disabled.Background"  Color="#FFCCCCCC" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Control.Disabled.Border"      Color="#FFFFFFFF" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Control.Disabled.Text"        Color="#FFA1A1A1" po:Freeze="True" />
+
+    <Color x:Key="Colors.Control.Control.Focused.Border">#502D7F</Color>
+    <SolidColorBrush x:Key="Brushes.Control.Focused.Border" Color="#502D7F" po:Freeze="True" />
+
+    <Color x:Key="Colors.Input.Background">	#FFFFFFFF</Color>
+    <Color x:Key="Colors.Input.Border">		#FFC0C0C0</Color>
+    <Color x:Key="Colors.Input.Text">		#FF333333</Color>
+    <SolidColorBrush x:Key="Brushes.Input.Background"  Color="#FFFFFFFF"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Input.Border"      Color="#FFC0C0C0"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Input.Text"        Color="#FF333333"			po:Freeze="True" />
+
+    <Color x:Key="Colors.Input.Hover.Background">	#FFFFFFFF</Color>
+    <Color x:Key="Colors.Input.Hover.Border">		#FF999999</Color>
+    <Color x:Key="Colors.Input.Hover.Text">			#FF333333</Color>
+    <SolidColorBrush x:Key="Brushes.Input.Hover.Background"  Color="#FFFFFFFF"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Input.Hover.Border"      Color="#FF999999"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Input.Hover.Text"        Color="#FF333333"			po:Freeze="True" />
+
+    <Color x:Key="Colors.Input.Disabled.Background">#FFFFFFFF</Color>
+    <Color x:Key="Colors.Input.Disabled.Border">	#FFFFFFFF</Color>
+    <Color x:Key="Colors.Input.Disabled.Text">		#FF919191</Color>
+    <SolidColorBrush x:Key="Brushes.Input.Disabled.Background"  Color="#FFFFFFFF"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Input.Disabled.Border"      Color="#FFFFFFFF"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Input.Disabled.Text"        Color="#FF919191"		po:Freeze="True" />
+
+    <Color x:Key="Colors.ListItem.Background">	#FFFFFFFF</Color>
+    <Color x:Key="Colors.ListItem.Border">		#FFBABABA</Color>
+    <Color x:Key="Colors.ListItem.Text">		#FF333333</Color>
+    <SolidColorBrush x:Key="Brushes.ListItem.Background"  Color="#FFFFFFFF" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Border"      Color="#FFBABABA" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Text"        Color="#FF333333" po:Freeze="True" />
+
+    <Color x:Key="Colors.ListItem.Selected.Background">	#266Fa0</Color>
+    <Color x:Key="Colors.ListItem.Selected.Border">		#266Fa0</Color>
+    <Color x:Key="Colors.ListItem.Selected.Text">		#FFF6F6F6</Color>
+    <SolidColorBrush x:Key="Brushes.ListItem.Selected.Background"  Color="#266Fa0"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Selected.Border"      Color="#266Fa0"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Selected.Text"        Color="#FFF6F6F6"			po:Freeze="True" />
+
+
+    <Color x:Key="Colors.ListItem.Selected-Inactive.Background">#E2D1FF</Color>
+    <Color x:Key="Colors.ListItem.Selected-Inactive.Border">	#E2D1FF</Color>
+    <Color x:Key="Colors.ListItem.Selected-Inactive.Text">		#FF333333</Color>
+    <SolidColorBrush x:Key="Brushes.ListItem.Selected-Inactive.Background"  Color="#E2D1FF"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Selected-Inactive.Border"      Color="#E2D1FF"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Selected-Inactive.Text"        Color="#FF333333"			po:Freeze="True" />
+
+    <Color x:Key="Colors.ListItem.Hover.Background">#FFDDDDDD</Color>
+    <Color x:Key="Colors.ListItem.Hover.Border">	#FFBABABA</Color>
+    <Color x:Key="Colors.ListItem.Hover.Text">		#FF333333</Color>
+    <SolidColorBrush x:Key="Brushes.ListItem.Hover.Background"  Color="#FFDDDDDD"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Hover.Border"      Color="#FFBABABA"		po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Hover.Text"        Color="#FF333333"		po:Freeze="True" />
+
+    <Color x:Key="Colors.ListItem.Odd.Background">	#F4EDFF</Color>
+    <Color x:Key="Colors.ListItem.Even.Background">	#FFFFFF</Color>
+    <SolidColorBrush x:Key="Brushes.ListItem.Odd.Background"    Color="#F4EDFF"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Even.Background"   Color="#FFFFFF"	po:Freeze="True" />
+
+    <Color x:Key="Colors.ListItem.Disabled.Background">#FFBABABA</Color>
+    <Color x:Key="Colors.ListItem.Disabled.Border">#FFBABABA</Color>
+    <Color x:Key="Colors.ListItem.Disabled.Text">#717171</Color>
+    <SolidColorBrush x:Key="Brushes.ListItem.Disabled.Background"  Color="#FFBABABA" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Disabled.Border"      Color="#FFBABABA" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ListItem.Disabled.Text"        Color="#717171" po:Freeze="True" />
+
+	<!-- # SCROLL BAR -->
+
+	<Color x:Key="Colors.ScrollBar.Background">	#FFE8E8EC</Color>
+    <Color x:Key="Colors.ScrollBar.Border">		#FFE8E8EC</Color>
+    <Color x:Key="Colors.ScrollBar.Thumb">		#FF949494</Color>
+	<Color x:Key="Colors.ScrollBar.Arrow">		#FF000000</Color>
+	<SolidColorBrush x:Key="Brushes.ScrollBar.Background"	Color="#FFE8E8EC"	po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ScrollBar.Border"       Color="#FFE8E8EC"		po:Freeze="True" />
+	<SolidColorBrush x:Key="Brushes.ScrollBar.Thumb"        Color="#FF949494"		po:Freeze="True" />
+	<SolidColorBrush x:Key="Brushes.ScrollBar.Arrow"        Color="#FF000000"		po:Freeze="True" />
+
+    <Color x:Key="Colors.ScrollBar.Hover.Thumb">#266Fa0</Color>
+	<Color x:Key="Colors.ScrollBar.Hover.Arrow">#266Fa0</Color>
+	<SolidColorBrush x:Key="Brushes.ScrollBar.Hover.Thumb"    Color="#266Fa0" po:Freeze="True" />
+	<SolidColorBrush x:Key="Brushes.ScrollBar.Hover.Arrow"    Color="#266Fa0" po:Freeze="True" />
+
+    <Color x:Key="Colors.ScrollBar.Pressed.Thumb">#464F80</Color>
+	<Color x:Key="Colors.ScrollBar.Pressed.Arrow">#464F80</Color>
+	<SolidColorBrush x:Key="Brushes.ScrollBar.Pressed.Thumb"  Color="#464F80" po:Freeze="True" />
+	<SolidColorBrush x:Key="Brushes.ScrollBar.Pressed.Arrow"  Color="#464F80" po:Freeze="True" />
+
+    <Color x:Key="Colors.ScrollBar.Disabled.Thumb">#FFBABABA</Color>
+	<Color x:Key="Colors.ScrollBar.Disabled.Arrow">#FFBABABA</Color>
+    <SolidColorBrush x:Key="Brushes.ScrollBar.Disabled.Thumb" Color="#FFBABABA" po:Freeze="True" />
+	<SolidColorBrush x:Key="Brushes.ScrollBar.Disabled.Arrow" Color="#FFBABABA" po:Freeze="True" />
+
+    <Color x:Key="Colors.ComboBox.Popup.Background">#FFBABABA</Color>
+    <Color x:Key="Colors.ComboBox.Popup.Border">#FFBABABA</Color>
+    <SolidColorBrush x:Key="Brushes.ComboBox.Popup.Background"  Color="#FFFFFFFF" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.ComboBox.Popup.Border"      Color="#FF333333" po:Freeze="True" />
+
+
+    <Color x:Key="Colors.TabItem.Selected.Background">#FFFFFF</Color>
+    <Color x:Key="Colors.TabItem.Selected.Border">#CCCEDB</Color>
+    <Color x:Key="Colors.TabItem.Selected.Text">#502D7F</Color>
+    <SolidColorBrush x:Key="Brushes.TabItem.Selected.Background"  Color="#FFFFFF" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.TabItem.Selected.Border"      Color="#CCCEDB" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.TabItem.Selected.Text"        Color="#502D7F" po:Freeze="True" />
+
+    <Color x:Key="Colors.TabItem.Hover.Background">Transparent</Color>
+    <Color x:Key="Colors.TabItem.Hover.Border">Transparent</Color>
+    <Color x:Key="Colors.TabItem.Hover.Text">#502D7F</Color>
+    <SolidColorBrush x:Key="Brushes.TabItem.Hover.Background"  Color="Transparent" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.TabItem.Hover.Border"      Color="Transparent" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.TabItem.Hover.Text"        Color="#502D7F" po:Freeze="True" />
+
+    <Color x:Key="Colors.GridSplitter.Background">#FFEAEAEA</Color>
+    <SolidColorBrush x:Key="Brushes.GridSplitter.Background"  Color="#FFEAEAEA" po:Freeze="True" />
+
+    <Color x:Key="Colors.Window.Button.Foreground">#FF000000</Color>
+    <Color x:Key="Colors.Window.Button.Background">Transparent</Color>
+    <SolidColorBrush x:Key="Brushes.Window.Button.Foreground"  Color="#FF000000" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Window.Button.Background"  Color="Transparent" po:Freeze="True" />
+
+
+    <Color x:Key="Colors.Window.Button.Pressed.Background">#DD052C</Color>
+    <SolidColorBrush x:Key="Brushes.Window.Button.Pressed.Background"  Color="#DD052C" po:Freeze="True" />
+
+    <Color x:Key="Colors.Window.Button.Hover.Background">#502D7F</Color>
+    <Color x:Key="Colors.Window.Button.Hover.Foreground">#FFFFFF</Color>
+    <SolidColorBrush x:Key="Brushes.Window.Button.Hover.Background"  Color="#502D7F" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Window.Button.Hover.Foreground"  Color="#FFFFFF" po:Freeze="True" />
+
+
+    <Color x:Key="Colors.Window.Background">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="Brushes.Window.Background"  Color="#FFFFFFFF" po:Freeze="True" />
+
+    <Color x:Key="Colors.Ribbon.Background">#FFFFFFFF</Color>
+    <Color x:Key="Colors.Ribbon.Border">#FFBABABA</Color>
+    <SolidColorBrush x:Key="Brushes.Ribbon.Background"  Color="#FFFFFFFF" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Ribbon.Border"  Color="#FFBABABA" po:Freeze="True" />
+
+
+    <Color x:Key="Colors.Menu.Background">#FFFFFFFF</Color>
+    <Color x:Key="Colors.Menu.Foreground">#FF000000</Color>
+    <Color x:Key="Colors.Menu.Border">#FFBABABA</Color>
+    <SolidColorBrush x:Key="Brushes.Menu.Background"  Color="#FFFFFFFF" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Menu.Foreground"  Color="#FF000000" po:Freeze="True" />
+    <SolidColorBrush x:Key="Brushes.Menu.Border"  Color="#FFBABABA" po:Freeze="True" />
+
+	
+</ResourceDictionary>

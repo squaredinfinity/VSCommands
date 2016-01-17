@@ -1,0 +1,270 @@
+
+
+
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:windows="clr-namespace:SquaredInfinity.Foundation.Presentation.Xaml.Styles.Modern.Windows"
+                    xmlns:behaviors="http://schemas.squaredinfinity.com/foundation/behaviors">
+
+    <Style x:Key="Styles.Window.Button"
+           TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="#FF000000" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter x:Name="contentPresenter"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Margin="{TemplateBinding Padding}"
+                                          RecognizesAccessKey="True" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#266Fa0" />
+                            <Setter Property="Foreground" Value="#FFFFFF" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#DD052C" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="contentPresenter" Property="Opacity" Value=".5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+        <Style x:Key="Styles.ModernWindow"
+               TargetType="windows:ModernWindow">
+        <Setter Property="Foreground" Value="#FF000000" />
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+            <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="Margin" Value="0" />
+		<Setter Property="TextBlock.Foreground" Value="#FF000000" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome CornerRadius="0" GlassFrameThickness="1" UseAeroCaptionButtons="False" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="windows:ModernWindow">
+                    <Border x:Name="WindowBorder" 
+							BorderThickness="1"
+                            BorderBrush="Black"
+                            Margin="{Binding Source={x:Static SystemParameters.WindowNonClientFrameThickness}}" 
+                            Background="#FFFFFFFF">
+                        <Grid>
+                            <Border BorderThickness="1">
+                                <AdornerDecorator>
+                                    <Grid x:Name="LayoutRoot">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" AutomationProperties.Name="Content" />
+                                            <RowDefinition Height="15" />
+                                        </Grid.RowDefinitions>
+                                        
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" AutomationProperties.Name="Icon" />
+                                            <ColumnDefinition Width="*" AutomationProperties.Name="Title" />
+                                            <ColumnDefinition Width="Auto" AutomationProperties.Name="TitleBarAdditionalContent" />
+                                            <ColumnDefinition Width="Auto" AutomationProperties.Name="Buttons" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!--# Title Bar Background -->
+                                        <Rectangle x:Name="HeaderBackground" 
+                                                   Fill="#FFFFFFFF"
+                                                   VerticalAlignment="Stretch"
+                                                   Grid.Row="0"/>
+
+                                        <Image Source="{TemplateBinding Icon}"
+                                               x:Name="icon"
+                                               VerticalAlignment="Center" 
+                                               HorizontalAlignment="Left"
+                                               Grid.Column="0"
+                                               Grid.Row="0"
+                                               Margin="5,4,2,2"
+                                               Width="16"
+                                               Height="16" />
+
+                                        <TextBlock x:Name="window_title"
+                                                   Text="{TemplateBinding Title}"
+                                                   TextTrimming="CharacterEllipsis" 
+                                                   VerticalAlignment="Center" 
+                                                   HorizontalAlignment="{TemplatedParentBinding TitleHorizontalAlignment}"
+                                                   Margin="4,4,2,2"  
+                                                   FontSize="12"
+                                                   Foreground="{TemplateBinding Foreground}"
+                                                   Grid.Column="1"
+                                                   Grid.Row="0"/>
+
+                                        <!--# Title Bar Additional Content -->
+                                        <ContentPresenter Content="{TemplatedParentBinding TitleBarAdditionalContent}"
+                                                 x:Name="title_bar_additional_content"
+                                                 Grid.Row="0"
+                                                 Grid.Column="2"
+                                                 VerticalAlignment="Center" />
+
+                                        <!--# Buttons-->
+                                        <StackPanel Orientation="Horizontal" 
+                                                    HorizontalAlignment="Right"
+                                                    VerticalAlignment="Top" 
+                                                    x:Name="window_buttons"
+                                                    WindowChrome.IsHitTestVisibleInChrome="True" 
+                                                    Grid.Column="3"
+                                                    Grid.Row="0">
+
+                                            <Button Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}" 
+                                                        ToolTip="Minimize" 
+                                                        Style="{StaticResource Styles.Window.Button}">
+                                                <Button.Content>
+                                                    <Grid Width="30" 
+                                                              Height="25" 
+                                                              RenderTransform="1,0,0,1,0,1">
+                                                        <Path Data="M0,6 L8,6 Z"
+                                                                  Width="8" 
+                                                                  Height="7" 
+                                                                  VerticalAlignment="Center" 
+                                                                  HorizontalAlignment="Center"
+                                                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" 
+                                                                  StrokeThickness="2"  />
+                                                    </Grid>
+                                                </Button.Content>
+                                            </Button>
+                                            
+                                            <Grid Margin="1,0,1,0">
+                                                <Button x:Name="Restore" 
+                                                            Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}" 
+                                                            ToolTip="Restore" 
+                                                            Visibility="Collapsed" 
+                                                            Style="{StaticResource Styles.Window.Button}">
+                                                    <Button.Content>
+                                                        <Grid Width="30"
+                                                                  Height="25"
+                                                                  UseLayoutRounding="True" 
+                                                                  RenderTransform="1,0,0,1,.5,.5">
+                                                            <Path Data="M2,0 L8,0 L8,6 M0,3 L6,3 M0,2 L6,2 L6,8 L0,8 Z" 
+                                                                      Width="8"
+                                                                      Height="8"
+                                                                      VerticalAlignment="Center" 
+                                                                      HorizontalAlignment="Center"
+                                                            Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" 
+                                                                      StrokeThickness="1"  />
+                                                        </Grid>
+                                                    </Button.Content>
+                                                </Button>
+                                                <Button x:Name="Maximize" 
+                                                            Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}" 
+                                                            ToolTip="Maximize" 
+                                                            Style="{StaticResource Styles.Window.Button}">
+                                                    <Button.Content>
+                                                        <Grid Width="31" 
+                                                                  Height="25">
+                                                            <Path Data="M0,1 L9,1 L9,8 L0,8 Z" 
+                                                                      Width="9" 
+                                                                      Height="8" 
+                                                                      VerticalAlignment="Center" 
+                                                                      HorizontalAlignment="Center"
+                                                            Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" 
+                                                                      StrokeThickness="2"  />
+                                                        </Grid>
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                            <Button Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" 
+                                                        ToolTip="Close"  
+                                                        Style="{StaticResource Styles.Window.Button}">
+                                                <Button.Content>
+                                                    <Grid Width="30" 
+                                                              Height="25"
+                                                              RenderTransform="1,0,0,1,0,1">
+                                                        <Path Data="M0,0 L8,7 M8,0 L0,7 Z"
+                                                                  Width="8" 
+                                                                  Height="7" 
+                                                                  VerticalAlignment="Center" 
+                                                                  HorizontalAlignment="Center"
+                                                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}" 
+                                                                  StrokeThickness="1.5"  />
+                                                    </Grid>
+                                                </Button.Content>
+                                            </Button>
+                                        </StackPanel>
+
+                                        <!--# WINDOW CONTENT -->
+                                        <ContentPresenter Grid.Row="1" 
+                                                          Grid.RowSpan="2" 
+                                                          Grid.Column="0"
+                                                          Grid.ColumnSpan="99"
+                                                          Margin="{TemplateBinding Padding}"/>
+
+                                        <Grid Grid.Row="2"
+                                              Grid.Column="0"
+                                              Grid.ColumnSpan="99">
+                                            <Path x:Name="ResizeGrip"
+                                                      Visibility="Collapsed" 
+                                                      Width="12"
+                                                      Height="12"
+                                                      Margin="1"
+                                                      HorizontalAlignment="Right"
+                                                      Stroke="#266Fa0"
+                                                      StrokeThickness="1" 
+                                                      Stretch="None" 
+                                                      Data="F1 M1,10 L3,10 M5,10 L7,10 M9,10 L11,10 M2,9 L2,11 M6,9 L6,11 M10,9 L10,11 M5,6 L7,6 M9,6 L11,6 M6,5 L6,7 M10,5 L10,7 M9,2 L11,2 M10,1 L10,3" />
+                                        </Grid>
+                                    </Grid>
+                                </AdornerDecorator>
+                            </Border>
+                            <Border BorderBrush="#266Fa0" 
+                                        BorderThickness="1" 
+                                        Visibility="{Binding IsActive, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Converter={StaticResource Converters.VisibleWhenTrue}}" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDialog" Value="true">
+                            <Setter Property="TitleHorizontalAlignment" Value="Center" />
+                            <Setter TargetName="title_bar_additional_content" Property="Visibility" Value="Collapsed" />
+                            
+                            <!-- window title should be centered in dialog mode  -->
+                            <Setter TargetName="window_title" Property="HorizontalAlignment" Value="Center" />
+                            <Setter TargetName="window_title" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="window_title" Property="Grid.ColumnSpan" Value="99" />
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Restore" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="LayoutRoot" Property="Margin" Value="7" />
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Normal">
+                            <Setter TargetName="Maximize" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="Restore" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsActive" Value="False">
+                            <Setter TargetName="window_title" Property="Foreground" Value="DarkGray" />
+                            <Setter TargetName="window_buttons" Property="Opacity" Value=".5" />
+                            <Setter TargetName="icon" Property="Opacity" Value=".5" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ResizeMode" Value="CanResizeWithGrip" />
+                                <Condition Property="WindowState" Value="Normal" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ResizeGrip" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

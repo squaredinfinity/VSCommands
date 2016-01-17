@@ -36,6 +36,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\VsShellPropertyEventsHandler.ShellPropertyChangeEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VisualStudioEvents\VsShellPropertyEventsHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VscServices.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)VscUIService.cs" />
   </ItemGroup>
 </Project>
