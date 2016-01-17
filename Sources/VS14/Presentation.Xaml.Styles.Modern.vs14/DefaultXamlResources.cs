@@ -25,23 +25,28 @@ namespace  SquaredInfinity.Foundation.Presentation.Styles.Modern
             ResourcesManager.LoadAndMergeCompiledResourceDictionaryFromThisAssembly(@"All.xaml");
         }
 
-        public void ApplyAllStyles()
+        public static void ApplyAllStyles()
         {
-            Application.Current.Resources[typeof(Button)] = Application.Current.Resources["Styles.Button"];
-            Application.Current.Resources[typeof(CheckBox)] = Application.Current.Resources["Styles.CheckBox"];
-            Application.Current.Resources[typeof(ComboBox)] = Application.Current.Resources["Styles.ComboBox"];
-            Application.Current.Resources[typeof(Expander)] = Application.Current.Resources["Styles.Expander"];
-            Application.Current.Resources[typeof(Menu)] = Application.Current.Resources["Styles.Menu"];
-            Application.Current.Resources[typeof(MenuItem)] = Application.Current.Resources["Styles.MenuItem"];
-            Application.Current.Resources[typeof(ListView)] = Application.Current.Resources["Styles.ListView"];
-            Application.Current.Resources[typeof(ListViewItem)] = Application.Current.Resources["Styles.ListViewItem"];
-            Application.Current.Resources[typeof(RadioButton)] = Application.Current.Resources["Styles.RadioButton"];
-            Application.Current.Resources[typeof(ScrollBar)] = Application.Current.Resources["Styles.ScrollBar"];
-            Application.Current.Resources[typeof(TabControl)] = Application.Current.Resources["Styles.TabControl"];
-            Application.Current.Resources[typeof(TabItem)] = Application.Current.Resources["Styles.TabItem"];
-            Application.Current.Resources[typeof(TextBox)] = Application.Current.Resources["Styles.TextBox"];
-            Application.Current.Resources[typeof(TextBlock)] = Application.Current.Resources["Styles.TextBlock"];
-            Application.Current.Resources[typeof(Label)] = Application.Current.Resources["Styles.Label"];
+            ApplyAllStyles(Application.Current.Resources);
+        }
+
+        public static void ApplyAllStyles(ResourceDictionary resourceDictionary)
+        { 
+            resourceDictionary[typeof(Button)] = Application.Current.Resources["Styles.Button"];
+            resourceDictionary[typeof(CheckBox)] = Application.Current.Resources["Styles.CheckBox"];
+            resourceDictionary[typeof(ComboBox)] = Application.Current.Resources["Styles.ComboBox"];
+            resourceDictionary[typeof(Expander)] = Application.Current.Resources["Styles.Expander"];
+            resourceDictionary[typeof(Menu)] = Application.Current.Resources["Styles.Menu"];
+            resourceDictionary[typeof(MenuItem)] = Application.Current.Resources["Styles.MenuItem"];
+            resourceDictionary[typeof(ListView)] = Application.Current.Resources["Styles.ListView"];
+            resourceDictionary[typeof(ListViewItem)] = Application.Current.Resources["Styles.ListViewItem"];
+            resourceDictionary[typeof(RadioButton)] = Application.Current.Resources["Styles.RadioButton"];
+            resourceDictionary[typeof(ScrollBar)] = Application.Current.Resources["Styles.ScrollBar"];
+            resourceDictionary[typeof(TabControl)] = Application.Current.Resources["Styles.TabControl"];
+            resourceDictionary[typeof(TabItem)] = Application.Current.Resources["Styles.TabItem"];
+            resourceDictionary[typeof(TextBox)] = Application.Current.Resources["Styles.TextBox"];
+            resourceDictionary[typeof(TextBlock)] = Application.Current.Resources["Styles.TextBlock"];
+            resourceDictionary[typeof(Label)] = Application.Current.Resources["Styles.Label"];
         }
     }
 }
