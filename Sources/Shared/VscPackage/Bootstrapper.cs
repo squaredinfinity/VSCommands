@@ -22,6 +22,8 @@ using SquaredInfinity.VSCommands.Presentation;
 using System.Windows;
 using Microsoft.VisualStudio.Shell;
 using SquaredInfinity.VSCommands.Features.AttachTo;
+using SquaredInfinity.VSCommands.Features.ElevatedPermissions;
+using SquaredInfinity.VSCommands.Features.Presentation.ReferencesSwitch;
 
 namespace SquaredInfinity.VSCommands
 {
@@ -73,6 +75,10 @@ namespace SquaredInfinity.VSCommands
             //# Visual Studio Events Service
             var vs_events_service = container.Resolve<VisualStudioEventsService>();
             container.RegisterInstance<IVisualStudioEventsService>(vs_events_service);
+
+            //# Visual Studio Service
+            var vsService = new VisualStudioService(service_provider);
+            container.RegisterInstance<IVisualStudioService>(vsService);
 
             //# Fonts And Color
             var fonts_and_colors = container.Resolve<VSCFontAndColorDefaultsProvider>();
@@ -162,7 +168,10 @@ namespace SquaredInfinity.VSCommands
             //# Import Xaml Resources
             ResourcesManager.ImportAndLoadAllResources(compositionContainer);
 
-            uiService.ShowDialog(new AttachToView());
+            container.Resolve<ElevatedPermissionsService>().EnsureElevatedPermissions();
+
+            var v = new SwitchSolutionReferencesView();
+            uiService.ShowDialog(v);
         }
     }
 }

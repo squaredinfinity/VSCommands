@@ -49,6 +49,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercurial.vs14", "Sources\V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Xaml.Styles.Modern.vs14", "Sources\VS14\Presentation.Xaml.Styles.Modern.vs14\Presentation.Xaml.Styles.Modern.vs14.csproj", "{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Features.Presentation", "Sources\Shared\Features.Presentation\Features.Presentation.shproj", "{798D8253-73F1-4704-B29F-21E963C15586}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Features.Presentation.vs14", "Sources\VS14\Features.Presentation.vs14\Features.Presentation.vs14.csproj", "{1116A181-4AEE-40B2-A4A9-55646E9A5B70}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Sources\Shared\VscPackage\VscPackage.projitems*{2901cef8-4f81-42b2-8c43-ec450401dc03}*SharedItemsImports = 13
@@ -67,6 +71,9 @@ Global
 		Sources\Shared\Internal\Internal.projitems*{a2626117-c984-4eba-a6cc-b21b7dacac38}*SharedItemsImports = 4
 		Sources\Shared\Presentation\Presentation.projitems*{c386c186-7f2a-4c93-8019-42a79d5ba18f}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{c386c186-7f2a-4c93-8019-42a79d5ba18f}*SharedItemsImports = 4
+		Sources\Shared\Features.Presentation\Features.Presentation.projitems*{1116a181-4aee-40b2-a4a9-55646e9a5b70}*SharedItemsImports = 4
+		Sources\Shared\Internal\Internal.projitems*{1116a181-4aee-40b2-a4a9-55646e9a5b70}*SharedItemsImports = 4
+		Sources\Shared\Features.Presentation\Features.Presentation.projitems*{798d8253-73f1-4704-b29f-21e963c15586}*SharedItemsImports = 13
 		Sources\Shared\Features\Features.projitems*{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}*SharedItemsImports = 4
 		Sources\Shared\Internal\Internal.projitems*{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}*SharedItemsImports = 4
 		Sources\Shared\Features.Infrastructure\Features.Infrastructure.projitems*{99808a53-a739-49c2-9218-7f85473bb426}*SharedItemsImports = 13
@@ -122,6 +129,10 @@ Global
 		{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ABCA53B-4191-40D4-94CF-B8CA37EBB153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1116A181-4AEE-40B2-A4A9-55646E9A5B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1116A181-4AEE-40B2-A4A9-55646E9A5B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1116A181-4AEE-40B2-A4A9-55646E9A5B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1116A181-4AEE-40B2-A4A9-55646E9A5B70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,5 +159,7 @@ Global
 		{26BC7338-53F3-4136-A981-C0F4B6D4D778} = {2D0351FA-AE97-49BD-A8FD-B4834AEB374E}
 		{AFFB7B1A-959A-4B43-A3D0-E29715A387C5} = {C2B50FED-8A11-45B2-A08D-8F6C95B20472}
 		{1ABCA53B-4191-40D4-94CF-B8CA37EBB153} = {5BEC4AAB-6F83-4C33-902A-0C8FFC83AF21}
+		{798D8253-73F1-4704-B29F-21E963C15586} = {54E5175C-CA0E-4C60-B71B-D0DE9674F87A}
+		{1116A181-4AEE-40B2-A4A9-55646E9A5B70} = {5BEC4AAB-6F83-4C33-902A-0C8FFC83AF21}
 	EndGlobalSection
 EndGlobal

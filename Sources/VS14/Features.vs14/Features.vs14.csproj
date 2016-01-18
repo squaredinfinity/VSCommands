@@ -171,8 +171,8 @@
       <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Unsafe.1.1.7-beta022\lib\net45\SquaredInfinity.Foundation.Unsafe.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Win32Api.DotNet45, Version=1.1.7.22, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Win32Api.1.1.7-beta022\lib\net45\SquaredInfinity.Foundation.Win32Api.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Win32Api.DotNet45, Version=1.1.7.23, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Win32Api.1.1.7-beta023\lib\net45\SquaredInfinity.Foundation.Win32Api.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

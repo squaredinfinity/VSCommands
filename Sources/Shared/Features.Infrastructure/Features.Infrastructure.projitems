@@ -9,6 +9,7 @@
     <Import_RootNamespace>SquaredInfinity.VSCommands.Features</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ElevatedPermissions\IElevatedPermissionsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\ISolutionBadgesService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\KnownProperties.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SourceControl\ISourceControlInfoProvider.cs" />

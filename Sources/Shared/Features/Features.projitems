@@ -11,9 +11,13 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AttachTo\AttachToView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AttachTo\AttachToViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ElevatedPermissions\ElevatedPermissionsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ElevatedPermissions\ElevationRequiredView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ElevatedPermissions\ElevationRequiredViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\ClassificationDefinitions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassfierProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ReferencesSwitch\ReferencesSwitchService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\CurrentVSStateInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgesService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgeView.cs" />
@@ -28,6 +32,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)AttachTo\AttachToView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)ElevatedPermissions\ElevationRequiredView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

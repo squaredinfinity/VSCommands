@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1116A181-4AEE-40B2-A4A9-55646E9A5B70}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SquaredInfinity.Features.Presentation</RootNamespace>
+    <AssemblyName>SquaredInfinity.Features.Presentation.vs14</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.22, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta022\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SquaredInfinity.Foundation.Presentation.Xaml.DotNet45, Version=1.1.7.26, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Presentation.Xaml.1.1.7-beta026\lib\net45\SquaredInfinity.Foundation.Presentation.Xaml.DotNet45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Features.Infrastructure.vs14\Features.Infrastructure.vs14.csproj">
+      <Project>{43b7deff-cac6-4f26-92e0-5d3cad22aa20}</Project>
+      <Name>Features.Infrastructure.vs14</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Features.vs14\Features.vs14.csproj">
+      <Project>{c97e63f9-0e9e-4910-8c2f-f40389e0d96a}</Project>
+      <Name>Features.vs14</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Foundation.vs14\Foundation.vs14.csproj">
+      <Project>{a2626117-c984-4eba-a6cc-b21b7dacac38}</Project>
+      <Name>Foundation.vs14</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\..\Shared\Features.Presentation\Features.Presentation.projitems" Label="Shared" />
+  <Import Project="..\..\Shared\Internal\Internal.projitems" Label="Shared" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
