@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SquaredInfinity.Foundation.Presentation.Resources;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Text;
 
 namespace SquaredInfinity.VSCommands.Features.Presentation

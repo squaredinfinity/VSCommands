@@ -23,7 +23,7 @@ using System.Windows;
 using Microsoft.VisualStudio.Shell;
 using SquaredInfinity.VSCommands.Features.AttachTo;
 using SquaredInfinity.VSCommands.Features.ElevatedPermissions;
-using SquaredInfinity.VSCommands.Features.Presentation.ReferencesSwitch;
+using SquaredInfinity.VSCommands.Features.ReferencesSwitch;
 
 namespace SquaredInfinity.VSCommands
 {

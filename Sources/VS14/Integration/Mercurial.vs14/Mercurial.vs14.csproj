@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.22, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta022\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.28, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta028\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

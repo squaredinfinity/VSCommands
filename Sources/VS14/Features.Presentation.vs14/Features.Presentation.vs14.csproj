@@ -32,12 +32,12 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.22, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta022\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.1.7.28, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.1.1.7-beta028\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Presentation.Xaml.DotNet45, Version=1.1.7.26, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Presentation.Xaml.1.1.7-beta026\lib\net45\SquaredInfinity.Foundation.Presentation.Xaml.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Presentation.Xaml.DotNet45, Version=1.1.7.28, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SquaredInfinity.Foundation.Presentation.Xaml.1.1.7-beta028\lib\net45\SquaredInfinity.Foundation.Presentation.Xaml.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -56,9 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Features.Infrastructure.vs14\Features.Infrastructure.vs14.csproj">
       <Project>{43b7deff-cac6-4f26-92e0-5d3cad22aa20}</Project>
       <Name>Features.Infrastructure.vs14</Name>
@@ -71,6 +68,10 @@
       <Project>{a2626117-c984-4eba-a6cc-b21b7dacac38}</Project>
       <Name>Foundation.vs14</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\..\Shared\Features.Presentation\Features.Presentation.projitems" Label="Shared" />
   <Import Project="..\..\Shared\Internal\Internal.projitems" Label="Shared" />
