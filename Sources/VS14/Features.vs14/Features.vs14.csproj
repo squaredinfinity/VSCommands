@@ -202,6 +202,10 @@
       <Project>{a2626117-c984-4eba-a6cc-b21b7dacac38}</Project>
       <Name>Foundation.vs14</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Presentation.vs14\Presentation.vs14.csproj">
+      <Project>{c386c186-7f2a-4c93-8019-42a79d5ba18f}</Project>
+      <Name>Presentation.vs14</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

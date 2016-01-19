@@ -156,22 +156,29 @@ namespace SquaredInfinity.VSCommands
 
         void InitializeUserInterface(IUnityContainer container, IVscUIService uiService)
         {
-            var resources = new SquaredInfinity.Foundation.Presentation.XamlResources();
-            resources.LoadAndMergeResources();
+            try
+            {
+                var resources = new SquaredInfinity.Foundation.Presentation.XamlResources();
+                resources.LoadAndMergeResources();
 
-            //# Initialize UI using MEF
+                //# Initialize UI using MEF
 
-            var applicationCatalog = new DirectoryCatalog(StaticSettings.VSCommandsAssembliesDirectory.FullName, "SquaredInfinity.VSCommands.*.dll");
-            var compositionContainer = new CompositionContainer(applicationCatalog);
-            compositionContainer.Compose(new CompositionBatch());
+                var applicationCatalog = new DirectoryCatalog(StaticSettings.VSCommandsAssembliesDirectory.FullName, "SquaredInfinity.VSCommands.*.dll");
+                var compositionContainer = new CompositionContainer(applicationCatalog);
+                compositionContainer.Compose(new CompositionBatch());
 
-            //# Import Xaml Resources
-            ResourcesManager.ImportAndLoadAllResources(compositionContainer);
+                //# Import Xaml Resources
+                ResourcesManager.ImportAndLoadAllResources(compositionContainer);
 
-            container.Resolve<ElevatedPermissionsService>().EnsureElevatedPermissions();
+                //container.Resolve<ElevatedPermissionsService>().EnsureElevatedPermissions();
 
-            var v = new SwitchSolutionReferencesView();
-            uiService.ShowDialog(v);
+                var v = new SwitchSolutionReferencesView();
+                uiService.ShowDialog(v);
+            }
+            catch(Exception ex)
+            {
+                // todo: log
+            }
         }
     }
 }

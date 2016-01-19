@@ -12,5 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.presentation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MarkupExtensions\LoadImageFromVSCommandsVSIXAssembly.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VscUIService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VscView.cs" />
   </ItemGroup>
 </Project>

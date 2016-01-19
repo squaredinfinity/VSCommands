@@ -6,27 +6,48 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using EnvDTE80;
+using SquaredInfinity.VSCommands.Foundation;
 
 namespace SquaredInfinity.VSCommands.Features.ReferencesSwitch
 {
     public class ReferencesSwitchService
     {
         IVscSettingsService SettingsService { get; set; }
+        DTE2 Dte2 { get; set; }
+        IVisualStudioService VisualStudioService { get; set; }
 
-        public ReferencesSwitchService(IVscSettingsService settingsService)
+        public ReferencesSwitchService(
+            IVscSettingsService settingsService, 
+            IServiceProvider serviceProvider,
+            IVisualStudioService visualStudioService)
         {
             this.SettingsService = settingsService;
+            this.Dte2 = serviceProvider.GetDte2();
+            this.VisualStudioService = visualStudioService;
         }
 
         public ProjectCollection GetSwitchableReferencesByProjectInSolution()
         {
             var result = new ProjectCollection();
 
-            // save all solution files 
 
+            //# save all
+            if (Dte2.Solution.IsDirty)
+            {
+                VisualStudioService.SaveAllChanges();
+            }
+            
+            Dte2.Solution.Projects
             // iterate all projects in solution
             // get packages.config
             // iterate all references and see if they are assembly/project/nuget references
+
+            //# save all
+            if (Dte2.Solution.IsDirty)
+            {
+                VisualStudioService.SaveAllChanges();
+            }
 
             return result;
         }

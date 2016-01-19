@@ -15,6 +15,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)FontsAndColors\VSCFontAndColorDefaultsProvider.IVsFontAndColorDefaultsProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FontsAndColors\VSCFontAndColorDefaultsProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\EnvDTE\DTE2.extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\EnvDTE\Project.extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\EnvDTE\ProjectItem.extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\EnvDTE\ProjectItems.extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\EnvDTE\Projects.extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\Microsoft.VisualStudio.Shell.Interop\ColorableItemInfo.extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FrameworkExtensions\System\IServiceProvider.extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IVisualStudioService.cs" />
@@ -24,6 +28,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Settings\StaticSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\VscSettingScope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Settings\VscSettingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Solution\SolutionItemKindGuids.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Solution\SolutionNodeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Text\Classification\ClassificationMatchPattern.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Text\Classification\ClassificationTypeMatchPattern.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Text\Classification\VscClassifier.IClassifier.cs" />

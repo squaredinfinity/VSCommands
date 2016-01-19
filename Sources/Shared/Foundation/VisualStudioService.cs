@@ -201,6 +201,8 @@ namespace SquaredInfinity.VSCommands.Foundation
         /// <param name="dte2"></param>
         public void SaveAllChanges()
         {
+            //# Save all opened documents
+
             var documents = Dte2.Documents;
 
             for (int i = 0; i < documents.Count; i++)
@@ -213,6 +215,8 @@ namespace SquaredInfinity.VSCommands.Foundation
                         doc.Save();
                 });
             }
+
+            //# Save all projects
 
             var solution = Dte2.Solution;
 

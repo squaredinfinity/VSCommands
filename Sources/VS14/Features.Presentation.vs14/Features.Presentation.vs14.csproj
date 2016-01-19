@@ -7,8 +7,8 @@
     <ProjectGuid>{1116A181-4AEE-40B2-A4A9-55646E9A5B70}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SquaredInfinity.Features.Presentation</RootNamespace>
-    <AssemblyName>SquaredInfinity.Features.Presentation.vs14</AssemblyName>
+    <RootNamespace>SquaredInfinity.VSCommands.Features.Presentation</RootNamespace>
+    <AssemblyName>SquaredInfinity.VSCommands.Features.Presentation.vs14</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -67,6 +67,10 @@
     <ProjectReference Include="..\Foundation.vs14\Foundation.vs14.csproj">
       <Project>{a2626117-c984-4eba-a6cc-b21b7dacac38}</Project>
       <Name>Foundation.vs14</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentation.vs14\Presentation.vs14.csproj">
+      <Project>{c386c186-7f2a-4c93-8019-42a79d5ba18f}</Project>
+      <Name>Presentation.vs14</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
