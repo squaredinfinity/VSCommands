@@ -24,13 +24,31 @@ using Microsoft.VisualStudio.Shell;
 using SquaredInfinity.VSCommands.Features.AttachTo;
 using SquaredInfinity.VSCommands.Features.ElevatedPermissions;
 using SquaredInfinity.VSCommands.Features.ReferencesSwitch;
+using SquaredInfinity.VSCommands.Foundation.Nuget;
 
 namespace SquaredInfinity.VSCommands
 {
     public class Bootstrapper
     {
-        public void InitializeServices(IVsPackage package)
+        VscPackageAssemblyResolver AssemblyResolver;
+
+        public void Initialize(IVsPackage package)
         {
+            try
+            {
+                AssemblyResolver = new VscPackageAssemblyResolver();
+                AssemblyResolver.Initialize(StaticSettings.VSCommandsAssembliesDirectory);
+
+                InitializeServices(package);
+            }
+            catch(Exception ex)
+            {
+                // todo: log
+            }
+        }
+
+        void InitializeServices(IVsPackage package)
+        { 
             // TODO:    eventually perhaps most of it could be done using MEF alone
             //          but for know do what worked so far.
             //          Need to find out how to register custom instance with VS MEF
@@ -67,6 +85,10 @@ namespace SquaredInfinity.VSCommands
             vscservices.Container = container;
             componentModel.DefaultCompositionService.SatisfyImportsOnce(vscservices);
             VscServices.Initialise(vscservices);
+
+            //# Nuget Service
+            var nugetService = container.Resolve<NugetService>();
+            container.RegisterInstance<INugetService>(nugetService);
             
             //# UI Service
             var vscUIService = new VscUIService();
@@ -173,7 +195,7 @@ namespace SquaredInfinity.VSCommands
                 //container.Resolve<ElevatedPermissionsService>().EnsureElevatedPermissions();
 
                 var v = new SwitchSolutionReferencesView();
-                uiService.ShowDialog(v);
+                uiService.ShowDialog(v, SquaredInfinity.Foundation.Presentation.DialogScope.Default, SquaredInfinity.Foundation.Presentation.DialogMode.NonModal);
             }
             catch(Exception ex)
             {

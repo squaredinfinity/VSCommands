@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\ClassificationDefinitions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassfierProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ReferencesSwitch\Configuration\SwitchableReference.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReferencesSwitch\ReferencesSwitchService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\CurrentVSStateInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SolutionBadges\SolutionBadgesService.cs" />

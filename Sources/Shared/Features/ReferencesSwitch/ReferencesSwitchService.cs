@@ -2,12 +2,18 @@
 using System.Linq;
 using SquaredInfinity.Foundation.Collections;
 using SquaredInfinity.VSCommands.Foundation.Settings;
+using SquaredInfinity.Foundation.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using EnvDTE80;
 using SquaredInfinity.VSCommands.Foundation;
+using VSLangProj;
+using SquaredInfinity.VSCommands.Foundation.Nuget;
+using NuGet.Packaging.Core;
+using System.Diagnostics;
+using SquaredInfinity.VSCommands.Foundation.VisualStudioEvents;
 
 namespace SquaredInfinity.VSCommands.Features.ReferencesSwitch
 {
@@ -16,40 +22,107 @@ namespace SquaredInfinity.VSCommands.Features.ReferencesSwitch
         IVscSettingsService SettingsService { get; set; }
         DTE2 Dte2 { get; set; }
         IVisualStudioService VisualStudioService { get; set; }
+        INugetService NugetService { get; set; }
 
         public ReferencesSwitchService(
             IVscSettingsService settingsService, 
             IServiceProvider serviceProvider,
-            IVisualStudioService visualStudioService)
+            IVisualStudioEventsService vsEventsService,
+            IVisualStudioService visualStudioService,
+            INugetService nugetService)
         {
             this.SettingsService = settingsService;
             this.Dte2 = serviceProvider.GetDte2();
             this.VisualStudioService = visualStudioService;
+            this.NugetService = nugetService;
         }
 
-        public ProjectCollection GetSwitchableReferencesByProjectInSolution()
+        public MultiMap<EnvDTE.Project, SwitchableReference> GetSwitchableReferencesByProjectInSolution()
         {
-            var result = new ProjectCollection();
-
+            var result = new MultiMap<EnvDTE.Project, SwitchableReference>();
 
             //# save all
             if (Dte2.Solution.IsDirty)
             {
                 VisualStudioService.SaveAllChanges();
             }
-            
-            Dte2.Solution.Projects
-            // iterate all projects in solution
-            // get packages.config
-            // iterate all references and see if they are assembly/project/nuget references
 
-            //# save all
-            if (Dte2.Solution.IsDirty)
+            // iterate all projects in solution
+            foreach (var project in Dte2.Solution.Projects.ProjectsTreeTraversal())
             {
-                VisualStudioService.SaveAllChanges();
+                // iterate all references and see if they are assembly/project/nuget references
+                var vsProject = (VSProject)null;
+
+                if (!project.TryGetVSProject(out vsProject))
+                    continue;
+                
+                for(int i = 0; i < vsProject.References.Count; i++)
+                {
+                    var reference = vsProject.References.Item(i + 1); //! '1' based index
+                    
+                    if(reference.SourceProject != null)
+                    {
+                        // this is a project reference
+
+                        var source_project = reference.SourceProject;
+
+                        var project_ref = new SwitchableProjectReference()
+                        {
+                            Name = reference.Name,
+                            ReferencedProjectFullPath = source_project.FullName
+                        };
+
+                        result[project].Add(project_ref);
+                        continue;
+                    }
+                    
+                    if(reference.Type == prjReferenceType.prjReferenceTypeAssembly)
+                    {
+                        // this is either assembly or nuget reference
+
+                        var asm_ref = (SwitchableAssemblyReference)null;
+
+                        if(IsNugetReference(reference))
+                        {
+                            var package_ref = new SwitchableNugetReference();
+                            asm_ref = package_ref;
+
+                            var package_id = NugetService.GetPackageIdentityForFile(reference.Path);
+
+                            if(package_id == null)
+                            {
+                                // todo: log
+                                continue;
+                            }
+
+                            package_ref.PackageId = package_id.Id;
+                            package_ref.PackageVersion = package_id.Version.ToString(valueWhenNull: "");
+                        }
+                        else
+                        {
+                            // todo: for now don't handle direct assembly references
+                            continue;
+
+                            asm_ref = new SwitchableAssemblyReference();
+                        }
+
+                        asm_ref.Name = reference.Name;
+                        asm_ref.FullPath = reference.Path;
+
+                        result.Add(project, asm_ref);
+
+                        continue;
+
+                    }
+                }
             }
 
             return result;
+        }
+
+        bool IsNugetReference(Reference reference)
+        {
+            return reference.Path.Contains("packages", StringComparison.CurrentCultureIgnoreCase);
         }
 
         public void SwitchReferences(IReadOnlyList<ReferenceSwitchRequest> switchRequests)
@@ -88,29 +161,14 @@ namespace SquaredInfinity.VSCommands.Features.ReferencesSwitch
 
     public class ReferenceSwitchRequest
     {
+        string ProjectUniqueId { get; set; }
+
         public Reference From { get; set; }
         public Reference To { get; set; }
     }
-
-    public class SwitchableReference
-    {
-        public string ProjectUniqueId { get; set; }
-        public string OriginalReferenceName { get; set; }
-        public Reference OriginalReference { get; set; }
-        public Reference SwitchedReference { get; set; }
-    }
-
-    public class SwitchableReferenceCollection : ObservableCollectionEx<SwitchableReference>
-    {
-
-    }
     
-    public class ProjectCollection : ObservableCollectionEx<Project>
-    {
-
-    }
-
-    public class Project : NotifyPropertyChangedObject
+    [DebuggerDisplay("{DebuggerDisplay}")]
+    public class SwitchableReference : NotifyPropertyChangedObject
     {
         string _name;
         public string Name
@@ -119,6 +177,24 @@ namespace SquaredInfinity.VSCommands.Features.ReferencesSwitch
             set { TrySetThisPropertyValue(ref _name, value); }
         }
 
+        public string DebuggerDisplay
+        {
+            get { return Name.ToString(valueWhenNull: "[NULL]"); }
+        }
+    }
+
+    public class SwitchableProjectReference : SwitchableReference
+    {
+        string _referencedProjectFullPath;
+        public string ReferencedProjectFullPath
+        {
+            get { return _referencedProjectFullPath; }
+            set { TrySetThisPropertyValue(ref _referencedProjectFullPath, value); }
+        }
+    }
+
+    public class SwitchableAssemblyReference : SwitchableReference
+    {
         string _fullPath;
         public string FullPath
         {
@@ -127,23 +203,10 @@ namespace SquaredInfinity.VSCommands.Features.ReferencesSwitch
         }
     }
 
-    public class Reference : NotifyPropertyChangedObject
+    public class SwitchableNugetReference : SwitchableAssemblyReference
     {
-        string _name;
-        public string Name
-        {
-            get { return _name; }
-            set { TrySetThisPropertyValue(ref _name, value); }
-        }
-    }
-
-    public class ProjectReference : Reference
-    {
-
-    }
-
-    public class NugetReference : Reference
-    {
-
+        //! This type may be persisted, so it's important that no properties with 3rd party types are exposed (in case the type definitions change)
+        public string PackageId { get; set; }
+        public string PackageVersion { get; set; }
     }
 }

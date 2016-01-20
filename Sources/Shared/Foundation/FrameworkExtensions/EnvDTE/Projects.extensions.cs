@@ -6,7 +6,7 @@ using System.Text;
 using System.Diagnostics;
 using SquaredInfinity.VSCommands.Foundation.Solution;
 
-namespace SquaredInfinity.VSCommands.Foundation
+namespace SquaredInfinity.VSCommands
 {
     public static class ProjectsExtensions
     {
@@ -31,13 +31,13 @@ namespace SquaredInfinity.VSCommands.Foundation
         /// </summary>
         /// <param name="projects"></param>
         /// <returns></returns>
-        static IEnumerable<Project> ProjectsTreeTraversal(this Projects projects)
+        public static IEnumerable<Project> ProjectsTreeTraversal(this Projects projects)
         {
             for (int i = 1; i < projects.Count; i++)
             {
                 var p = projects.Item(i);
 
-                if (p.GetKind() == SolutionNodeType.SolutionFolder)
+                if (p.GetSolutionNodeType() == SolutionNodeType.SolutionFolder)
                 {
                     foreach (var cp in p.ProjectsTreeTraversal())
                     {

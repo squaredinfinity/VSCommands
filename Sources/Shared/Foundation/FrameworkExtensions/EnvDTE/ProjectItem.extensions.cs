@@ -8,8 +8,9 @@ using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Shell;
 using System.Diagnostics;
+using SquaredInfinity.VSCommands.Foundation;
 
-namespace SquaredInfinity.VSCommands.Foundation
+namespace SquaredInfinity.VSCommands
 {
     public static class ProjectItemExtensions
     {
@@ -134,6 +135,122 @@ namespace SquaredInfinity.VSCommands.Foundation
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Will try to find UIHierarchyItem item for specified projectItem.
+        /// If ProjectItem is not visible (i.e. its parent is collapsed) then it may not have UIHierarchyItem
+        /// If UIHierarchyItem does not exist, it will try to expand Project Item parents to make force its creation.
+        /// </summary>
+        public static UIHierarchyItem FindUIHierarchyItem(this ProjectItem projectItem)
+        {
+            var dte2 = ServiceProvider.GlobalProvider.GetDte2();
+
+            var toolWindows = dte2.ToolWindows;
+            var solutionExplorer = toolWindows.SolutionExplorer;
+
+            var solutionItems = solutionExplorer.UIHierarchyItems;
+            var solutionNode = solutionItems.Item(1);
+
+            return FindUIHierarchyItem(solutionNode.UIHierarchyItems, projectItem);
+        }
+
+        public static UIHierarchyItem FindUIHierarchyItem(UIHierarchyItems hItems, object item)
+        {
+            var dte2 = ServiceProvider.GlobalProvider.GetDte2();
+            var toolWindows = dte2.ToolWindows;
+            var solutionExplorer = toolWindows.SolutionExplorer;
+
+            Stack<object> hierarchyStack = CreateItemHierarchyStack(item);
+
+            UIHierarchyItems items = hItems;
+            UIHierarchyItem lastHItem = null;
+
+            while (hierarchyStack.Count > 0)
+            {
+                lastHItem = null;
+
+                if (!items.Expanded)
+                    items.Expanded = true;
+
+                //! there seems to be a bug in VS when setting Expanded will not always work so try again with different approach if needed
+                if (!items.Expanded)
+                {
+                    UIHierarchyItem parent = items.Parent as UIHierarchyItem;
+                    parent.Select(vsUISelectionType.vsUISelectionTypeSelect);
+                    solutionExplorer.DoDefaultAction();
+                }
+
+                object obj = hierarchyStack.Pop();
+
+                var op = obj as Project;
+                var opi = obj as ProjectItem;
+
+                for (int i = 0; i < items.Count; i++)
+                {
+                    var hi = items.Item(i + 1);
+
+                    var p1 = hi.Object as Project;
+                    var pi1 = hi.Object as ProjectItem;
+
+                    bool isMatch = false;
+
+                    if (p1 != null && op != null)
+                    {
+                        isMatch = p1.Object == op.Object;
+                    }
+                    if (pi1 != null && opi != null)
+                    {
+                        isMatch = pi1.Object == opi.Object;
+                    }
+
+                    if (isMatch)
+                    {
+                        lastHItem = hi;
+                        items = hi.UIHierarchyItems;
+                        break;
+                    }
+                }
+            }
+
+            return lastHItem;
+        }
+
+        static Stack<object> CreateItemHierarchyStack(object item)
+        {
+            return CreateItemHierarchyStack(new Stack<object>(), item);
+        }
+
+        static Stack<object> CreateItemHierarchyStack(Stack<object> stack, object item)
+        {
+            if (item is ProjectItem)
+            {
+                var pi = item as ProjectItem;
+
+                stack.Push(pi);
+
+                var collection = pi.Collection;
+                CreateItemHierarchyStack(stack, collection.Parent);
+            }
+            else if (item is Project)
+            {
+                var p = item as Project;
+
+                stack.Push(p);
+
+                if (p.ParentProjectItem != null) // this may be null if a solution node is above
+                {
+                    CreateItemHierarchyStack(stack, p.ParentProjectItem);
+                }
+            }
+            else
+            {
+                // todo: log
+                Debug.Fail("Unknown item in hierarchy");
+                //Logger.TraceDiagnostic(() => "Unknown item in hierarchy");
+            }
+
+            return stack;
         }
     }
 }

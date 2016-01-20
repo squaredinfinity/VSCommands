@@ -1,0 +1,11 @@
+﻿Current implementation uses reference nuget packages for talking with NuGet
+https://github.com/NuGet/NuGet.Client
+
+Note that occasionally classes imported by Nuget and actual latest NuGet dlls become out of date which may cause runtime exceptions
+(e.g. when types are moved around)
+
+Going forward perhaps there is a better solution for that, but since exposure area is small (only few nuget types are used)
+let's leave it as is for now.
+
+One solution would be to grab nuget sources, compile with different assembly names and reference directly.
+This avoids runtime assembly version clashes, but requires extra work to keep copy of nuget code up to date.

@@ -60,7 +60,7 @@ namespace SquaredInfinity.VSCommands.VscPackage
             var vscAssembly = Assembly.GetExecutingAssembly();
             StaticSettings.VSCommandsVSIXAssembly = vscAssembly;
 
-            Bootstrapper.InitializeServices(this);
+            Bootstrapper.Initialize(this);
         }
 
         #endregion

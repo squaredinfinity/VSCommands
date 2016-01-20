@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using SquaredInfinity.Foundation.Extensions;
 
-namespace SquaredInfinity.VSCommands.Foundation
+namespace SquaredInfinity.VSCommands
 {
     public static class ProjectItemsExtensions
     {

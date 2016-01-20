@@ -1,12 +1,15 @@
 ﻿using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using SquaredInfinity.VSCommands.Foundation.Solution;
 using System;
+using SquaredInfinity.Foundation.Extensions;
 using System.Collections.Generic;
 using System.Text;
+using VSLangProj;
 
-namespace SquaredInfinity.VSCommands.Foundation
+namespace SquaredInfinity.VSCommands
 {
     public static class ProjectExtensions
     {
@@ -118,6 +121,117 @@ namespace SquaredInfinity.VSCommands.Foundation
                 //Logger.LogException(ex);
                 return false;
             }
+        }
+
+        public static IEnumerable<Project> ProjectsTreeTraversal(this Project project)
+        {
+            var result = new List<Project>();
+
+            var projectItems = project.ProjectItems;
+
+            try
+            {
+                //! ProjectItems may be null when project is in solution but has been unloaded
+                if (projectItems == null)
+                    return result;
+
+                for (int i = 1; i <= projectItems.Count; i++)
+                {
+                    try
+                    {
+                        var pi = projectItems.Item(i);
+
+                        var piObjectAsProject = pi.Object as Project;
+
+                        if (piObjectAsProject != null)
+                        {
+                            result.Add(piObjectAsProject);
+
+                            //! this is previous check done here, may still need to revert to it in a future if needed
+                            //if (string.Equals(piObjectAsProject.GetSolutionNodeType.Kind, ProjectKinds.vsProjectKindSolutionFolder, StringComparison.InvariantCultureIgnoreCase))
+                            if(piObjectAsProject.GetSolutionNodeType() == SolutionNodeType.SolutionFolder)
+                            {
+                                var childProjects = piObjectAsProject.ProjectsTreeTraversal();
+
+                                result.AddRange(childProjects);
+                            }
+                        }
+                        else
+                        {
+                            piObjectAsProject.SafeReleaseComObject();
+                            piObjectAsProject = null;
+                        }
+
+                        pi.SafeReleaseComObject();
+                        pi = null;
+                    }
+                    catch (Exception ex)
+                    {
+                        // todo: logging
+                        //Logger.LogException(ex);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // todo: log
+                //ex.Log();
+            }
+            finally
+            {
+                projectItems.SafeReleaseComObject();
+                projectItems = null;
+            }
+
+            return result;
+        }
+
+        public static bool TryUnloadProject(this Project project)
+        {
+            try
+            {
+                var dte2 = (project.DTE as DTE2);
+
+                var toolWindows = dte2.ToolWindows;
+                var solutionExplorer = toolWindows.SolutionExplorer;
+
+                var projectHi = solutionExplorer.FindUIHierarchyItem(project);
+
+                if (projectHi == null)
+                {
+                    // todo: logging
+                    //Logger.TraceWarning(() => "Unable to locate UIHI for project {0}".FormatWith(project.Name));
+                    return false;
+                }
+
+                (solutionExplorer.Parent as Window).Activate();
+
+                projectHi.Select(vsUISelectionType.vsUISelectionTypeSelect);
+
+                dte2.ExecuteCommand("Project.UnloadProject", "");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // todo: logging
+                //ex.Log();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Try to retrieve VSProject for a specified Project.
+        /// VSProject is a C# or VB.Net project
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="vsProject"></param>
+        /// <returns></returns>
+        public static bool TryGetVSProject(this Project project, out VSProject vsProject)
+        {
+            vsProject = project.Object as VSProject;
+
+            return vsProject != null;
         }
     }
 }
