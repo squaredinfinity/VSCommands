@@ -10,6 +10,7 @@ using System.ComponentModel.Composition;
 using System.Text;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.Text;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands.Features.OutputWindowPane.FindResults
 {
@@ -65,6 +66,7 @@ namespace SquaredInfinity.VSCommands.Features.OutputWindowPane.FindResults
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // TODO: log
                 //Logger.LogException(ex);
                 return null;

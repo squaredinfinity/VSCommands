@@ -536,6 +536,7 @@ namespace SquaredInfinity.VSCommands.Features.SolutionBadges
                 }
                 catch(Exception ex)
                 {
+                    Debug.WriteLine(ex.ToString());
                     // todo: log
                 }
             }

@@ -66,7 +66,7 @@ namespace SquaredInfinity.VSCommands.Features.ReferencesSwitch
             catch(Exception ex)
             {
                 // todo: log
-                Trace.Write("");
+                Debug.WriteLine(ex.ToString());
             }
         }
 

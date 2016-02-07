@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading;
 using SquaredInfinity.VSCommands;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands.Integration.TeamFoundation
 {
@@ -210,6 +211,7 @@ namespace SquaredInfinity.VSCommands.Integration.TeamFoundation
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // TODO: logging
                 return null;
             }

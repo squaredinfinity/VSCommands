@@ -10,6 +10,7 @@ using Microsoft.VisualStudio.Text;
 using SquaredInfinity.VSCommands.Foundation;
 using EnvDTE80;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands.Features.OutputWindowPane.FindResults
 {
@@ -116,6 +117,7 @@ namespace SquaredInfinity.VSCommands.Features.OutputWindowPane.FindResults
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 //tODO: log
                 //ex.Log();
             }

@@ -9,6 +9,7 @@ using SquaredInfinity.VSCommands.Foundation.VisualStudioEvents;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 using SquaredInfinity.VSCommands.Foundation.Settings;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands.Foundation.Text.Classification
 {
@@ -102,8 +103,9 @@ namespace SquaredInfinity.VSCommands.Foundation.Text.Classification
                     }
                     catch (Exception ex)
                     {
+                        Debug.WriteLine(ex.ToString());
                         // TODO: logging
-                       // Logger.LogException(ex);
+                        // Logger.LogException(ex);
                     }
                 }
 
@@ -111,6 +113,7 @@ namespace SquaredInfinity.VSCommands.Foundation.Text.Classification
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // TODO: logging
             }
             finally

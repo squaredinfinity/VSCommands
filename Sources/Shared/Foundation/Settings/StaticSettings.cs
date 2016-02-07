@@ -50,17 +50,17 @@ namespace SquaredInfinity.VSCommands.Foundation
         /// <summary>
         /// e.g. 11, 12, 14 etc.
         /// </summary>
-        public static readonly string ShortVersionNumber = "12";
+        public static readonly string ShortVersionNumber = "14";
 
         /// <summary>
         /// e.g. 11.0, 12.0, 14.0
         /// </summary>
-        public static readonly string VisualStudioVersionNumber = "12.0";
+        public static readonly string VisualStudioVersionNumber = "14.0";
 
         /// <summary>
         /// e.g. Visual Studio 2012
         /// </summary>
-        public static readonly string VisualStudioVersionName = "Visual Studio 2013";
+        public static readonly string VisualStudioVersionName = "Visual Studio 2015";
         
         /// <summary>
         /// e.g. 11.0 or 11.0Exp

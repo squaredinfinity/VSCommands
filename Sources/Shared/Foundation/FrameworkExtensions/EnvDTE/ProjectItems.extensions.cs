@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using SquaredInfinity.Foundation.Extensions;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands
 {
@@ -44,6 +45,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: log
                 //ex.Log();
             }
@@ -100,6 +102,7 @@ namespace SquaredInfinity.VSCommands
                             }
                             catch (Exception ex)
                             {
+                                Debug.WriteLine(ex.ToString());
                                 // todo: log
                                 //Logger.DiagnosticOnlyLogException(ex);
                             }
@@ -111,6 +114,7 @@ namespace SquaredInfinity.VSCommands
                     }
                     catch (Exception ex)
                     {
+                        Debug.WriteLine(ex.ToString());
                         // todo: log exception
                         //Logger.SwallowException(ex, "ProjectItem doesn't expose any way to check if SubProject property is supported");
                     }
@@ -135,6 +139,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: log
                 //ex.Log();
             }

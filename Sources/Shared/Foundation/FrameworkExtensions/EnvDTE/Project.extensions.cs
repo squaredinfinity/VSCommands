@@ -8,6 +8,7 @@ using SquaredInfinity.Foundation.Extensions;
 using System.Collections.Generic;
 using System.Text;
 using VSLangProj;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands
 {
@@ -93,6 +94,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: log
                 //ex.TryAddContextData("propertyName", () => propertyName);
                 //Logger.LogException(ex);
@@ -115,6 +117,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: log
                 //ex.TryAddContextData("propertyName", () => propertyName);
                 //ex.TryAddContextData("newValue", () => newValue);
@@ -167,6 +170,7 @@ namespace SquaredInfinity.VSCommands
                     }
                     catch (Exception ex)
                     {
+                        Debug.WriteLine(ex.ToString());
                         // todo: logging
                         //Logger.LogException(ex);
                     }
@@ -174,6 +178,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: log
                 //ex.Log();
             }
@@ -199,6 +204,7 @@ namespace SquaredInfinity.VSCommands
 
                 if (projectHi == null)
                 {
+                    
                     // todo: logging
                     //Logger.TraceWarning(() => "Unable to locate UIHI for project {0}".FormatWith(project.Name));
                     return false;
@@ -214,6 +220,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: logging
                 //ex.Log();
                 return false;

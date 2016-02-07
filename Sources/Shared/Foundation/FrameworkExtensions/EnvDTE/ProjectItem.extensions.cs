@@ -29,6 +29,7 @@ namespace SquaredInfinity.VSCommands
                     return SolutionNodeType.SolutionFolder;
             }
 
+            
             // todo: log
             //Logger.TraceDiagnosticWarning(() => "Unknown project item type: " + projectItem.Kind);
 
@@ -130,6 +131,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: log
                 //Logger.LogException(ex);
             }

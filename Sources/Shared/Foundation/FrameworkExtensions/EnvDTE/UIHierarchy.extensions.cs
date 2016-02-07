@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using SquaredInfinity.Foundation.Extensions;
 using System.Text;
 using System.Linq;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands
 {
@@ -63,6 +64,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: log
                 //ex.Swallow("No need to show it to users, but will have to investigate what's causing it");
             }

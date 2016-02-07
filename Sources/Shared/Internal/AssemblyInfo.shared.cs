@@ -17,5 +17,5 @@ using System.Runtime.InteropServices;
 
 static class CurrentVersionStrings
 {
-    public const string CommonCurrentReleaseNumber = "0.0.2";
+    public const string CommonCurrentReleaseNumber = "0.0.3";
 }

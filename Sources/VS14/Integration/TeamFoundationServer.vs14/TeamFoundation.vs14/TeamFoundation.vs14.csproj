@@ -7,8 +7,8 @@
     <ProjectGuid>{C49BDED1-2B56-45CC-8699-2CFF14B83929}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TeamFoundation.vs14</RootNamespace>
-    <AssemblyName>TeamFoundation.vs14</AssemblyName>
+    <RootNamespace>SquaredInfinity.VSCommands.Integration.TeamFoundation</RootNamespace>
+    <AssemblyName>SquaredInfinity.VSCommands.Integration.TeamFoundation.vs14</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

@@ -25,12 +25,14 @@ using SquaredInfinity.VSCommands.Features.AttachTo;
 using SquaredInfinity.VSCommands.Features.ElevatedPermissions;
 using SquaredInfinity.VSCommands.Features.ReferencesSwitch;
 using SquaredInfinity.VSCommands.Foundation.Nuget;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands
 {
     public class Bootstrapper
     {
         VscPackageAssemblyResolver AssemblyResolver;
+        CompositionContainer VscCompositionContainer;
 
         public void Initialize(IVsPackage package)
         {
@@ -43,6 +45,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch(Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: log
             }
         }
@@ -64,6 +67,12 @@ namespace SquaredInfinity.VSCommands
             //# Service Container from package
             var service_container = (IServiceContainer)package;
             container.RegisterInstance<IServiceContainer>(service_container);
+
+            //# MEF
+            
+            var applicationCatalog = new DirectoryCatalog(StaticSettings.VSCommandsAssembliesDirectory.FullName, "SquaredInfinity.VSCommands.*.dll");
+            VscCompositionContainer = new CompositionContainer(applicationCatalog);
+            VscCompositionContainer.Compose(new CompositionBatch());
 
             // VS MEF
             var componentModel = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SComponentModel)) as IComponentModel2;
@@ -183,14 +192,8 @@ namespace SquaredInfinity.VSCommands
                 var resources = new SquaredInfinity.Foundation.Presentation.XamlResources();
                 resources.LoadAndMergeResources();
 
-                //# Initialize UI using MEF
-
-                var applicationCatalog = new DirectoryCatalog(StaticSettings.VSCommandsAssembliesDirectory.FullName, "SquaredInfinity.VSCommands.*.dll");
-                var compositionContainer = new CompositionContainer(applicationCatalog);
-                compositionContainer.Compose(new CompositionBatch());
-
                 //# Import Xaml Resources
-                ResourcesManager.ImportAndLoadAllResources(compositionContainer);
+                ResourcesManager.ImportAndLoadAllResources(VscCompositionContainer);
 
                 //container.Resolve<ElevatedPermissionsService>().EnsureElevatedPermissions();
 
@@ -199,6 +202,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch(Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // todo: log
             }
         }

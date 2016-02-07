@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.Text;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands.Foundation.Text.Classification
 {
@@ -48,6 +49,7 @@ namespace SquaredInfinity.VSCommands.Foundation.Text.Classification
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 // TODO: logging
                 //ex.Log();
             }

@@ -7,8 +7,8 @@
     <ProjectGuid>{AFFB7B1A-959A-4B43-A3D0-E29715A387C5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mercurial.vs14</RootNamespace>
-    <AssemblyName>Mercurial.vs14</AssemblyName>
+    <RootNamespace>SquaredInfinity.VSCommands.Integration.Mercurial</RootNamespace>
+    <AssemblyName>SquaredInfinity.VSCommands.Integration.Mercurial.vs14</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

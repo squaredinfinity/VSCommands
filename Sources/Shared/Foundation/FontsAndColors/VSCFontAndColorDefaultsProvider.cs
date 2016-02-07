@@ -133,6 +133,7 @@ namespace SquaredInfinity.VSCommands.Foundation.FontsAndColors
             if (!TryUpdateRegistry())
             {
                 // todo: logging
+                
                 //Logger.TraceWarning(() => "Unable to register VSCommands Font and Color Settings. Run Visual Studio as Administrator to provide required registry access.");
             }
         }

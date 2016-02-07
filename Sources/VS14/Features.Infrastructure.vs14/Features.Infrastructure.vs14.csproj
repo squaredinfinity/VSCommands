@@ -7,8 +7,8 @@
     <ProjectGuid>{43B7DEFF-CAC6-4F26-92E0-5D3CAD22AA20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SquaredInfinity.Features.Infrastructure</RootNamespace>
-    <AssemblyName>SquaredInfinity.Features.Infrastructure.vs14</AssemblyName>
+    <RootNamespace>SquaredInfinity.VSCommands.Features.Infrastructure</RootNamespace>
+    <AssemblyName>SquaredInfinity.VSCommands.Features.Infrastructure.vs14</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
