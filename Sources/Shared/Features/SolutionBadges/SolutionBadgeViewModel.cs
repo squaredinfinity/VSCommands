@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using SquaredInfinity.Foundation.Extensions;
 using System.Text;
 using System.Windows.Media;
-using SquaredInfinity.Foundation.Media.ColorSpaces;
+using SquaredInfinity.Foundation.Graphics.ColorSpaces;
 
 namespace SquaredInfinity.VSCommands.Features.SolutionBadges
 {

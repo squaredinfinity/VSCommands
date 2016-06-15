@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using SquaredInfinity.Foundation.Extensions;
 using System.Diagnostics;
+using SquaredInfinity.Foundation.Maths.Graphs.Trees;
 
 namespace SquaredInfinity.VSCommands
 {

@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualStudio.Shell;
-using SquaredInfinity.Foundation.Media.ColorSpaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using SquaredInfinity.Foundation.Extensions;
 using System.Windows;
 using System.Windows.Media;
+using SquaredInfinity.Foundation.Graphics.ColorSpaces;
 
 namespace SquaredInfinity.VSCommands.Foundation
 {

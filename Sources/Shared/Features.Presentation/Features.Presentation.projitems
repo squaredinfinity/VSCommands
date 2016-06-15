@@ -19,8 +19,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ReferencesSwitch\SwitchSolutionReferencesView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ReferencesSwitch\SwitchSolutionReferencesViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XamlResources.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)XamlResources.xaml" />
   </ItemGroup>
 </Project>

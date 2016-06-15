@@ -18,11 +18,11 @@ namespace  SquaredInfinity.Foundation.Presentation.Styles.Modern
     public partial class DefaultXamlResources : IXamlResourcesProvider
     {
         // Import Order is higher than Foundation.Presentation Import Order (on which resources from this assembly may depend)
-        public const int ImportOrder = SquaredInfinity.Foundation.Presentation.XamlResources.ImportOrder + 100;
+        public const uint ImportOrder = SquaredInfinity.Foundation.Presentation.XamlResources.ImportOrder + 100;
 
-        public void LoadAndMergeResources()
+        public IEnumerable<ResourceDictionary> LoadResources()
         {
-            ResourcesManager.LoadAndMergeCompiledResourceDictionaryFromThisAssembly(@"All.xaml");
+            yield return ResourcesManager.LoadCompiledResourceDictionaryFromThisAssembly(@"All.xaml");
         }
 
         public static void ApplyAllStyles()

@@ -23,7 +23,6 @@ using System.Windows;
 using Microsoft.VisualStudio.Shell;
 using SquaredInfinity.VSCommands.Features.AttachTo;
 using SquaredInfinity.VSCommands.Features.ElevatedPermissions;
-using SquaredInfinity.VSCommands.Features.ReferencesSwitch;
 using SquaredInfinity.VSCommands.Foundation.Nuget;
 using System.Diagnostics;
 
@@ -190,15 +189,16 @@ namespace SquaredInfinity.VSCommands
             try
             {
                 var resources = new SquaredInfinity.Foundation.Presentation.XamlResources();
-                resources.LoadAndMergeResources();
+                ResourcesManager.MergeAllResourceDictionaries(resources.LoadResources());
 
                 //# Import Xaml Resources
-                ResourcesManager.ImportAndLoadAllResources(VscCompositionContainer);
+                ResourcesManager.ImportAndMergeAllResources(VscCompositionContainer);
 
                 //container.Resolve<ElevatedPermissionsService>().EnsureElevatedPermissions();
 
-                var v = new SwitchSolutionReferencesView();
-                uiService.ShowDialog(v, SquaredInfinity.Foundation.Presentation.DialogScope.Default, SquaredInfinity.Foundation.Presentation.DialogMode.NonModal);
+                // todo: add stuff to test here
+                //var v = new SwitchSolutionReferencesView();
+                //uiService.ShowDialog(v, SquaredInfinity.Foundation.Presentation.DialogScope.Default, SquaredInfinity.Foundation.Presentation.DialogMode.NonModal);
             }
             catch(Exception ex)
             {
