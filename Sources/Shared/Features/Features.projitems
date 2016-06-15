@@ -14,6 +14,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ElevatedPermissions\ElevatedPermissionsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ElevatedPermissions\ElevationRequiredView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ElevatedPermissions\ElevationRequiredViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\NugetReferenceRedirectionService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\Package__Id_Version_Target.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\ClassificationDefinitions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassfierProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OutputWindowPane\FindResults\FindResultsClassifier.cs" />

@@ -32,3 +32,5 @@
 packages
 /Sources/VS14/Presentation.Xaml.Styles.Modern.vs14/obj/Debug
 /Sources/VS14/Features.Presentation.vs14/obj/Debug
+/Sources/VS14/Features.Presentation.vs14/bin/Debug
+/Sources/VS14/Presentation.Xaml.Styles.Modern.vs14/bin/Debug
