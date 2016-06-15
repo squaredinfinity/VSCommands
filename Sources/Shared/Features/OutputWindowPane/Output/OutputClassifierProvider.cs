@@ -28,7 +28,9 @@ namespace SquaredInfinity.VSCommands.Features.OutputWindowPane.Output
 
         [ImportingConstructor]
         public OutputWindowColoringClasifierProvider(
-            IServiceProvider serviceProvider,
+            //  NOTE:   IServiceProvider will not be resolved by MEF and this import would fail
+            //          Resolve using VscServices instead
+            //IServiceProvider serviceProvider,
             IClassificationFormatMapService classificationFormatMapService,
             IClassificationTypeRegistryService classificationTypeRegistryService
             )
@@ -38,6 +40,8 @@ namespace SquaredInfinity.VSCommands.Features.OutputWindowPane.Output
 
             this.ClassificationFormatMapService = classificationFormatMapService;
             this.ClassificationTypeRegistryService = classificationTypeRegistryService;
+
+            var serviceProvider = VscServices.Instance.Container.Resolve<IServiceProvider>();
 
             var fontAndColorStorageService = serviceProvider.GetService(typeof(SVsFontAndColorStorage)) as IVsFontAndColorStorage;
 
