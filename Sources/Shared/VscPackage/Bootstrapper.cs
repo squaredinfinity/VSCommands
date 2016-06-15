@@ -25,6 +25,8 @@ using SquaredInfinity.VSCommands.Features.AttachTo;
 using SquaredInfinity.VSCommands.Features.ElevatedPermissions;
 using SquaredInfinity.VSCommands.Foundation.Nuget;
 using System.Diagnostics;
+using SquaredInfinity.VSCommands.Features.NugetReferenceRedirection;
+using SquaredInfinity.Foundation.Presentation;
 
 namespace SquaredInfinity.VSCommands
 {
@@ -105,6 +107,10 @@ namespace SquaredInfinity.VSCommands
             //# Visual Studio Events Service
             var vs_events_service = container.Resolve<VisualStudioEventsService>();
             container.RegisterInstance<IVisualStudioEventsService>(vs_events_service);
+
+            //# Nuget Reference Redirection Service
+            var nuget_ref_redirection_service = container.Resolve<NugetReferenceRedirectionService>();
+            container.RegisterInstance<INugetReferenceRedirectionService>(nuget_ref_redirection_service);
 
             //# Visual Studio Service
             var vsService = new VisualStudioService(service_provider);
@@ -196,9 +202,9 @@ namespace SquaredInfinity.VSCommands
 
                 //container.Resolve<ElevatedPermissionsService>().EnsureElevatedPermissions();
 
-                // todo: add stuff to test here
-                //var v = new SwitchSolutionReferencesView();
-                //uiService.ShowDialog(v, SquaredInfinity.Foundation.Presentation.DialogScope.Default, SquaredInfinity.Foundation.Presentation.DialogMode.NonModal);
+                
+                var v = new SolutionPackagesView();
+                uiService.ShowDialog(v, DialogScope.Default, DialogMode.NonModal);
             }
             catch(Exception ex)
             {

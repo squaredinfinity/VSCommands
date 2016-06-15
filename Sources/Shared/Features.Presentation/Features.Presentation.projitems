@@ -15,9 +15,12 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\SolutionPackagesView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\SolutionPackagesViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XamlResources.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\SolutionPackagesView.xaml" />
     <None Include="$(MSBuildThisFileDirectory)XamlResources.xaml" />
   </ItemGroup>
 </Project>

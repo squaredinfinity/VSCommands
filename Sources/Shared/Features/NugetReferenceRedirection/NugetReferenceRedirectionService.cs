@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
 {
-    public class NugetReferenceRedirectionService
+    public class NugetReferenceRedirectionService : INugetReferenceRedirectionService
     {
         /// <summary>
         /// Returns information about all packages used by specified solution.
