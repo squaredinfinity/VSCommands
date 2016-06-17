@@ -29,17 +29,11 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
 
             Subscriptions.Add(
                 Observable.FromEventPattern<EventArgs>(VisualStudioEventsService, nameof(VisualStudioEventsService.AfterSolutionClosed))
-                .WeakSubscribe(this, (args) =>
-                {
-                    RefreshPackages();
-                }));
+                .WeakSubscribe(this, (target, args) => target.RefreshPackages()));
 
             Subscriptions.Add(
                 Observable.FromEventPattern<EventArgs>(VisualStudioEventsService, nameof(VisualStudioEventsService.AfterSolutionOpened))
-                .WeakSubscribe(this, (args) =>
-                {
-                    RefreshPackages();
-                }));
+                .WeakSubscribe(this, (target, args) => target.RefreshPackages()));
         }
 
         void RefreshPackages()
@@ -48,7 +42,7 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
 
             var solution = dte2.Solution;
 
-            var solution_dir = new DirectoryInfo(solution.FullName);
+            var solution_dir = new DirectoryInfo(Path.GetDirectoryName(solution.FullName));
 
             if (!solution_dir.Exists)
             {
@@ -60,6 +54,27 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
                 Console.WriteLine("");
             }
         }
+
+        #region Filtering
+
+        string _filterText;
+        public string FilterText
+        {
+            get { return _filterText; }
+            set { TrySetThisPropertyValue(ref _filterText, value); }
+        }
+
+        public bool FilterPackage(NugetPackage package)sure
+        {
+            return FilterPackage(package, FilterText);
+        }
+
+        bool FilterPackage(NugetPackage package, string filterText)
+        {
+            
+        }
+
+        #endregion
     }
 
     public static class IObservableExtensions
@@ -68,13 +83,13 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
         /// Creates a weak subscription.
         /// Unlike default Subscribe method, this will not keep the target alive (unless it is included in clousure of onNext method)
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TItem"></typeparam>
         /// <typeparam name="TTarget"></typeparam>
         /// <param name="observable"></param>
-        /// <param name="target"></param>
-        /// <param name="onNext"></param>
+        /// <param name="target">Target of the subscription. When target is collected the subscription will be disposed.</param>
+        /// <param name="onNext"> </param>
         /// <returns></returns>
-        public static IDisposable WeakSubscribe<T, TTarget>(this IObservable<T> observable, TTarget target, Action<T> onNext) where TTarget : class
+        public static IDisposable WeakSubscribe<TItem, TTarget>(this IObservable<TItem> observable, TTarget target, Action<TTarget, TItem> onNext) where TTarget : class
         {
             // keep weak reference to the target
             var reference = new WeakReference(target);
@@ -84,8 +99,8 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
             // only explicitly static methods or methods with static implementation (e.g. anonymous lambdas) are allowed.
             // note that user of this method must take extra care not to create a closure over target itself
             
-            if (onNext.Target != null)
-                throw new ArgumentException("onNext action cannot be an instance method. Use static method or lambda expression (t,i) => xxx");
+            if (onNext.Target != null && object.ReferenceEquals(onNext.Target, target))
+                throw new ArgumentException("onNext action cannot be an instance method on target. Use static method or lambda expression (t,i) => t.method()");
 
             var subscription = (IDisposable)null;
 
@@ -95,7 +110,7 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
                     var currentTarget = reference.Target as TTarget;
 
                     if (currentTarget != null)
-                        onNext(item);
+                        onNext(currentTarget, item);
                     else
                     {
                         // target reference is gone, clean up
