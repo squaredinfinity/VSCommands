@@ -30,24 +30,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SquaredInfinity.Foundation.Core, Version=1.3.1.0, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.1.3.1\lib\net45\SquaredInfinity.Foundation.Core.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Core, Version=1.3.3.0, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.1.3.3\lib\net45\SquaredInfinity.Foundation.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SquaredInfinity.Foundation.Diagnostics.Infrastructure.DotNet45, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.Diagnostics.Infrastructure.1.2.0\lib\net45\SquaredInfinity.Foundation.Diagnostics.Infrastructure.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.3.1.0, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.1.3.1\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.DotNet45, Version=1.3.3.0, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.1.3.3\lib\net45\SquaredInfinity.Foundation.DotNet45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Graphics.Core, Version=1.3.1.0, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.Graphics.1.3.1\lib\portable-net45+win+MonoAndroid10+xamarinios10+MonoTouch10\SquaredInfinity.Foundation.Graphics.Core.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Graphics.Core, Version=1.3.2.0, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.Graphics.1.3.2\lib\portable-net45+win+MonoAndroid10+xamarinios10+MonoTouch10\SquaredInfinity.Foundation.Graphics.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SquaredInfinity.Foundation.Maths.Core, Version=1.3.1.0, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.Maths.1.3.1\lib\portable-net45+win+MonoAndroid10+xamarinios10+MonoTouch10\SquaredInfinity.Foundation.Maths.Core.dll</HintPath>
+    <Reference Include="SquaredInfinity.Foundation.Maths.Core, Version=1.3.3.0, Culture=neutral, PublicKeyToken=b2eb7b1f23e71d09, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\SquaredInfinity.Foundation.Maths.1.3.3\lib\portable-net45+win+MonoAndroid10+xamarinios10+MonoTouch10\SquaredInfinity.Foundation.Maths.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -86,6 +86,7 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\..\..\Shared\Integration\Git\Git.projitems" Label="Shared" />

@@ -21,6 +21,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\SolutionPackagesView.xaml" />
-    <None Include="$(MSBuildThisFileDirectory)XamlResources.xaml" />
   </ItemGroup>
 </Project>

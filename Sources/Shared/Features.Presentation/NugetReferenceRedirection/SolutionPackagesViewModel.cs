@@ -64,14 +64,14 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
             set { TrySetThisPropertyValue(ref _filterText, value); }
         }
 
-        public bool FilterPackage(NugetPackage package)sure
+        public bool FilterPackage(NugetPackage package)
         {
             return FilterPackage(package, FilterText);
         }
 
         bool FilterPackage(NugetPackage package, string filterText)
         {
-            
+            return true;
         }
 
         #endregion
