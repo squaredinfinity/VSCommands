@@ -231,6 +231,7 @@ namespace SquaredInfinity.VSCommands.Foundation.FontsAndColors
             catch (Exception ex)
             {
                 //Logger.DiagnosticOnlyLogException(ex);
+                Trace.WriteLine(ex.ToString());
                 return false;
             }
         }

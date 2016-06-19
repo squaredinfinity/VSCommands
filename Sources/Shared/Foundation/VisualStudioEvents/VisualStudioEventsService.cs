@@ -392,7 +392,7 @@ namespace SquaredInfinity.VSCommands.Foundation.VisualStudioEvents
             {
                 action();
             }
-            catch(Exception ex)
+            catch(Exception ex) 
             {
                 // todo: log the exception
                 Trace.WriteLine(ex.ToString());

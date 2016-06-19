@@ -61,6 +61,9 @@ namespace SquaredInfinity.VSCommands
             var container = new UnityContainer();
             container.RegisterInstance<IUnityContainer>(container);
 
+            //# Package itself
+            container.RegisterInstance<Package>((Package)package);
+
             //# Service Provider from package
             var service_provider = (IServiceProvider)package;
             container.RegisterInstance<IServiceProvider>(service_provider);
@@ -202,9 +205,10 @@ namespace SquaredInfinity.VSCommands
 
                 //container.Resolve<ElevatedPermissionsService>().EnsureElevatedPermissions();
 
-                
-                var v = new SolutionPackagesView();
-                uiService.ShowDialog(v, DialogScope.Default, DialogMode.NonModal);
+                uiService.ShowToolWindowPane<SolutionPackagesToolWindowPane>();
+
+                //var v = new SolutionPackagesView();
+                //uiService.ShowToolWindow(v);
             }
             catch(Exception ex)
             {

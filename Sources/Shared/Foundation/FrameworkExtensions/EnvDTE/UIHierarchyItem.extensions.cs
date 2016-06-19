@@ -45,7 +45,7 @@ namespace SquaredInfinity.VSCommands
                 // todo: this fails sometime, not sure why
                 childHierarchyItems = parent.UIHierarchyItems;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // todo
                 //ex.Swallow("UI Hierarchy out of date?");

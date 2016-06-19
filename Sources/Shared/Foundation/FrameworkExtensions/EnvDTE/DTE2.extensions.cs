@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace SquaredInfinity.VSCommands
@@ -16,6 +17,7 @@ namespace SquaredInfinity.VSCommands
             }
             catch (Exception ex)
             {
+                Trace.WriteLine(ex.ToString());
                 //todo: investigate why it is sometimes thrown
                 //Logger.SwallowException(ex, "Dte.ActiveDocument can throw exceptions when accessed but this does not impact this scenario.");
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace SquaredInfinity.VSCommands.Foundation
@@ -18,6 +19,7 @@ namespace SquaredInfinity.VSCommands.Foundation
                 {
                     // todo: log
                     //ex.Log();
+                    Trace.WriteLine(ex.ToString());
                 }
             }
         }

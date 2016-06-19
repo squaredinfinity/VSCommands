@@ -18,12 +18,15 @@ using Microsoft.Win32;
 using SquaredInfinity.VSCommands.Foundation;
 using System.Reflection;
 using SquaredInfinity.VSCommands.Foundation.FontsAndColors;
+using SquaredInfinity.VSCommands.Features.NugetReferenceRedirection;
 
 namespace SquaredInfinity.VSCommands.VscPackage
 {
 
     [ProvideService(typeof(IVsFontAndColorDefaultsProvider))]
     [ProvideService(typeof(VSCFontAndColorDefaultsProvider))]
+
+    [ProvideToolWindow(typeof(SolutionPackagesToolWindowPane), MultiInstances = false, Style = VsDockStyle.Linked, Orientation = ToolWindowOrientation.Right)]
 
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About

@@ -3,6 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SquaredInfinity.VSCommands.Features">
     <ResourceDictionary.MergedDictionaries>
-        
+        <ResourceDictionary Source="{ResourceFromThisAssembly /NugetReferenceRedirection/SolutionPackagesView.xaml}" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

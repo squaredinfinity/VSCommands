@@ -1,4 +1,5 @@
 ﻿using SquaredInfinity.Foundation.Presentation.ViewModels;
+using SquaredInfinity.Foundation.Extensions;
 using SquaredInfinity.VSCommands.Foundation.VisualStudioEvents;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Text;
 using System.Threading;
+using SquaredInfinity.Foundation.Collections;
 
 namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
 {
@@ -17,6 +19,7 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
         readonly IServiceProvider ServiceProvider;
 
         CompositeDisposable Subscriptions = new CompositeDisposable();
+        public ObservableCollectionEx<NugetPackage> AllPackages { get; private set; } = new ObservableCollectionEx<NugetPackage>();
 
         public SolutionPackagesViewModel(
             IServiceProvider serviceProvider,
@@ -42,26 +45,50 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
 
             var solution = dte2.Solution;
 
+            if (solution == null || solution.FullName.IsNullOrEmpty())
+                CleanUp();
+
             var solution_dir = new DirectoryInfo(Path.GetDirectoryName(solution.FullName));
 
             if (!solution_dir.Exists)
             {
-
+                CleanUp();
             }
             else
             {
-                var a = NugetReferenceRedirectionService.GetAllUsedPackages(solution_dir);
-                Console.WriteLine("");
+                var all_packages = NugetReferenceRedirectionService.GetAllUsedPackages(solution_dir);
+                AllPackages.Reset(all_packages);
             }
+        }
+
+        void CleanUp()
+        {
+            AllPackages.Clear();
         }
 
         #region Filtering
 
-        string _filterText;
+        bool _filterChanged = false;
+        public bool FilterChanged
+        {
+            get { return _filterChanged; }
+            set { RaisePropertyChanged(nameof(FilterChanged)); }
+        }
+
+        void RaiseFilterChanged()
+        {
+            FilterChanged = true;
+        }
+
+        string _filterText = "";
         public string FilterText
         {
             get { return _filterText; }
-            set { TrySetThisPropertyValue(ref _filterText, value); }
+            set
+            {
+                if(TrySetThisPropertyValue(ref _filterText, value))
+                    RaiseFilterChanged();
+            }
         }
 
         public bool FilterPackage(NugetPackage package)
@@ -71,7 +98,29 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
 
         bool FilterPackage(NugetPackage package, string filterText)
         {
-            return true;
+            //# Contains COMPLETE filter text
+            if(package.Id.Contains(filterText, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return true;
+            }
+
+            //# Contains ALL filter terms
+
+            var filter_terms = filterText.Split(' ');
+
+            // assume true unless proven otherwise
+            bool contains_all = true;
+
+            foreach(var term in filter_terms)
+            {
+                if(!package.Id.Contains(term, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    contains_all = false;
+                    break;
+                }
+            }
+
+            return contains_all;
         }
 
         #endregion

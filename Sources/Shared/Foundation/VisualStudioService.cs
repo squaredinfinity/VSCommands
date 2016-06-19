@@ -272,6 +272,7 @@ namespace SquaredInfinity.VSCommands.Foundation
             catch (Exception ex)
             {
                 // todo : log
+                Trace.WriteLine(ex.ToString());
                 return false;
             }
 
@@ -299,6 +300,7 @@ namespace SquaredInfinity.VSCommands.Foundation
                 // todo:
                 // user may not have permission to access this reg key
                 //Logger.DiagnosticOnlyLogException(ex);
+                Trace.WriteLine(ex.ToString());
                 return false;
             }
         }

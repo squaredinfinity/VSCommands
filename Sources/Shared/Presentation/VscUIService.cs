@@ -9,6 +9,9 @@ using SquaredInfinity.VSCommands.Foundation;
 using System.Windows.Threading;
 using System.Windows;
 using SquaredInfinity.Foundation.Presentation.Styles.Modern;
+using Microsoft.VisualStudio.Shell.Interop;
+using System.Diagnostics;
+using Microsoft.Practices.Unity;
 
 namespace SquaredInfinity.VSCommands.Presentation
 {
@@ -18,12 +21,12 @@ namespace SquaredInfinity.VSCommands.Presentation
             : base(Application.Current.Dispatcher, GetNewDialogWindow, GetNewToolWindow)
         { }
 
-        static ViewHostWindow GetNewDialogWindow()
+        new static ViewHostWindow GetNewDialogWindow()
         {
             return new SquaredInfinity.Foundation.Presentation.Xaml.Styles.Modern.Windows.DefaultDialogWindow();
         }
 
-        static ViewHostWindow GetNewToolWindow()
+        new static ViewHostWindow GetNewToolWindow()
         {
             return new SquaredInfinity.Foundation.Presentation.Xaml.Styles.Modern.Windows.ModernWindow();
         }
@@ -45,6 +48,7 @@ namespace SquaredInfinity.VSCommands.Presentation
             }
         }
 
+        #region Run
 
         public void Run(Action action)
         {
@@ -55,5 +59,54 @@ namespace SquaredInfinity.VSCommands.Presentation
         {
             return ThreadHelper.Generic.Invoke<T>(action);
         }
+
+        #endregion
+
+        #region Tool Window Panes
+
+        public void ShowToolWindowPane<TToolWindow>()
+        {
+            ShowToolWindowPane<TToolWindow>(VSFRAMEMODE.VSFM_Float);
+        }
+
+        public void ShowToolWindowPane<TToolWindow>(VSFRAMEMODE frameMode)
+        {
+            ShowToolWindowPane(typeof(TToolWindow), frameMode);
+        }
+
+        void ShowToolWindowPane(Type toolWindowPaneType, VSFRAMEMODE frameMode)
+        {
+            try
+            {
+                var container = VscServices.Instance.Container;
+
+                var package = container.Resolve<Package>();
+
+                var toolWindowPane = package.FindToolWindow(toolWindowPaneType, 0, false);
+
+                bool isAlreadyShown = toolWindowPane != null;
+
+                if (!isAlreadyShown)
+                {
+                    toolWindowPane = package.FindToolWindow(toolWindowPaneType, 0, true);
+                }
+
+                IVsWindowFrame wf = toolWindowPane.Frame as IVsWindowFrame;
+
+                if (!isAlreadyShown)
+                {
+                    wf.SetProperty((int)__VSFPROPID.VSFPROPID_FrameMode, frameMode);
+                }
+
+                wf.Show();
+            }
+            catch (Exception ex)
+            {
+                // todo: log
+                Trace.WriteLine(ex.ToString());
+            }
+        }
+
+        #endregion
     }
 }

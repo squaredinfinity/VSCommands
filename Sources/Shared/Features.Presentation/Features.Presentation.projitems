@@ -15,11 +15,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\SolutionPackagesToolWindowPane.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\SolutionPackagesView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\SolutionPackagesViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XamlResources.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\SolutionPackagesView.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)NugetReferenceRedirection\SolutionPackagesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

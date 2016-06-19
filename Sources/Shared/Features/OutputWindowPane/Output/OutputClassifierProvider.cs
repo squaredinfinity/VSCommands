@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Text;
 using SquaredInfinity.VSCommands.Foundation.Settings;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands.Features.OutputWindowPane.Output
 {
@@ -74,6 +75,7 @@ namespace SquaredInfinity.VSCommands.Features.OutputWindowPane.Output
             {
                 // TODO
                 //ex.Log();
+                Trace.WriteLine(ex.ToString());
                 return null;
             }
         }

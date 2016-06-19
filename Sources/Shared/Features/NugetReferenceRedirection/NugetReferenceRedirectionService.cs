@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -73,6 +74,7 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
                 catch (Exception ex)
                 {
                     // todo: logging
+                    Trace.WriteLine(ex.ToString());
                 }
             }
 
