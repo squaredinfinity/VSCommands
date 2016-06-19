@@ -9,6 +9,7 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading;
 using SquaredInfinity.Foundation.Collections;
+using System.Diagnostics;
 
 namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
 {
@@ -19,7 +20,7 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
         readonly IServiceProvider ServiceProvider;
 
         CompositeDisposable Subscriptions = new CompositeDisposable();
-        public ObservableCollectionEx<NugetPackage> AllPackages { get; private set; } = new ObservableCollectionEx<NugetPackage>();
+        public ObservableCollectionEx<NugetPackageMapping> AllPackageMappings { get; private set; } = new ObservableCollectionEx<NugetPackageMapping>();
 
         public SolutionPackagesViewModel(
             IServiceProvider serviceProvider,
@@ -50,20 +51,49 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
 
             var solution_dir = new DirectoryInfo(Path.GetDirectoryName(solution.FullName));
 
-            if (!solution_dir.Exists)
-            {
+            CleanUp();
+
+            if (solution_dir.Exists)
+            { 
                 CleanUp();
-            }
-            else
-            {
+
                 var all_packages = NugetReferenceRedirectionService.GetAllUsedPackages(solution_dir);
-                AllPackages.Reset(all_packages);
+                var packages_directory = new DirectoryInfo(Path.Combine(solution_dir.FullName, "packages"));
+
+                if(!packages_directory.Exists)
+                {
+                    Trace.WriteLine($"Expected packages directory does not exist {packages_directory.FullName}");
+                    return;
+                }
+
+                var mappings = new List<NugetPackageMapping>();
+
+                // construct mappings
+
+                foreach(var package in all_packages)
+                {
+                    var mapping = new NugetPackageMapping();
+                    mapping.Package = package;
+
+                    // check if mapping of that package has been configured
+                    var package_mapping_file = $"{package.Id}.ref_map.xml";
+                    var mapping_file = Path.Combine(packages_directory.FullName, package_mapping_file);
+
+                    if(File.Exists(mapping_file))
+                    {
+                        // read and analyse
+                    }
+
+                    AllPackageMappings.Add(mapping);
+                }
+
+                
             }
         }
 
         void CleanUp()
         {
-            AllPackages.Clear();
+            AllPackageMappings.Clear();
         }
 
         #region Filtering
@@ -91,15 +121,15 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
             }
         }
 
-        public bool FilterPackage(NugetPackage package)
+        public bool FilterPackage(NugetPackageMapping packageMapping)
         {
-            return FilterPackage(package, FilterText);
+            return FilterPackage(packageMapping, FilterText);
         }
 
-        bool FilterPackage(NugetPackage package, string filterText)
+        bool FilterPackage(NugetPackageMapping packageMapping, string filterText)
         {
             //# Contains COMPLETE filter text
-            if(package.Id.Contains(filterText, StringComparison.InvariantCultureIgnoreCase))
+            if(packageMapping.Package.Id.Contains(filterText, StringComparison.InvariantCultureIgnoreCase))
             {
                 return true;
             }
@@ -113,7 +143,7 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
 
             foreach(var term in filter_terms)
             {
-                if(!package.Id.Contains(term, StringComparison.InvariantCultureIgnoreCase))
+                if(!packageMapping.Package.Id.Contains(term, StringComparison.InvariantCultureIgnoreCase))
                 {
                     contains_all = false;
                     break;

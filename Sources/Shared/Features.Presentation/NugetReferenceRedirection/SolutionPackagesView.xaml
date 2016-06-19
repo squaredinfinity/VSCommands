@@ -12,7 +12,7 @@
                     <Grid>
                         <Grid.Resources>
                             <data:CollectionViewSource x:Key="data.packages"
-                                                       Source="{TemplatedParentBinding ViewModel.AllPackages}"
+                                                       Source="{TemplatedParentBinding ViewModel.AllPackageMappings}"
                                                        FilterPredicate="{PredicateMethodBinding @TemplatedParent.ViewModel.FilterPackage}"
                                                        RefreshTriggerProperty="{TemplatedParentBinding ViewModel.FilterChanged}"/>
                         </Grid.Resources>
@@ -39,10 +39,11 @@
                                   behaviors:ColumnHeaders.Visibility="Hidden">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Id">
+                                    <GridViewColumn Header="Id"
+                                                    Width="250">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <TextBlock Text="{Binding Id}" />
+                                                <TextBlock Text="{Binding Package.Id}" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
@@ -53,6 +54,16 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>-->
+
+                                    <GridViewColumn Header="Mapping">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Style="{StaticResource Styles.Button.Hyperlink}"
+                                                        Content="add mapping"
+                                                        />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
                                 </GridView>
                             </ListView.View>
 
