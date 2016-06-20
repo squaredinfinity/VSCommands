@@ -22,6 +22,8 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
         CompositeDisposable Subscriptions = new CompositeDisposable();
         public ObservableCollectionEx<NugetPackageMapping> AllPackageMappings { get; private set; } = new ObservableCollectionEx<NugetPackageMapping>();
 
+        
+
         public SolutionPackagesViewModel(
             IServiceProvider serviceProvider,
             IVisualStudioEventsService vsEventsService,
@@ -66,7 +68,17 @@ namespace SquaredInfinity.VSCommands.Features.NugetReferenceRedirection
                     return;
                 }
 
-                var mappings = new List<NugetPackageMapping>();
+                var map_file_name = "reference_map.si.xml";
+                var map_file_path = Path.Combine(packages_directory.FullName, map_file_name);
+
+                var mappings = new PackagesMappings();
+
+                if(File.Exists(map_file_path))
+                {
+
+                }
+
+                    
 
                 // construct mappings
 
